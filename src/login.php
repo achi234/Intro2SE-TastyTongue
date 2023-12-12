@@ -1,43 +1,44 @@
-<!DOCTYPE html>
-<html lang="en" class="main-background">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tasty Tongue</title>
-    <link rel="stylesheet" href="./assets/css/base.css">
-    <link rel="stylesheet" href="./assets/css/main.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@700;800&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"></head>
+<?php
+    session_start();
+    $page_title = "Tasty Tongue - Login";
+
+    include("config/config.php");
+    include('./partial/header.php');
+?>
+
 <body>
     <div class="modal">
         <!-- Login form -->
-        <div class="authen-form">
-            <div class="authen-form__header">
-                <img src="./assets/image/logo_removebg-2.png" alt="TastyTongue.png" class="authen-header__logo">
-                <h1 class="authen-header__name">Tasty Tongue</h1>
-            </div>
-
-            <div class="authen-form__form">
-                <div class="authen-form__group">
-                    <input type="text" class="authen-form__input" placeholder="Username">
+        <form method="post" action="checklogin.php">
+            <div class="authen-form">
+                <div class="authen-form__header">
+                    <img src="./assets/image/logo_removebg-2.png" alt="TastyTongue.png" class="authen-header__logo">
+                    <h1 class="authen-header__name">Tasty Tongue</h1>
                 </div>
-                <div class="authen-form__group">
-                    <input type="password" class="authen-form__input" placeholder="Password">
+
+                <div class="authen-form__form">
+                    <div class="authen-form__group">
+                        <input type="text" class="authen-form__input" placeholder="Email Address" name="email">
+                    </div>
+                    <div class="authen-form__group">
+                        <input type="password" class="authen-form__input" placeholder="Password" name="password">
+                    </div>
+                </div>
+
+                <div class="authen-form__controls">
+                        <a href="register.php">
+                            <button type="button" class="btn btn--secondary">Register</button>
+                        </a>
+                        <button type="submit" class="btn btn--primary">Login</button>
+                </div>
+
+                <div class="authen-form__aside">
+                    <p class="authen-form__forgot-text">
+                        <a href="" class="authen-form__forgot-link">Forgot password</a>
+                    </p>  
                 </div>
             </div>
-
-            <div class="authen-form__controls">
-                <button class="btn btn--secondary">Register</button>
-                <button class="btn btn--primary">Login</button>
-            </div>
-
-            <div class="authen-form__aside">
-                <p class="authen-form__forgot-text">
-                    <a href="" class="authen-form__forgot-link">Forgot password</a>
-                </p>  
-            </div>
-        </div>
+        </form>
     </div>
 </body>
 </html>
