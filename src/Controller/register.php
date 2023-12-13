@@ -2,13 +2,14 @@
     session_start();
     include("../config/config.php");
 
+    //Load Composer's autoloader
+    require '../vendor/autoload.php';
+
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
     
-    //Load Composer's autoloader
-    require '../vendor/autoload.php';
-
+    
     function email_verify($name, $email,$verify_token)
     {
         $mail = new PHPMailer(true);
