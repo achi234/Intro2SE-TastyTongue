@@ -1,10 +1,9 @@
 <?php
-session_start();
-include('config/config.php');
-include('config/checklogin.php');
-check_login();
-require_once('partials/_head.php');
-require_once('partials/_analytics.php');
+    $page_title = "Tasty Tongue - Admin Dashboard";
+    include('../config/config.php');
+    include('../Controller/authenticate.php');
+    require_once('partials/_head.php');
+    //require_once('partials/_analytics.php');
 ?>
 
 <body>
@@ -230,7 +229,6 @@ require_once('partials/_analytics.php');
             <?php require_once('partials/_footer.php'); ?>
         </div>
     </div>
-  <!-- Argon Scripts -->
 
 </body>
 </html>
