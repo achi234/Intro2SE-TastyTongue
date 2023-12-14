@@ -1,10 +1,9 @@
 <?php
-session_start();
-include('config/config.php');
-include('config/checklogin.php');
-check_login();
-require_once('partials/_head.php');
-require_once('partials/_analytics.php');
+    $page_title = "Tasty Tongue - Change Profile";
+    include('../config/config.php');
+    include('../Controller/authenticate.php');
+    require_once('partials/_head.php');
+    //require_once('partials/_analytics.php');
 ?>
 
 <body>
@@ -38,20 +37,20 @@ require_once('partials/_analytics.php');
                                         <div class="form-small">
                                             <div class="form-col margin-0">
                                                 <label for="" class="form-col__label">Email Address</label>
-                                                <input type="text" name="customer_email" class="form-control" value="admin@mail.com">
+                                                <input type="text" name="customer_email" class="form-control" value="<?php echo $_SESSION['auth_user']['email']?>">
                                             </div>
 
                                             <br class="">
 
                                             <div class="form-row__flex">
                                                 <div class="form-col margin-0">
-                                                    <label for="" class="form-col__label">User Name</label>
-                                                    <input type="text" name="user_name" class="form-control" value>
+                                                    <label for="" class="form-col__label">Full Name</label>
+                                                    <input type="text" name="fullname" class="form-control" value="<?php echo $_SESSION['auth_user']['fullname']?>">
                                                 </div>
 
                                                 <div class="form-col margin-0">
                                                     <label for="" class="form-col__label">Phone Number</label>
-                                                    <input type="text" name="user_phone" class="form-control" value>
+                                                    <input type="text" name="phone" class="form-control" value="<?php echo $_SESSION['auth_user']['phone']?>">
                                                 </div>
                                             </div>
 
@@ -112,7 +111,7 @@ require_once('partials/_analytics.php');
                                 <div class="form-col order-lg-2">
                                     <div class="card-profile-image">
                                         <a href="#" class="">
-                                            <img src="http://localhost/RestaurantPOS/Restro/admin/assets/img/theme/user-a-min.png" alt="" class="rounded-circle">
+                                            <img src="../assets/image/profileImage.png" alt="" class="rounded-circle">
                                         </a>
                                     </div>
                                 </div>
@@ -126,9 +125,9 @@ require_once('partials/_analytics.php');
                                 </div>
                             </div>
                             <div class="text-center">
-                                <p class="recent__heading-title margin-0">System Admin</p>
+                                <p class="recent__heading-title margin-0">Admin</p>
                                 <div class="text__profile-email">
-                                    admin@mail.com
+                                <?php echo $_SESSION['auth_user']['fullname']?>
                                 </div>
                             </div>
                             
