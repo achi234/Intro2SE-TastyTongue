@@ -8,7 +8,8 @@
 ?>
 
 <body>
-
+    <!-- <?php echo $_SESSION['status'];
+    ?> -->
     <div class="modal">
         <!-- Login form -->
         <form method="post" action="Controller/checklogin.php">

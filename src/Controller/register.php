@@ -2,13 +2,14 @@
     session_start();
     include("../config/config.php");
 
+    //Load Composer's autoloader
+    require '../vendor/autoload.php';
+
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
     
-    //Load Composer's autoloader
-    require '../vendor/autoload.php';
-
+    
     function email_verify($name, $email,$verify_token)
     {
         $mail = new PHPMailer(true);
@@ -30,7 +31,7 @@
         $mail->Subject = 'Email Vertification from Tasty Tongue';
 
         $email_template = "
-        <h2> Hi, $name. Thank you for your registration to Tasty Tongue </h2>
+        <h2> Thank you for your registration to Tasty Tongue </h2>
         <h5> Verify your email address to login by clicking the below link </h5>
         <br/><br/>
         <a href='http://localhost/src/verifyEmail.php?token=$verify_token'>Click Here</a>
@@ -43,51 +44,42 @@
 
     if(isset($_POST["btn-register"]))
     {
-        if(!empty($_POST["fullname"]) && !empty($_POST["phone"]) && !empty($_POST["email"]) && !empty($_POST["password"]))
+        $name = $_POST["fullname"];
+        $phone = $_POST["phone"];
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+        $role = "Customer";
+        $verify_token = md5(rand());
+
+        // email_verify("$name","$email", "$verify_token");
+
+        // echo "Check your inbox";
+        $check_email_query = "SELECT email from users where email = '$email' limit 1";
+        $compile_check_email_query = mysqli_query($conn, $check_email_query);
+
+        if(mysqli_num_rows($compile_check_email_query) > 0)
         {
-            $name = $_POST["fullname"];
-            $phone = $_POST["phone"];
-            $email = $_POST["email"];
-            $password = $_POST["password"];
-            $role = "Customer";
-            $verify_token = md5(rand());
+            $_SESSION['status'] = "Email is already registered";
+            header("location: ../register.php");
+        }
+        else
+        {
+            //Inser User 
+            $query = "INSERT INTO users(fullname,email, password, phone, role, verify_token) 
+                                  VALUES('$name','$email','$password','$phone','$role','$verify_token')";
+            $complie_query = mysqli_query($conn, $query);
 
-            // email_verify("$name","$email", "$verify_token");
-
-            // echo "Check your inbox";
-            $check_email_query = "SELECT email from users where email = '$email' limit 1";
-            $compile_check_email_query = mysqli_query($conn, $check_email_query);
-
-            if(mysqli_num_rows($compile_check_email_query) > 0)
+            if($complie_query)
             {
-                $_SESSION['status'] = "Email is already registered";
+                email_verify("$name","$email", "$verify_token");
+                $_SESSION['status'] = "Registration Success! Please verify your email address";
                 header("location: ../register.php");
             }
             else
             {
-                //Inser User 
-                $query = "INSERT INTO users(fullname,email, password, phone, role, verify_token) 
-                                    VALUES('$name','$email','$password','$phone','$role','$verify_token')";
-                $complie_query = mysqli_query($conn, $query);
-
-                if($complie_query)
-                {
-                    email_verify("$name","$email", "$verify_token");
-                    $_SESSION['announce'] = "You've registered. Please verify your email!";
-                    header("location: ../register.php");
-                }
-                else
-                {
-                    $_SESSION['status'] = "Registration Failed!";
-                    header("location: ../register.php");
-                }
+                $_SESSION['status'] = "Registration Failed!";
+                header("location: ../register.php");
             }
         }
-        else
-        {
-            $_SESSION['status'] = "You must fill in all fields";
-            header("location: ../register.php");
-        }
     }
-
 ?>
