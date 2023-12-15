@@ -12,11 +12,10 @@
 <body>
     <div class="modal">
         <!-- authen form -->
+        <div class="authen-form__header">
+            <div class="authen-header__logo"></div>
+        </div>
         <div class="authen-form">
-            <!-- <div class="authen-form__header">
-                <h1 class="authen-header__name">Welcome to Tasty Tongue</h1>
-            </div> -->
-
             <div class="authen-form__form">
                 <div class="authen-form__group">
                     <input type="text" class="authen-form__input" placeholder="Enter verify code">

@@ -366,6 +366,28 @@
     align-items: center;
 }
 
+.container__heading-search {
+    display: flex;
+    min-height: 42px;
+    width: 30%;
+}
+.heading-search__area {
+    border-radius: 5px;
+    font-size: 1.4rem;
+    display: block;
+    width: 100%;
+    margin-right: 6px;
+    padding-left: 6px;
+    transition: all .2s cubic-bezier(.68, -.55, .265, 1.55);
+    color: #8898aa;
+    border: 1px solid rgba(5, 66, 61, .25);
+    border-radius: 5px;
+    background-color: #fff;
+    background-clip: padding-box;
+    box-shadow: none;
+    outline: none;
+}
+
 .recent__heading-title {
     font-size: 1.8rem;
     font-weight: 500;
