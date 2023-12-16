@@ -43,28 +43,49 @@ h1 {
 
 /* Button style */
 .btn {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    align-items: center;
     min-width: 76px;
     min-height: 30px;
     padding: 0;
     outline: none;
     cursor: pointer;
-    border-radius: 30px;
+    /* border-radius: 30px; */
     border: none;
+    transition: transform linear 0.1s;
+    will-change: transform;
 }
 
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+/* 
 .btn.btn--primary {
    color: var(--green-color);
    background-color: var(--y-text-color);
    width: 175px;
    font-weight: 600;
    font-size: 1.4rem;
+} */
+.btn.btn--primary {
+    color: var(--y-text-color);
+    background-color: var(--green-color);
+    font-size: 1.4rem;
+    border-radius: 7px;
+    padding: 5px 14px;
+    min-height: 38px;
+    width: 45%;
+    font-weight: 600;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
 }
-
 .btn.btn--primary:hover {
-    background-color: rgba(235, 182, 45, 0.9);
+    background-color: rgba(5, 66, 61, .95);
 }
 
-.btn.btn--secondary {
+/* .btn.btn--secondary {
     color: var(--y-text-color);
     background-color: var(--green-color);
     border: var(--y-text-color) 1px solid;
@@ -72,9 +93,23 @@ h1 {
     font-weight: 600;
     font-size: 1.4rem;
  }
- 
+  */
+ .btn.btn--secondary {
+    color: var(--green-color);
+    font-size: 1.4rem;
+    border-radius: 7px;
+    border: 1px solid var(--green-color);
+    padding: 5px 14px;
+    min-height: 38px;
+    width: 45%;
+    background-color: var(--bg-color);
+    font-weight: 600;
+ }
  .btn.btn--secondary:hover {
-    background-color: rgba(235, 182, 45, 0.05);
+    /* background-color: var(--green-color);
+    color: var(--y-text-color) */
+    font-weight: 700;
+    background-color: rgba(5, 66, 61, .02);
 }
 
 .btn.btn--disabled {
