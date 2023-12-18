@@ -5,10 +5,10 @@
     session_start();
     if(isset($_POST['btn-updateStaff']))
     {
-        $staff_email = $_POST['staff_email'];
+        $staff_id = $_POST['staff_id'];
         if(empty($_POST['staff_name']) || empty($_POST['staff_email']) || empty($_POST['staff_phone']))
         {
-            redirect('../../Admin UI/update_staff.php?email='.$staff_email, 'All fields are required.', '');
+            redirect('../../Admin UI/update_staff.php?id='.$staff_id, 'All fields are required.', '');
             exit(0);
         }
         else

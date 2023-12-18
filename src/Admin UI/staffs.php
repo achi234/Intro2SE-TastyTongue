@@ -53,12 +53,12 @@
                                             <th class="text-column" scope="row"><?php  echo $staff['email']?></th> 
                                             <th class="text-column" scope="row">
                                                 <div class="text-column__action">
-                                                    <a href="../Controller/AdminController/delete_staff.php?email=<?php  echo $staff['email']?>" 
+                                                    <a href="../Controller/AdminController/delete_staff.php?id=<?php  echo $staff['id']?>" 
                                                     class="btn-control btn-control-delete">
                                                         <i class="fa-solid fa-trash-can btn-control-icon"></i>
                                                         Delete
                                                     </a>
-                                                    <a href="update_staff.php?email=<?php  echo $staff['email']?>" class="btn-control btn-control-edit">
+                                                    <a href="update_staff.php?id=<?php  echo $staff['id']?>" class="btn-control btn-control-edit">
                                                         <i class="fa-solid fa-user-pen btn-control-icon"></i>
                                                         Update
                                                     </a>

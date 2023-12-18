@@ -3,8 +3,8 @@
     require_once('partials/_head.php');
     //require_once('partials/_analytics.php');
 
-    $staff_email = $_GET['email'];
-    $staff = getbyEmail('users', $staff_email);
+    $staff_id = $_GET['id'];
+    $staff = getbyId('users', $staff_id);
 ?>
 
 <body>
@@ -29,6 +29,7 @@
                         
                         <div class="container-recent__body card__body-form">
                             <form method="POST" action="../Controller/AdminController/update_staff.php">
+                                <input type="hidden" name="staff_id" value="<?php echo $staff['data']['id']; ?>">
                                 <div class="form-row">
                                     <div class="form-row__flex">
                                         <div class="form-col">
