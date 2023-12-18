@@ -49,6 +49,8 @@
             $phone = $_POST["phone"];
             $email = $_POST["email"];
             $password = $_POST["password"];
+            $password = password_hash($password, PASSWORD_BCRYPT);
+
             $role = "Customer";
             $verify_token = md5(rand());
 
@@ -73,7 +75,7 @@
                 if($complie_query)
                 {
                     email_verify("$name","$email", "$verify_token");
-                    $_SESSION['announce'] = "You've registered. Please verify your email!";
+                    $_SESSION['noti'] = "You've registered. Please verify your email!";
                     header("location: ../register.php");
                 }
                 else
