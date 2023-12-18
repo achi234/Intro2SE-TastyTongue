@@ -16,9 +16,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@700;800&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet"></head>
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/image/logo.png">
     <script src="assets/js/swal.js"></script>
     <?php
-         if (isset($_SESSION['status'])) {  
+         if (!empty($_SESSION['status'])) {  
             echo '<script>';
             echo 'setTimeout(function() {';
             echo 'swal({';
@@ -32,17 +33,17 @@
             unset($_SESSION['status']);
         }
 
-        if (isset($_SESSION['announce'])) {  
+        if (!empty($_SESSION['noti'])) {  
           echo '<script>';
           echo 'setTimeout(function() {';
           echo 'swal({';
           echo '    title: "Success",';
-          echo '    text: "' . $_SESSION['announce'] . '",';
+          echo '    text: "' . $_SESSION['noti'] . '",';
           echo '    icon: "success",';
           echo '});';
           echo '}, 100);';
           echo '</script>';
 
-          unset($_SESSION['announce']);
+          unset($_SESSION['noti']);
       }
     ?>
