@@ -1,7 +1,7 @@
 <?php
     include('../functions.php');
     include("../../config/config.php");
-    
+    session_start();
     if(isset($_POST['btn-addStaff']))
     {
         $staff_name = $_POST['staff_name'];
