@@ -62,7 +62,11 @@
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
                           <div class="media-body ml-2 d-none d-lg-inline-block">
-                            <span class="mb-0 d-lg-inline-block">customer-name</span>
+                            <span class="mb-0 d-lg-inline-block">
+                                <?php
+                                    echo $_SESSION['auth_user']['fullname'];
+                                 ?>
+                            </span>
                           </div>
                             <span class="avatar avatar-sm rounded-circle">
                                 <img alt="Image placeholder" src="images/user-a-min.png" height="40px" width="40px">
