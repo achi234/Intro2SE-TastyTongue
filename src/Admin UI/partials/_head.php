@@ -28,7 +28,7 @@
 
     <script src="../assets/js/swal.js"></script>
     <?php
-         if (isset($_SESSION['status'])) {  
+         if (!empty($_SESSION['status'])) {  
             echo '<script>';
             echo 'setTimeout(function() {';
             echo 'swal({';
@@ -42,7 +42,7 @@
             unset($_SESSION['status']);
         }
 
-        if (isset($_SESSION['noti'])) {  
+        if (!empty($_SESSION['noti'])) {  
           echo '<script>';
           echo 'setTimeout(function() {';
           echo 'swal({';
