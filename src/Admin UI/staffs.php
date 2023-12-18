@@ -4,12 +4,11 @@
     //require_once('partials/_analytics.php');
 
     $staffs = getbyRole('users', 'Staff');
-    echo $_SESSION['status'];
 ?>
 <body>
     <!-- Sidebar -->
     <?php
-    //require_once('partials/_sidebar.php');
+    require_once('partials/_sidebar.php');
     ?>
     <!-- Main content -->
     <div class="main-content">
@@ -59,7 +58,7 @@
                                                         <i class="fa-solid fa-trash-can btn-control-icon"></i>
                                                         Delete
                                                     </a>
-                                                    <a href="update_staff.php?email=<?php  echo $staff['email']?>&phone=<?php echo $staff['phone']?>&name=<?php echo $staff['fullname']?>" class="btn-control btn-control-edit">
+                                                    <a href="update_staff.php?email=<?php  echo $staff['email']?>" class="btn-control btn-control-edit">
                                                         <i class="fa-solid fa-user-pen btn-control-icon"></i>
                                                         Update
                                                     </a>

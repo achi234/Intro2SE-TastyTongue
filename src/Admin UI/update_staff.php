@@ -10,7 +10,7 @@
 <body>
     <!-- Sidebar -->
     <?php
-    //require_once('partials/_sidebar.php');
+        require_once('partials/_sidebar.php');
     ?>
     <!-- Main content -->
     <div class="main-content">
