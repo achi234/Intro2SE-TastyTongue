@@ -1,15 +1,16 @@
 <?php
     $page_title = "Tasty Tongue - Change Customer Infomation";
-    include('../config/config.php');
-    include('../Controller/authenticate.php');
     require_once('partials/_head.php');
     //require_once('partials/_analytics.php');
+
+    $staff_email = $_GET['email'];
+    $staff = getbyEmail('users', $staff_email);
 ?>
 
 <body>
     <!-- Sidebar -->
     <?php
-    require_once('partials/_sidebar.php');
+    //require_once('partials/_sidebar.php');
     ?>
     <!-- Main content -->
     <div class="main-content">
@@ -27,17 +28,17 @@
                         </div>
                         
                         <div class="container-recent__body card__body-form">
-                            <form method="POST" class="">
+                            <form method="POST" action="../Controller/AdminController/update_staff.php">
                                 <div class="form-row">
                                     <div class="form-row__flex">
                                         <div class="form-col">
-                                            <label for="" class="form-col__label">Staff Number</label>
-                                            <input type="text" name="staff_number" class="form-control" value="LJCH-7436">
+                                            <label for="" class="form-col__label">Staff Name</label>
+                                            <input type="text" name="staff_name" class="form-control" value="<?php echo $staff['data']['fullname']; ?>">
                                         </div>
 
                                         <div class="form-col">
-                                            <label for="" class="form-col__label">Staff Name</label>
-                                            <input type="text" name="staff_name" class="form-control" value>
+                                            <label for="" class="form-col__label">Staff Phone</label>
+                                            <input type="text" name="staff_phone" class="form-control" value="<?php echo $staff['data']['phone'];?>">
                                         </div>
                                     </div>
                                 </div>
@@ -48,12 +49,12 @@
                                     <div class="form-row__flex">
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Staff Email</label>
-                                            <input type="text" name="staff_email" class="form-control" value="admin@mail.com">
+                                            <input type="text" name="staff_email" class="form-control" value="<?php echo $staff['data']['email']; ?>">
                                         </div>
 
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Staff Password</label>
-                                            <input type="text" name="staff_password" class="form-control" value>
+                                            <input type="password" name="staff_password" class="form-control" value="">
                                         </div>
                                     </div>
                                 </div>
@@ -63,7 +64,7 @@
                                 <div class="form-row">
                                     <div class="form-col margin-0">
                                         <div class="form-col-bottom">
-                                            <input type="submit" name="UpdateStaff" value="Update Staff" class="btn-control btn-control-add" value="">
+                                            <input type="submit" name="btn-updateStaff" value="Update Staff" class="btn-control btn-control-add">
                                         </div>
                                     </div>
                                 </div>
