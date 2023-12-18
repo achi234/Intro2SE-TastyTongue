@@ -1,7 +1,5 @@
 <?php
     $page_title = "Tasty Tongue - Payment Lists";
-    include('../config/config.php');
-    include('../Controller/authenticate.php');
     require_once('partials/_head.php');
     //require_once('partials/_analytics.php');
 ?>
@@ -29,7 +27,7 @@
                             </a>
                         </div>
 
-                        <div class="table-responsive">
+                        <div class="table-responsive" style="overflow-x:auto;">
                             <table class="table">
                                 <thead class="thead-light">
                                     <tr>

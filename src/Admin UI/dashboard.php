@@ -1,7 +1,5 @@
 <?php
     $page_title = "Tasty Tongue - Admin Dashboard";
-    include('../config/config.php');
-    include('../Controller/authenticate.php');
     require_once('partials/_head.php');
     //require_once('partials/_analytics.php');
 ?>
@@ -151,7 +149,7 @@
                             <a href="payment_records.php" class="btn-control btn-control-edit">See all</a>
                         </div>
 
-                        <div class="table-responsive">
+                        <div class="table-responsive" style="overflow-x:auto;">
                             <table class="table">
                                 <thead class="thead-light">
                                     <tr>

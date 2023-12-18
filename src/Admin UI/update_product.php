@@ -1,7 +1,5 @@
 <?php
     $page_title = "Tasty Tongue - Change Product Infomation";
-    include('../config/config.php');
-    include('../Controller/authenticate.php');
     require_once('partials/_head.php');
     //require_once('partials/_analytics.php');
 ?>

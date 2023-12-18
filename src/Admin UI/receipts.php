@@ -1,7 +1,5 @@
 <?php
     $page_title = "Tasty Tongue - Receipts";
-    include('../config/config.php');
-    include('../Controller/authenticate.php');
     require_once('partials/_head.php');
     //require_once('partials/_analytics.php');
 ?>
@@ -26,7 +24,7 @@
                             <p class="recent__heading-title">Paid Orders</p>
                         </div>
 
-                        <div class="table-responsive">
+                        <div class="table-responsive" style="overflow-x:auto;">
                             <table class="table">
                                 <thead class="thead-light">
                                     <tr>
