@@ -233,4 +233,15 @@
         }
     }
     
+    function checkParam($type)
+    {
+        if(!empty($_GET[$type]))
+        {
+            return $_GET[$type];
+        }
+        else
+        {
+            return false;
+        }
+    }
 ?>
