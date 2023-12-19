@@ -23,7 +23,7 @@ require_once('partials/_head.php');
             <!-- Page content -->
             <div class="hero_area">
                 <div class="bg-box">
-                    <img src="images/hero-bg.jpg" alt="promotions">
+                    <img src="../assets/image/hero-bg.jpg" alt="promotions">
                 </div>
                 <!-- slider section -->
                 <section class="slider_section ">
@@ -129,7 +129,7 @@ require_once('partials/_head.php');
                             <div class="col-md-6  ">
                                 <div class="box ">
                                     <div class="img-box">
-                                        <img src="images/o1.jpg" alt="">
+                                        <img src="../assets/image/o1.jpg" alt="">
                                     </div>
                                     <div class="detail-box">
                                         <h5>
@@ -199,7 +199,7 @@ require_once('partials/_head.php');
                             <div class="col-md-6  ">
                                 <div class="box ">
                                     <div class="img-box">
-                                        <img src="images/o2.jpg" alt="">
+                                        <img src="../assets/image/o2.jpg" alt="">
                                     </div>
                                     <div class="detail-box">
                                         <h5>
@@ -300,7 +300,7 @@ require_once('partials/_head.php');
                                 <div class="box">
                                     <div>
                                         <div class="img-box">
-                                            <img src="images/f1.png" alt="">
+                                            <img src="../assets/image/f1.png" alt="">
                                         </div>
                                         <div class="detail-box">
                                             <h5>
@@ -383,7 +383,7 @@ require_once('partials/_head.php');
                                 <div class="box">
                                     <div>
                                         <div class="img-box">
-                                            <img src="images/f2.png" alt="">
+                                            <img src="../assets/image/f2.png" alt="">
                                         </div>
                                         <div class="detail-box">
                                             <h5>
@@ -466,7 +466,7 @@ require_once('partials/_head.php');
                                 <div class="box">
                                     <div>
                                         <div class="img-box">
-                                            <img src="images/f3.png" alt="">
+                                            <img src="../assets/image/f3.png" alt="">
                                         </div>
                                         <div class="detail-box">
                                             <h5>
@@ -549,7 +549,7 @@ require_once('partials/_head.php');
                                 <div class="box">
                                     <div>
                                         <div class="img-box">
-                                            <img src="images/f4.png" alt="">
+                                            <img src="../assets/image/f4.png" alt="">
                                         </div>
                                         <div class="detail-box">
                                             <h5>
@@ -632,7 +632,7 @@ require_once('partials/_head.php');
                                 <div class="box">
                                     <div>
                                         <div class="img-box">
-                                            <img src="images/f5.png" alt="">
+                                            <img src="../assets/image/f5.png" alt="">
                                         </div>
                                         <div class="detail-box">
                                             <h5>
@@ -715,7 +715,7 @@ require_once('partials/_head.php');
                                 <div class="box">
                                     <div>
                                         <div class="img-box">
-                                            <img src="images/f6.png" alt="">
+                                            <img src="../assets/image/f6.png" alt="">
                                         </div>
                                         <div class="detail-box">
                                             <h5>
@@ -798,7 +798,7 @@ require_once('partials/_head.php');
                                 <div class="box">
                                     <div>
                                         <div class="img-box">
-                                            <img src="images/f7.png" alt="">
+                                            <img src="../assets/image/f7.png" alt="">
                                         </div>
                                         <div class="detail-box">
                                             <h5>
@@ -881,7 +881,7 @@ require_once('partials/_head.php');
                                 <div class="box">
                                     <div>
                                         <div class="img-box">
-                                            <img src="images/f8.png" alt="">
+                                            <img src="../assets/image/f8.png" alt="">
                                         </div>
                                         <div class="detail-box">
                                             <h5>
@@ -964,7 +964,7 @@ require_once('partials/_head.php');
                                 <div class="box">
                                     <div>
                                         <div class="img-box">
-                                            <img src="images/f9.png" alt="">
+                                            <img src="../assets/image/f9.png" alt="">
                                         </div>
                                         <div class="detail-box">
                                             <h5>
@@ -1063,7 +1063,7 @@ require_once('partials/_head.php');
                     <div class="row">
                         <div class="col-md-6 ">
                             <div class="img-box">
-                                <img src="images/about-img.png" alt="">
+                                <img src="../assets/image/about-img.png" alt="">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -1120,7 +1120,7 @@ require_once('partials/_head.php');
                                         </p>
                                     </div>
                                     <div class="img-box">
-                                        <img src="images/client1.jpg" alt="" class="box-img">
+                                        <img src="../assets/image/client1.jpg" alt="" class="box-img">
                                     </div>
                                 </div>
                             </div>
@@ -1139,7 +1139,7 @@ require_once('partials/_head.php');
                                         </p>
                                     </div>
                                     <div class="img-box">
-                                        <img src="images/client2.jpg" alt="" class="box-img">
+                                        <img src="../assets/image/client2.jpg" alt="" class="box-img">
                                     </div>
                                 </div>
                             </div>
