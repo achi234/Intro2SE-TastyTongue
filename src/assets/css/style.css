@@ -824,12 +824,6 @@ a:focus {
   overflow: hidden;
 }
 
-.book_section .map_container #googleMap {
-  height: 100%;
-  min-height: 100%;
-  width: 100%;
-}
-
 /* client section start */
 .client_section .heading_container {
   margin-bottom: 30px;
@@ -1146,5 +1140,10 @@ a:focus {
 .yellow-btn:not(:disabled):not(.disabled):active:focus, .yellow-btn:not(:disabled):not(.disabled).active:focus,
 .show > .yellow-btn.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem rgb(251, 255, 38);
+}
+
+.reservation .img-box img{
+  max-width: 100%;
+  object-fit: contain;
 }
 /*# sourceMappingURL=style.css.map */
