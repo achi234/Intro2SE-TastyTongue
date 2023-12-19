@@ -1,14 +1,11 @@
 <div class="hero_area">
-    <div class="bg-box">
-      <img src="images/hero-bg.jpg" alt="promotions">
-    </div>
     <!-- header section strats -->
     <header class="header_section">
       <div class="container">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="customerHomepage.php">
             <span>
-              <img src="images/logo-with-text.png" height=60%vh width="70%vw" >
+              <img src="../assets/image/logo-with-text.png" height=60%vh width="70%vw" >
             </span>
           </a>
 
@@ -19,10 +16,10 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav navbar-user" style="font-weight: 700;">
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="customerHomepage.php">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="menu.html">Menu</a>
+                <a class="nav-link" href="customerMenu.php">Menu</a>
               </li>
               <li class="nav-item">
 
@@ -38,7 +35,7 @@
                             </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right custom_dropdown-menu">
-                            <a href="book.html" class="custom_dropdown-item">
+                            <a href="reservation.php" class="custom_dropdown-item">
                                 <span>New reservation </span>
                             </a>
                             <div class="custom_dropdown-divider"></div>
@@ -64,12 +61,13 @@
                           <div class="media-body ml-2 d-none d-lg-inline-block">
                             <span class="mb-0 d-lg-inline-block">
                                 <?php
-                                    echo $_SESSION['auth_user']['fullname'];
+                                    //echo $_SESSION['auth_user']['fullname'];
                                  ?>
+                                 customer-name
                             </span>
                           </div>
                             <span class="avatar avatar-sm rounded-circle">
-                                <img alt="Image placeholder" src="images/user-a-min.png" height="40px" width="40px">
+                                <img alt="Image placeholder" src="../assets/image/user-a-min.png" height="40px" width="40px">
                             </span>
                         </div>
                     </a>
