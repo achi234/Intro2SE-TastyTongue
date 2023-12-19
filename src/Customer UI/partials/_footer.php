@@ -31,9 +31,9 @@
         </div>
         <div class="col-md-4 footer-col">
           <div class="footer_detail">
-            <a href="index.html" class="footer-logo">
+            <a href="customerHomepage.php" class="footer-logo">
               <span>
-                  <img src="images/logo-with-text.png" height=60%vh width="70%vw" >
+                  <img src="../assets/image/logo-with-text.png" height=60%vh width="70%vw" >
               </span>
             </a>
             <p>
