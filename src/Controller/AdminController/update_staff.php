@@ -35,7 +35,7 @@
                 'phone'    => $staff_phone,
             ];
 
-            $result = updatebyEmail('users', $staff_email, $data);
+            $result = updatebyId('users', $staff_id, $data);
 
             if($result)
             {
@@ -43,7 +43,7 @@
             }
             else
             {
-                redirect('../../Admin UI/update_staff.php?email='.$staff_email, 'Something went wrong! Please enter again...', "");
+                redirect('../../Admin UI/update_staff.php?id='.$staff_id, 'Something went wrong! Please enter again...', "");
             }
         }
     }

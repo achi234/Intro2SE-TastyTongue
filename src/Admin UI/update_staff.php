@@ -1,5 +1,5 @@
 <?php
-    $page_title = "Tasty Tongue - Change Customer Infomation";
+    $page_title = "Tasty Tongue - Change Staff Infomation";
     require_once('partials/_head.php');
     //require_once('partials/_analytics.php');
 
