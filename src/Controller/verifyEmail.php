@@ -23,7 +23,7 @@
                     $compile_update_query = mysqli_query($conn, $update_query);
                     if($compile_update_query)
                     {
-                        $_SESSION['status'] = "Your Account has been verified successfully! Please Login.";
+                        $_SESSION['noti'] = "Your Account has been verified successfully! Please Login.";
                         header("location: login.php");
                         exit(0);
                     }
@@ -35,7 +35,7 @@
                     }
                     break;
                 case "1":
-                    $_SESSION['status'] = "Email is already verified!";
+                    $_SESSION['noti'] = "Email is already verified!";
                     header("location: login.php");
                     exit(0);
                     break;
