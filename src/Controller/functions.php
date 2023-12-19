@@ -39,22 +39,23 @@
     function updatebyId($tableName, $id, $data)
     {
         global $conn;
-
+        //print_r($data);
         $table = validate($tableName);
         $id = validate($id);
 
         $dataString = "";
 
         //" key=value,"
-        foreach($data as $key => $data)
+        foreach($data as $key => $value)
         {
-            $dataString .= $key.'='."'$value',";
+            $dataString .= "$key = '$value', ";
         }
 
-        $dataString= substr(trim($dataString),0 -1);
+        $setClause = rtrim($dataString, ', ');
 
-        $query = "UPDATE $table SET $dataString WHERE id='$id'";
+        $query = "UPDATE $table SET $setClause WHERE id='$id'";
 
+        //echo $query;
         $result =  mysqli_query($conn, $query);
 
         return $result;

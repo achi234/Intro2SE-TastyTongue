@@ -4,7 +4,7 @@
     $count = 0;
     if(isset($_POST['btn-login']))
     {    
-        if(!empty(trim($_POST['email'])) && !empty(trim($_POST['email'])))
+        if(!empty(trim($_POST['email'])) && !empty(trim($_POST['password'])))
         {
             $email=$_POST['email'];
             $password=$_POST['password'];
