@@ -1142,8 +1142,39 @@ a:focus {
   box-shadow: 0 0 0 0.2rem rgb(251, 255, 38);
 }
 
-.reservation .img-box img{
-  max-width: 100%;
-  object-fit: contain;
+.custom_btn-radio {
+  color: #05433E;
 }
+
+.custom_btn-radio:hover {
+  color: #05433E;
+}
+
+.custom_btn-radio:focus, .custom_btn-radio.focus {
+  box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+}
+
+.custom_btn-radio.disabled, .custom_btn-radio:disabled {
+  color: #05433E;
+}
+
+.custom_btn-radio:not(:disabled):not(.disabled):active, .custom_btn-radio:not(:disabled):not(.disabled).active,
+.show > .custom_btn-radio.dropdown-toggle {
+  color: #05433E;
+}
+
+.custom_btn-radio:not(:disabled):not(.disabled):active:focus, .custom_btn-radio:not(:disabled):not(.disabled).active:focus,
+.show > .custom_btn-radio.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(130, 138, 145, 0.5);
+}
+
+input[type="radio"] {
+  accent-color: #EBB42C;
+}
+
+.reservation .img-box img{
+  object-fit: cover;
+  width: 100%;
+}
+
 /*# sourceMappingURL=style.css.map */
