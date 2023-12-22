@@ -29,19 +29,24 @@ require_once('partials/_head.php');
                         <h2 class="text-green">
                             Make Reservation
                         </h2>
-                        <h4 class="text-green" style="padding-top:10px">
-                            Available tables
-                        </h4>
                     </div>
                     <div class="row">
                         <div class="col-md-5">
                             <div class="form_container">
                                 <form action="">
+                                    <h4 class="text-green">
+                                        Available tables
+                                    </h4>
                                     <div>
-                                        <input type="radio" class="form-control">
-                                        <label for="table1">T101</label>
-                                        <input type="radio" class="form-control">
-                                        <label for="table2">T102</label>
+                                        <!-- Note -->
+                                        <label class="btn custom_btn-radio active">
+                                            <input type="radio" name="options" id="option1" autocomplete="off"> Active
+                                        </label>
+                                        <label class="btn custom_btn-radio">
+                                            <input type="radio" name="options" id="option2" autocomplete="off"> Radio
+                                        </label>
+                                        <!-- chỗ này là demo thoai, nào ông xong cái BE thì chỉnh lại hoặc nói tui 
+                                        chỉnh lại sao cho nó tự generate ra nha -->
                                     </div>
                                     <div class="btn_box">
                                         <button>
