@@ -40,6 +40,7 @@
                             'fullname' => $row['fullname'],
                             'role' => $row['role'],
                         ];
+                        $_SESSION['id']=$row['id'];
 
                         switch($_SESSION['auth_user']['role'])
                         {

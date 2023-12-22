@@ -33,18 +33,19 @@ require_once('partials/_head.php');
                     <div class="row">
                         <div class="col-md-5">
                             <div class="form_container">
-                                <form action="">
+                                <form action="../Controller/CustomerController/reservation.php" method="post">
                                     <div>
                                         <span> Party size </span>
-                                        <input type="text" class="form-control" placeholder="Number only" />
+                                        <input type="text" class="form-control" placeholder="Number only" name="size"/>
                                     </div>
                                     <div>
                                         <span> Reservation Date&Time </span>
-                                        <input type="datetime-local" class="form-control">
+                                        <input type="datetime-local" class="form-control" name="datetime">
                                     </div>
                                     <div class="btn_box">
+                                    
                                         <button>
-                                            Submit
+                                        <input type="submit">
                                         </button>
                                     </div>
                                 </form>
