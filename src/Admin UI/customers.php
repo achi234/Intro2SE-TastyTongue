@@ -2,6 +2,8 @@
     $page_title = "Tasty Tongue - Customer List";
     require_once('partials/_head.php');
     //require_once('partials/_analytics.php');
+
+    $customers = getbyRole('users', 'Customer');
 ?>
 <body>
     <!-- Sidebar -->
@@ -33,46 +35,59 @@
                                         <th class="text-column" scope="col">FULL NAME</th> 
                                         <th class="text-column" scope="col">CONTACT NUMBER</th> 
                                         <th class="text-column" scope="col">EMAIL</th> 
+                                        <th class="text-column" scope="col">Verified</th>
                                         <th class="text-column" scope="col">ACTIONS</th> 
                                     </tr>
                                 </thead>
                                 <tbody class="table-body">
-                                    <tr>
-                                        <th class="text-column" scope="row">Christine Moore</th> 
-                                        <th class="text-column" scope="row">7412569698</th> 
-                                        <th class="text-column" scope="row">christine@mail.com</th> 
-                                        <th class="text-column" scope="row">
-                                            <div class="text-column__action">
-                                                <a href="" class="btn-control btn-control-delete">
-                                                    <i class="fa-solid fa-trash-can btn-control-icon"></i>
-                                                    Delete
-                                                </a>
-                                                <a href="update_customers.php" class="btn-control btn-control-edit">
-                                                    <i class="fa-solid fa-user-pen btn-control-icon"></i>
-                                                    Update
-                                                </a>
-                                            </div>
-                                        </th> 
-                                    </tr>
-
-                                    <tr>
-                                        <th class="text-column" scope="row">Christine Moore</th> 
-                                        <th class="text-column" scope="row">7412569698</th> 
-                                        <th class="text-column" scope="row">christine@mail.com</th> 
-                                        <th class="text-column" scope="row">
-                                            <div class="text-column__action">
-                                                <a href="" class="btn-control btn-control-delete">
-                                                    <i class="fa-solid fa-trash-can btn-control-icon"></i>
-                                                    Delete
-                                                </a>
-                                                <a href="" class="btn-control btn-control-edit">
-                                                    <i class="fa-solid fa-user-pen btn-control-icon"></i>
-                                                    Update
-                                                </a>
-                                            </div>
-                                        </th> 
-                                    </tr>
-
+                                    <?php
+                                        $count = sizeof($customers['data']);
+                                        if($count > 0)
+                                        {
+                                        ?>
+                                            <?php  foreach($customers['data'] as $customer) 
+                                            {  
+                                            ?>
+                                            <tr>
+                                                <th class="text-column" scope="row"><?php echo $customer['fullname']?></th> 
+                                                <th class="text-column" scope="row"><?php echo $customer['phone']?></th> 
+                                                <th class="text-column" scope="row"><?php  echo $customer['email']?></th> 
+                                                <?php if($customer['verify_status'] == 1)
+                                                    {?>
+                                                        <th class="text-column" scope="row">Yes</th> 
+                                                    <?php
+                                                    }
+                                                    else
+                                                    {
+                                                    ?>
+                                                        <th class="text-column" scope="row">No</th> 
+                                                    <?php
+                                                    }
+                                                ?>
+                                                <th class="text-column" scope="row">
+                                                    <div class="text-column__action">
+                                                        <a href="../Controller/AdminController/delete_customer.php?id=<?php  echo $customer['id']?>" 
+                                                        class="btn-control btn-control-delete">
+                                                            <i class="fa-solid fa-trash-can btn-control-icon"></i>
+                                                            Delete
+                                                        </a>
+                                                        <a href="update_customers.php?id=<?php  echo $customer['id']?>" class="btn-control btn-control-edit">
+                                                            <i class="fa-solid fa-user-pen btn-control-icon"></i>
+                                                            Update
+                                                        </a>
+                                                    </div>
+                                                </th> 
+                                            </tr>
+                                            <?php 
+                                            } ?>
+                                        <?php 
+                                        }
+                                        else
+                                        { ?>
+                                            <h4> No Record Found </h4>
+                                        <?php
+                                        }
+                                    ?>   
                                 </tbody>
                             </table>
 

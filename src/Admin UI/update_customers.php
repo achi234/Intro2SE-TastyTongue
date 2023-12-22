@@ -2,6 +2,8 @@
     $page_title = "Tasty Tongue - Change Customer Infomation";
     require_once('partials/_head.php');
     //require_once('partials/_analytics.php');
+    $customer_id = $_GET['id'];
+    $customer = getbyId('users', $customer_id);
 ?>
 
 <body>
@@ -25,17 +27,18 @@
                         </div>
                         
                         <div class="container-recent__body card__body-form">
-                            <form method="POST" class="">
+                            <form method="POST" action="../Controller/AdminController/update_customer.php">
+                            <input type="hidden" name="customer_id" value="<?php echo $customer['data']['id']; ?>">
                                 <div class="form-row">
                                     <div class="form-row__flex">
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Customer Name</label>
-                                            <input type="text" name="customer_name" class="form-control" value="LJCH-7436">
+                                            <input type="text" name="customer_name" class="form-control" value="<?php echo $customer['data']['fullname']; ?>">
                                         </div>
 
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Customer Phone Number</label>
-                                            <input type="text" name="customer_phone" class="form-control" value>
+                                            <input type="text" name="customer_phone" class="form-control" value="<?php echo $customer['data']['phone']; ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -46,12 +49,12 @@
                                     <div class="form-row__flex">
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Customer Email</label>
-                                            <input type="text" name="customer_email" class="form-control" value="admin@mail.com">
+                                            <input type="text" name="customer_email" class="form-control" value="<?php echo $customer['data']['email']; ?>">
                                         </div>
 
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Customer Password</label>
-                                            <input type="text" name="customer_password" class="form-control" value>
+                                            <input type="text" name="customer_password" class="form-control" value="">
                                         </div>
                                     </div>
                                 </div>
@@ -61,7 +64,7 @@
                                 <div class="form-row">
                                     <div class="form-col margin-0">
                                         <div class="form-col-bottom">
-                                            <input type="submit" name="updateCustomer" value="Update Customer" class="btn-control btn-control-add" value="">
+                                            <input type="submit" name="btn-updateCustomer" value="Update Customer" class="btn-control btn-control-add" value="">
                                         </div>
                                     </div>
                                 </div>
