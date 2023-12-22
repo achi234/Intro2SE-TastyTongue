@@ -33,7 +33,7 @@
         <h2> Hi, $name. Thank you for your registration to Tasty Tongue </h2>
         <h5> Verify your email address to login by clicking the below link </h5>
         <br/><br/>
-        <a href='http://localhost/src/verifyEmail.php?token=$verify_token'>Click Here</a>
+        <a href='http://localhost/Intro2SE-TastyTongue/src/Controller/verifyEmail.php?token=$verify_token'>Click Here</a>
         ";
 
         $mail->Body = $email_template;

@@ -1,7 +1,7 @@
 <?php
 
     session_start();
-    include("config/config.php");
+    include("../config/config.php");
 
     if(isset($_GET['token']))
     {
@@ -24,19 +24,19 @@
                     if($compile_update_query)
                     {
                         $_SESSION['noti'] = "Your Account has been verified successfully! Please Login.";
-                        header("location: login.php");
+                        header("location: ../login.php");
                         exit(0);
                     }
                     else
                     {
                         $_SESSION['status'] = "Verification Failed!";
-                        header("location: login.php");
+                        header("location: ../login.php");
                         exit(0);
                     }
                     break;
                 case "1":
                     $_SESSION['noti'] = "Email is already verified!";
-                    header("location: login.php");
+                    header("location: ../login.php");
                     exit(0);
                     break;
                 default:
@@ -46,11 +46,11 @@
         else
         {
             $_SESSION['status'] = "The token does not exist!";
-            header("location: login.php");
+            header("location: ../login.php");
         }
     }
     else{
         $_SESSION['status'] = "Not allowed";
-        header("location: login.php");
+        header("location: ../login.php");
     }
 ?>
