@@ -15,7 +15,7 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav navbar-user" style="font-weight: 700;">
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="customerHomepage.php">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
@@ -39,7 +39,7 @@
                                 <span>New reservation </span>
                             </a>
                             <div class="custom_dropdown-divider"></div>
-                            <a href="" class="custom_dropdown-item">
+                            <a href="reservationReport.php" class="custom_dropdown-item">
                                 <span class="align-items-center">Current reservation</span>
                             </a>
                             <div class="custom_dropdown-divider"></div>
