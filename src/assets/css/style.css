@@ -1177,4 +1177,19 @@ input[type="radio"] {
   width: 100%;
 }
 
+.book_section .report-box {
+  background-color: #05433E;
+  border-radius: 10px;
+  padding: 25px;
+}
+
+.book_section .report-box h4 {
+  font-weight: bold;
+  color: #EBB42C;
+}
+
+.book_section .report-box .reservation-detail {
+  color: #fff;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -5,7 +5,7 @@ session_start();
 ?>
 
 <?php
-$page_title = "Tasty Tongue - Reservation";
+$page_title = "Tasty Tongue - Table Choosing";
 require_once('../config/config.php');
 // include('../config/config.php');
 //include('../Controller/authenticate.php');
@@ -40,15 +40,6 @@ require_once('partials/_head.php');
                                         Available tables
                                     </h4>
                                     <div>
-                                        <!-- Note -->
-                                        <!-- <label class="btn custom_btn-radio active">
-                                            <input type="radio" name="options" id="option1" autocomplete="off"> Active
-                                        </label>
-                                        <label class="btn custom_btn-radio">
-                                            <input type="radio" name="options" id="option2" autocomplete="off"> Radio
-                                        </label> -->
-                                        <!-- chỗ này là demo thoai, nào ông xong cái BE thì chỉnh lại hoặc nói tui 
-                                        chỉnh lại sao cho nó tự generate ra nha -->
                                         <?php
                                         $datetime = $_SESSION['datetime'];
                                         $size = $_SESSION['size'];
@@ -74,13 +65,6 @@ require_once('partials/_head.php');
                                         </button>
                                     </div>
                                 </form>
-                            </div>
-                        </div>
-                        <div class="col-md-7">
-                            <div class="map_container reservation">
-                                <div class="img-box">
-                                    <img src="../assets/image/floor_plan.png" alt="table-map">
-                                </div>
                             </div>
                         </div>
                     </div>
