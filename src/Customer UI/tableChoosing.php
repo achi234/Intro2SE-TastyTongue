@@ -60,8 +60,7 @@ require_once('partials/_head.php');
                                     </div>
                                     <div class="btn_box">
                                         <button>
-                                        <input type="submit">
-                                            
+                                            <input type="submit" value="Submit">
                                         </button>
                                     </div>
                                 </form>

@@ -805,7 +805,7 @@ a:focus {
   text-transform: capitalize;
   display: inline-block;
   padding: 10px 55px;
-  background-color: #ffbe33;
+  background-color: #EBB42C;
   color: #ffffff;
   border-radius: 45px;
   -webkit-transition: all 0.3s;
@@ -815,6 +815,13 @@ a:focus {
 
 .book_section .form_container button:hover {
   background-color: #e69c00;
+}
+
+
+input[type="submit"] {
+  color: #fff;
+  background-color: inherit;
+  border: none;
 }
 
 .book_section .map_container {
