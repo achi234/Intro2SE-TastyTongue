@@ -32,7 +32,7 @@ require_once('partials/_head.php');
                             Reservation Report
                         </h2>
                     </div>
-                    <div class="row">
+                    <div class="row justify-content-center">
                         <div class="col-md-8 align-self-center">
                             <div class="report-box">
                                 <h4>
