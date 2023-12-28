@@ -306,6 +306,13 @@ textarea.form-control {
     box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
     margin-right: 4px;
 }
+
+.btn-control-search {
+    width: fit-content;
+    background-color: var(--green-color);
+    color: var(--bg-color);
+}
+
 .btn-add-success {
     /* color: #fff; */
     color: var(--y-text-color);
