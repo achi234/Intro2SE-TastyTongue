@@ -21,6 +21,14 @@
                     <div class="container-recent-inner">
                         <div class="container-recent__heading">
                             <p class="recent__heading-title">Select On Any Product To Make An Order</p>
+                            
+                            <div class="container__heading-search">
+                                <input type="text" class="heading-search__area" placeholder="Search by code, name..." name="search_text" value="">
+                                <button class="btn-control btn-control-search" name="btn-search">
+                                    <i class="fa-solid fa-magnifying-glass btn-control-icon"></i>
+                                    Search
+                                </button>      
+                            </div>
                         </div>
 
                         <div class="table-responsive" style="overflow-x:auto;">
