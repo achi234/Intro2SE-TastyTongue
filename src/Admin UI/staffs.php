@@ -20,12 +20,32 @@
             <!-- Page content -->
             <div class="container">
                 <div class="container-recent">
-                    <div class="container-recent-inner">
+                    <form action="" method="POST" class="container-recent-inner">
                         <div class="container-recent__heading heading__button">
                             <a href="add_staff.php" class="btn-control btn-control-add">
                                 <i class="fa-solid fa-user-plus btn-control-icon"></i>
                                 Add new staff
                             </a>
+
+                            <?php
+                                $strKeyword = null;
+
+                                if(isset($_POST["btn-search"]))
+                                {
+                                    $strKeyword = $_POST["search_text"];
+                                    $staffs = searchUserByKeyword('users', $strKeyword, 'Staff');
+
+                                    if($staffs['status'] == 'No Data Found')
+                                    {
+                                        $_SESSION['status'] = $staffs['status'];
+                                        // $staffs = getByUserTypeWithPagination('users', 'Staff', $pageSize, $pageNumber, 'id');
+                                    }
+                                }
+                                else
+                                {
+                                    // $staffs = getByUserTypeWithPagination('users', 'Staff', $pageSize, $pageNumber, 'id');
+                                }
+                            ?>
 
                             <div class="container__heading-search">
                                 <input type="text" class="heading-search__area" placeholder="Search by code, name..." name="search_text" value="">
@@ -88,7 +108,7 @@
                             </table>
 
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
             <!-- Footer -->

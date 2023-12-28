@@ -20,7 +20,7 @@
             <!-- Page content -->
             <div class="container">
                 <div class="container-recent">
-                    <div class="container-recent-inner">
+                    <form action="" method="POST" class="container-recent-inner">
                         <div class="container-recent__heading heading__button">
                             <a href="add_customers.php" class="btn-control btn-control-add">
                                 <i class="fa-solid fa-user-plus btn-control-icon"></i>
@@ -101,7 +101,7 @@
                             </table>
 
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
             <!-- Footer -->

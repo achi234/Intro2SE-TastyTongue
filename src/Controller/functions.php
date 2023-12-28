@@ -233,7 +233,81 @@
             return $response;
         }
     }
+    // SEARCH //
+    // Hàm lấy tên các cột trong bảng
+    function getTableColumns($tableName)
+    {
+        global $conn;
     
+        // Xác thực và tránh SQL injection
+        $tableName = validate($tableName);
+    
+        // Truy vấn để lấy tên các cột
+        $query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = ?";
+        
+        // Thực thi truy vấn
+        $params = array($tableName);
+        $result = mysqli_query($conn, $query, $params);
+    
+        $columns = array();
+    
+        while ($row = mysqli_fetch_assoc($result)) {
+            $columns[] = $row['COLUMN_NAME'];
+        }
+    
+        return $columns;
+    }
+
+    function searchUserByKeyWord($tableName, $role, $value)
+    {
+        global $conn;
+
+        $table = validate($tableName);
+        $role = validate($role);
+        $value = validate($value);
+    
+        $query = "SELECT * FROM $table WHERE role = '$role' AND ";
+        $columns = getTableColumns($tableName);
+    
+        $conditions = [];
+        foreach ($columns as $column) {
+            $conditions[] = "$column LIKE '%$value%'";
+        }
+    
+        $query = "SELECT * FROM $table WHERE role = '$role' AND ";
+        $query = str_pad($query, strlen($query) + 1, "(");
+        $query .= implode(" OR ", $conditions);
+        $query = str_pad($query, strlen($query) + 1, ")");
+
+        $result = mysqli_query($conn, $query);
+    
+        if ($result) {
+            $data = [];
+    
+            while ($row = mysqli_fetch_assoc($result)) {
+                $data[] = $row;
+            }
+    
+            if (!empty($data)) {
+                $response = [
+                    'status' => 'Data Found',
+                    'data' => $data,
+                ];
+            } else {
+                $response = [
+                    'status' => 'No Data Found',
+                ];
+            }
+    
+            return $response;
+        } else {
+            $response = [
+                'status' => 'Something went wrong! Please try again.',
+            ];
+            return $response;
+        }
+    }
+
     function checkParam($type)
     {
         if(!empty($_GET[$type]))

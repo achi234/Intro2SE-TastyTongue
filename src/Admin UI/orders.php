@@ -18,7 +18,7 @@
             <!-- Page content -->
             <div class="container">
                 <div class="container-recent">
-                    <div class="container-recent-inner">
+                    <form action="" method="POST" class="container-recent-inner">
                         <div class="container-recent__heading">
                             <p class="recent__heading-title">Select On Any Product To Make An Order</p>
                             
@@ -63,7 +63,7 @@
                             </table>
 
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
             <!-- Footer -->
