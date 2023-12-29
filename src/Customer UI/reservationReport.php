@@ -7,7 +7,7 @@ session_start();
 <?php
 $page_title = "Tasty Tongue - Reservation Report";
 //require_once('../config/config.php');
-// include('../config/config.php');
+include('../config/config.php');
 //include('../Controller/authenticate.php');
 require_once('partials/_head.php');
 //require_once('partials/_analytics.php');
@@ -35,14 +35,25 @@ require_once('partials/_head.php');
                     <div class="row justify-content-center">
                         <div class="col-md-8 align-self-center">
                             <div class="report-box">
-                                <h4>
+                                <!-- <h4>
                                     You have a reservation!
-                                </h4>
+                                </h4> -->
+                                <?php 
+                                $user_id = $_SESSION['id'];
+                                $sql = "SELECT* FROM RESERVATION_LIST RL, TABLE_LIST TL
+                                 WHERE RL.TABLE_ID = TL.TABLE_ID 
+                                  AND  USER_ID = '$user_id'";
+                                $result = $conn->query($sql);
+                                while ($row = $result->fetch_assoc()) {
+                                ?>
                                 <ul class="reservation-detail">
-                                    <li> Table code: </li>
+                                    <li> Table code: <?php echo $row['table_name']?> </li>
                                     <li> Party size: </li>
-                                    <li> Reservation Date&Time: </li>
+                                    <li> Reservation Date&Time: <?php echo $row['datetime']?> </li>
                                 </ul>
+                                <?php 
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>
