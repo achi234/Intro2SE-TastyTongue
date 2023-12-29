@@ -34,27 +34,29 @@ require_once('partials/_head.php');
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-md-8 align-self-center">
-                            <div class="report-box">
-                                <!-- <h4>
+
+                            <!-- <h4>
                                     You have a reservation!
                                 </h4> -->
-                                <?php 
-                                $user_id = $_SESSION['id'];
-                                $sql = "SELECT* FROM RESERVATION_LIST RL, TABLE_LIST TL
+                            <?php
+                            $user_id = $_SESSION['id'];
+                            $sql = "SELECT* FROM RESERVATION_LIST RL, TABLE_LIST TL
                                  WHERE RL.TABLE_ID = TL.TABLE_ID 
                                   AND  USER_ID = '$user_id'";
-                                $result = $conn->query($sql);
-                                while ($row = $result->fetch_assoc()) {
-                                ?>
-                                <ul class="reservation-detail">
-                                    <li> Table code: <?php echo $row['table_name']?> </li>
-                                    <li> Party size: </li>
-                                    <li> Reservation Date&Time: <?php echo $row['datetime']?> </li>
-                                </ul>
-                                <?php 
-                                }
-                                ?>
-                            </div>
+                            $result = $conn->query($sql);
+                            while ($row = $result->fetch_assoc()) {
+                            ?>
+                                <div class="report-box" style="margin-bottom: 10px;">
+                                    <ul class="reservation-detail">
+                                        <li> Table code: <?php echo $row['table_name'] ?> </li>
+                                        <li> Party size: <?php echo $row['size'] ?></li>
+                                        <li> Reservation Date&Time: <?php echo $row['datetime'] ?> </li>
+                                    </ul>
+                                </div>
+                            <?php
+                            }
+                            ?>
+
                         </div>
                     </div>
                 </div>
