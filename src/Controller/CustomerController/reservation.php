@@ -8,7 +8,7 @@ if ($_POST['table_id'] != 0) {
     $datetime = $_SESSION['datetime'];
     $user_id = $_SESSION['id'];
 
-    $sql = "INSERT INTO reservation_list (customer_id, table_id, datetime) 
+    $sql = "INSERT INTO reservation_list (user_id, table_id, datetime) 
         VALUES ('$user_id', '$table_id', '$datetime')";
 
     if ($conn->query($sql) === TRUE) {
