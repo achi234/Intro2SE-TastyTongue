@@ -91,19 +91,41 @@
         $table = validate($tableName);
         $status = validate($status);
 
-        $query='';
-        if(isset($status))
-        {
-            $query = "SELECT * FROM $table WHERE status = '$status'";
-        }
-        else
-        {
-            $query = "SELECT * FROM $table";
+        $query = "SELECT * FROM $tableName";
+
+        if ($status !== NULL) {
+            $query .= " WHERE status = '$status'";
         }
 
-        $result =  mysqli_query($conn, $query);
+        $result = mysqli_query($conn, $query);
+        
+        if ($result) {
+            $data = [];
 
-        return $result;
+            while ($row = mysqli_fetch_assoc($result)) {
+                $data[] = $row;
+            }
+
+            if (!empty($data)) {
+                $response = [
+                    'status' => 'Data Found',
+                    'data' => $data,
+                ];
+            } else {
+                $response = [
+                    'status' => 'No Data Found',
+                ];
+            }
+
+            return $response;
+        } 
+        else {
+            $response = [
+                'status' => 'Something went wrong! Please try again.',
+            ];
+            return $response;
+        }
+
     }
 
     function getbyId($tableName, $id)
