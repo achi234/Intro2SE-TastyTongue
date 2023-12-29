@@ -48,8 +48,8 @@ require_once('partials/_head.php');
                             ?>
                                 <div class="report-box" style="margin-bottom: 10px;">
                                     <ul class="reservation-detail">
-                                        <li> Table code: <?php echo $row['table_name'] ?> </li>
-                                        <li> Party size: <?php echo $row['size'] ?></li>
+                                        <li> Table name: <?php echo $row['table_name'] ?> </li>
+                                        <li> Party size: <?php echo $row['party_size'] ?></li>
                                         <li> Reservation Date&Time: <?php echo $row['datetime'] ?> </li>
                                     </ul>
                                 </div>
