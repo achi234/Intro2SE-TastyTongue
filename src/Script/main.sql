@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 22, 2023 lúc 04:52 PM
+-- Thời gian đã tạo: Th12 29, 2023 lúc 05:38 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.1.17
 
@@ -33,21 +33,24 @@ CREATE TABLE `reservation_list` (
   `table_id` int(11) NOT NULL,
   `datetime` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `status` int(11) NOT NULL DEFAULT 0,
-  `date_created` timestamp NOT NULL DEFAULT current_timestamp()
+  `date_created` timestamp NOT NULL DEFAULT current_timestamp(),
+  `party_size` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `reservation_list`
 --
 
-INSERT INTO `reservation_list` (`reservation_id`, `user_id`, `table_id`, `datetime`, `status`, `date_created`) VALUES
-(11, '1', 1, '2023-12-13 22:00:00', 0, '2023-12-13 20:14:23'),
-(12, '1', 2, '2023-12-13 22:00:00', 0, '2023-12-13 20:15:27'),
-(13, '1', 3, '2023-12-13 22:00:00', 0, '2023-12-13 20:15:30'),
-(14, '1', 4, '2023-12-13 22:00:00', 0, '2023-12-13 20:15:31'),
-(25, '1', 6, '0000-00-00 00:00:00', 0, '2023-12-22 12:56:46'),
-(26, '17', 6, '2023-11-28 12:56:00', 0, '2023-12-22 13:07:38'),
-(27, '17', 12, '2023-12-22 02:00:00', 0, '2023-12-22 15:05:54');
+INSERT INTO `reservation_list` (`reservation_id`, `user_id`, `table_id`, `datetime`, `status`, `date_created`, `party_size`) VALUES
+(11, '1', 1, '2023-12-13 22:00:00', 0, '2023-12-13 20:14:23', NULL),
+(12, '1', 2, '2023-12-13 22:00:00', 0, '2023-12-13 20:15:27', NULL),
+(13, '1', 3, '2023-12-13 22:00:00', 0, '2023-12-13 20:15:30', NULL),
+(14, '1', 4, '2023-12-13 22:00:00', 0, '2023-12-13 20:15:31', NULL),
+(25, '1', 6, '0000-00-00 00:00:00', 0, '2023-12-22 12:56:46', NULL),
+(26, '17', 6, '2023-12-29 16:36:52', 0, '2023-12-22 13:07:38', 3),
+(27, '17', 12, '2023-12-29 16:36:43', 0, '2023-12-22 15:05:54', 3),
+(28, '18', 7, '2023-12-29 16:36:33', 0, '2023-12-29 15:53:59', 7),
+(29, '18', 15, '2023-12-29 16:36:26', 0, '2023-12-29 16:08:23', 4);
 
 -- --------------------------------------------------------
 
@@ -158,7 +161,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `reservation_list`
 --
 ALTER TABLE `reservation_list`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT cho bảng `table_list`
