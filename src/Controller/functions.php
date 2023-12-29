@@ -256,60 +256,58 @@
         }
     }
     // SEARCH //
-    // Hàm lấy tên các cột trong bảng
-    function getTableColumns($tableName)
+        function getTableColumns($tableName)
     {
         global $conn;
-    
-        // Xác thực và tránh SQL injection
         $tableName = validate($tableName);
-    
+
         // Truy vấn để lấy tên các cột
-        $query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = ?";
-        
+        $query = "SHOW COLUMNS FROM $tableName";
+
         // Thực thi truy vấn
-        $params = array($tableName);
-        $result = mysqli_query($conn, $query, $params);
-    
+        $result = mysqli_query($conn, $query);
+
         $columns = array();
-    
+
         while ($row = mysqli_fetch_assoc($result)) {
-            $columns[] = $row['COLUMN_NAME'];
+            $columns[] = $row['Field'];
         }
-    
+
         return $columns;
     }
 
-    function searchUserByKeyWord($tableName, $role, $value)
+    // Hàm tìm kiếm người dùng theo từ khóa
+    function searchUserByKeyword($tableName, $value, $userType)
     {
         global $conn;
 
         $table = validate($tableName);
-        $role = validate($role);
+        $userType = validate($userType);
         $value = validate($value);
-    
-        $query = "SELECT * FROM $table WHERE role = '$role' AND ";
-        $columns = getTableColumns($tableName);
-    
+
+        // Lấy danh sách các cột trong bảng
+        $columns = getTableColumns($tableName, $conn);
+
+        // Xây dựng điều kiện tìm kiếm
         $conditions = [];
         foreach ($columns as $column) {
             $conditions[] = "$column LIKE '%$value%'";
         }
-    
-        $query = "SELECT * FROM $table WHERE role = '$role' AND ";
-        $query = str_pad($query, strlen($query) + 1, "(");
-        $query .= implode(" OR ", $conditions);
-        $query = str_pad($query, strlen($query) + 1, ")");
 
+        $query = "SELECT * FROM $tableName WHERE role = '$userType' AND (";
+        $query .= implode(" OR ", $conditions);
+        $query .= ")";
+
+        // Thực hiện truy vấn chính
         $result = mysqli_query($conn, $query);
-    
+
         if ($result) {
-            $data = [];
-    
+            $data = array();
+
             while ($row = mysqli_fetch_assoc($result)) {
                 $data[] = $row;
             }
-    
+
             if (!empty($data)) {
                 $response = [
                     'status' => 'Data Found',
@@ -320,7 +318,7 @@
                     'status' => 'No Data Found',
                 ];
             }
-    
+
             return $response;
         } else {
             $response = [
@@ -329,7 +327,6 @@
             return $response;
         }
     }
-
     function checkParam($type)
     {
         if(!empty($_GET[$type]))
