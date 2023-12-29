@@ -42,7 +42,8 @@ require_once('partials/_head.php');
                             $user_id = $_SESSION['id'];
                             $sql = "SELECT* FROM RESERVATION_LIST RL, TABLE_LIST TL
                                  WHERE RL.TABLE_ID = TL.TABLE_ID 
-                                  AND  USER_ID = '$user_id'";
+                                  AND  USER_ID = '$user_id'
+                                  ORDER BY RL.DATETIME DESC";
                             $result = $conn->query($sql);
                             while ($row = $result->fetch_assoc()) {
                             ?>
