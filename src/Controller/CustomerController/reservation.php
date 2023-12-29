@@ -13,6 +13,7 @@ if ($_POST['table_id'] != 0) {
 
     if ($conn->query($sql) === TRUE) {
         echo "Reservation submitted successfully!";
+        header("Location: ../../Customer UI/reservationReport.php");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
