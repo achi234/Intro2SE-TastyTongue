@@ -11,6 +11,7 @@ include('../config/config.php');
 //include('../Controller/authenticate.php');
 require_once('partials/_head.php');
 //require_once('partials/_analytics.php');
+
 ?>
 
 <body>
@@ -43,6 +44,7 @@ require_once('partials/_head.php');
                             $sql = "SELECT* FROM RESERVATION_LIST RL, TABLE_LIST TL
                                  WHERE RL.TABLE_ID = TL.TABLE_ID 
                                   AND  USER_ID = '$user_id'
+                                  AND RL.STATUS = '0'
                                   ORDER BY RL.DATETIME DESC";
                             $result = $conn->query($sql);
                             while ($row = $result->fetch_assoc()) {
@@ -62,7 +64,6 @@ require_once('partials/_head.php');
                                                     <a href="../Controller/CustomerController/deleteReservation.php?reservation_id=<?php echo $row['reservation_id']; ?>">
                                                         <button class="btn btn-sm btn-warning">Delete</button>
                                                     </a>
-                                                    
                                                 </td>
                                             </tr>
                                         </tbody>
