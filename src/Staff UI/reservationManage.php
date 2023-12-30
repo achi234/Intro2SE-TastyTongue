@@ -45,7 +45,8 @@ include('../config/config.php');
                                                     rl.party_size as party_size,
                                                     tl.table_name as table_name,
                                                     rl.datetime as datetime,
-                                                    rl.status as status
+                                                    rl.status as status,
+                                                    rl.reservation_id as reservation_id
                                             FROM RESERVATION_LIST RL, TABLE_LIST TL, USERS US
                                             WHERE RL.TABLE_ID = TL.TABLE_ID 
                                             AND  RL.USER_ID = US.ID
@@ -54,31 +55,40 @@ include('../config/config.php');
                                     while ($row = $result->fetch_assoc()) {
                                         $status = $row["status"];
                                     ?>
-                                    <tr>
-                                        <th class="text-column-emphasis" scope="row"><?php echo $row['fullname'] ?></th>
-                                        <th class="text-column" scope="row"><?php echo $row['party_size'] ?></th>
-                                        <th class="text-column-emphasis" scope="row"><?php echo $row['table_name'] ?></th>
-                                        <th class="text-column" scope="row"><?php echo $row['datetime'] ?></th>
-                                        <th class="text-column-emphasis" scope="row">
-                                            <?php 
-                                            if( $status == '0') {
-                                                echo '<span class="badge badge-done">Pending</span>';
-                                            }
-                                            if( $status == '1') {
-                                                echo '<span class="badge badge-done">Arrived</span>';
-                                            }
-                                            if( $status == '2') {
-                                                echo '<span class="badge badge-done">Done</span>';
-                                            }
-                                            ?>
-                                            
-                                        </th>
-                                        <th class="text-column" scope="row">
-                                            <button class="btn-control-delete">Delete</button>
-                                            <button class="btn-control-edit">Update</button>
-                                        </th>
+                                        <tr>
+                                            <th class="text-column-emphasis" scope="row"><?php echo $row['fullname'] ?></th>
+                                            <th class="text-column" scope="row"><?php echo $row['party_size'] ?></th>
+                                            <th class="text-column-emphasis" scope="row"><?php echo $row['table_name'] ?></th>
+                                            <th class="text-column" scope="row"><?php echo $row['datetime'] ?></th>
+                                            <th class="text-column-emphasis" scope="row">
+                                                <?php
+                                                if ($status == '0') {
+                                                    echo '<span class="badge" style="background-color: #F34955;">Pending</span>';
+                                                }
+                                                if ($status == '1') {
+                                                    echo '<span class="badge badge-done" style="background-color: yellow">Arrived</span>';
+                                                }
+                                                if ($status == '2') {
+                                                    echo '<span class="badge badge-done">Done</span>';
+                                                }
+                                                ?>
 
-                                    </tr>
+                                            </th>
+                                            <th class="text-column" scope="row">
+                                                <!-- <button class="btn-control-delete">Delete</button>
+                                                <button class="btn-control-edit">Update</button> -->
+                                                <a href="../Controller/StaffController/reservationManage.php?arrived=<?php echo $row['reservation_id']; ?>">
+                                                    <button class="btn btn-sm btn-control-arrived" style="background-color: green";>Arrived</button>
+                                                </a>
+                                                <a href="../Controller/StaffController/reservationManage.php?done=<?php echo $row['reservation_id']; ?>">
+                                                    <button class="btn btn-sm btn-control-edit">Done</button>
+                                                </a>
+                                                <a href="../Controller/StaffController/reservationManage.php?delete=<?php echo $row['reservation_id']; ?>">
+                                                    <button class="btn btn-sm btn-control-delete">Delete</button>
+                                                </a>
+                                            </th>
+
+                                        </tr>
                                     <?php } ?>
                                     <!-- <tr>
                                         <th class="text-column-emphasis" scope="row">JFMB-0731</th>
