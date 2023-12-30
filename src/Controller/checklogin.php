@@ -39,6 +39,7 @@
                             'phone' => $row['phone'],
                             'fullname' => $row['fullname'],
                             'role' => $row['role'],
+                            'id' => $row['id'],
                         ];
                         $_SESSION['id']=$row['id'];
 

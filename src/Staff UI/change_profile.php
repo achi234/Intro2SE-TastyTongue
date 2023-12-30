@@ -35,7 +35,7 @@
                                         <div class="form-small">
                                             <div class="form-col margin-0">
                                                 <label for="" class="form-col__label">Email Address</label>
-                                                <input type="text" name="customer_email" class="form-control" value="<?php echo $_SESSION['auth_user']['email']?>">
+                                                <input type="text" name="email" class="form-control" value="<?php echo $_SESSION['auth_user']['email']?>">
                                             </div>
 
                                             <br class="">
