@@ -25,12 +25,12 @@
                         </div>
                         
                         <div class="container-recent__body card__body-form">
-                            <form method="POST" class="">
+                            <form method="POST" action="../Controller/StaffController/add_customer.php">
                                 <div class="form-row">
                                     <div class="form-row__flex">
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Customer Name</label>
-                                            <input type="text" name="customer_name" class="form-control" value="LJCH-7436">
+                                            <input type="text" name="customer_name" class="form-control">
                                         </div>
 
                                         <div class="form-col">
@@ -46,7 +46,7 @@
                                     <div class="form-row__flex">
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Customer Email</label>
-                                            <input type="text" name="customer_email" class="form-control" value="admin@mail.com">
+                                            <input type="text" name="customer_email" class="form-control">
                                         </div>
 
                                         <div class="form-col">
@@ -61,7 +61,7 @@
                                 <div class="form-row">
                                     <div class="form-col margin-0">
                                         <div class="form-col-bottom">
-                                            <input type="submit" name="addCustomer" value="Add Customer" class="btn-control btn-control-add" value="">
+                                            <input type="submit" name="btn-addCustomer" value="Add Customer" class="btn-control btn-control-add" value="">
                                         </div>
                                     </div>
                                 </div>
