@@ -1,7 +1,9 @@
 <?php
 session_start();
 include("../../config/config.php");
-
+if(!isset($_POST['$table_id'])){
+    header("Location: ../../Customer UI/reservation.php");
+}
 if ($_POST['table_id'] != 0) {
     
     $table_id = $_POST['table_id'];
@@ -38,8 +40,10 @@ if ($_POST['table_id'] != 0) {
         
         header("Location: ../../Customer UI/tableChoosing.php");
     } else {
-        echo "No available tables.";
+        // echo "No available tables.";
+        $_SESSION['status'] = "No available tables.";
         header("Location: ../../Customer UI/reservation.php");
+
     }
 }
 
