@@ -22,7 +22,7 @@ if (isset($_POST['changeAdminProfile'])) {
             redirect('../../Admin UI/change_profile.php', '', "You've successfully changed the profile");
         }
         else{
-            redirect('../../Admin UI/change_profile.php', '', "You haven't successfully changed the profile");
+            redirect('../../Admin UI/change_profile.php', "You haven't successfully changed the profile", "");
         }
     }
 }
