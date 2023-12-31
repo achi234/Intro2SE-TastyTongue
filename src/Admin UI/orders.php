@@ -52,8 +52,8 @@
                                         <th class="text-column" scope="row">$ 7</th> 
                                         <th class="text-column" scope="row">
                                             <div class="text-column__action">
-                                                <a href="make_order.php" class="btn-control btn-control-warning">
-                                                    <i class="fa-solid fa-trash-can btn-control-icon"></i>
+                                                <a href="add_orders.php" class="btn-control btn-control-warning">
+                                                    <i class="fa-solid fa-clipboard-check btn-control-icon"></i>
                                                     Place Order
                                                 </a>
                                             </div>
