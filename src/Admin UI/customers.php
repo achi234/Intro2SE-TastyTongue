@@ -82,7 +82,7 @@
                                                         </a>
                                                         <a href="update_customers.php?id=<?php  echo $customer['id']?>" class="btn-control btn-control-edit">
                                                             <i class="fa-solid fa-user-pen btn-control-icon"></i>
-                                                            Update
+                                                            View detail
                                                         </a>
                                                     </div>
                                                 </th> 
