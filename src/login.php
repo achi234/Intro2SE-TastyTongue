@@ -1,11 +1,11 @@
 <?php
-    session_start();
-    $page_title = "Tasty Tongue - Login";
+session_start();
+$page_title = "Tasty Tongue - Login";
 
 
 
-    include('./partial/header.php');
-    
+include('./partial/header.php');
+
 ?>
 
 <body>
@@ -27,19 +27,20 @@
                         <input type="password" class="authen-form__input" placeholder="Enter your password" name="password">
                     </div>
             </div>
-    
+
             <div class="authen-form__controls">
-                    <a href="register.php"class="btn btn--secondary">Register</a>
-                    <button type="submit" class="btn btn--primary" name="btn-login">Login</button>
+                <a href="register.php" class="btn btn--secondary">Register</a>
+                <button type="submit" class="btn btn--primary" name="btn-login">Login</button>
             </div>
-    
+
             <div class="authen-form__aside">
-                    <p class="authen-form__forgot-text">
-                        <a href="" class="authen-form__forgot-link">Forgot password</a>
-                    </p>  
+                <p class="authen-form__forgot-text">
+                    <a href="" class="authen-form__forgot-link">Forgot password</a>
+                </p>
             </div>
-                </form>
-        </div>            
+            </form>
+        </div>
     </div>
 </body>
+
 </html>

@@ -337,7 +337,11 @@ textarea.form-control {
 .btn-control-delete {
     background-color: #F34955;
     width: fit-content;
-    margin-right: 4px;
+}
+
+.btn-control-arrived {
+    background-color: #49f379;
+    width: fit-content;
 }
 
 .btn-control-warning {

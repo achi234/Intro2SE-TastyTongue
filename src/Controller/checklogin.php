@@ -39,6 +39,7 @@
                             'phone' => $row['phone'],
                             'fullname' => $row['fullname'],
                             'role' => $row['role'],
+                            'id' => $row['id'],
                         ];
                         $_SESSION['id']=$row['id'];
 
@@ -51,7 +52,7 @@
                                 header("location: ../Customer UI/customerHomepage.php");
                                 exit(0);
                             case 'Staff':
-                                header("location: ../Staff UI/staffHomepage.php");
+                                header("location: ../Staff UI/dashboard.php");
                                 exit(0);
                             default:
                                 $_SESSION['status'] = 'Error when directing...Please try again!';

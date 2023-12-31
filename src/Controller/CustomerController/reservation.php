@@ -7,12 +7,14 @@ if ($_POST['table_id'] != 0) {
     $table_id = $_POST['table_id'];
     $datetime = $_SESSION['datetime'];
     $user_id = $_SESSION['id'];
+    $party_size = $_SESSION['size'];
 
-    $sql = "INSERT INTO reservation_list (customer_id, table_id, datetime) 
-        VALUES ('$user_id', '$table_id', '$datetime')";
+    $sql = "INSERT INTO reservation_list (user_id, table_id, datetime, party_size) 
+        VALUES ('$user_id', '$table_id', '$datetime', '$party_size')";
 
     if ($conn->query($sql) === TRUE) {
         echo "Reservation submitted successfully!";
+        header("Location: ../../Customer UI/reservationReport.php");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

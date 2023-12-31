@@ -59,11 +59,11 @@
                     <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="media align-items-center">
                           <div class="media-body ml-2 d-none d-lg-inline-block">
-                            <span class="mb-0 d-lg-inline-block">
+                            <span class="mb-0 d-lg-inline-block navbar-user-name">
                                 <?php
-                                    //echo $_SESSION['auth_user']['fullname'];
+                                    echo $_SESSION['auth_user']['fullname'];
                                  ?>
-                                 customer-name
+                                 <!-- customer-name -->
                             </span>
                           </div>
                             <span class="avatar avatar-sm rounded-circle">

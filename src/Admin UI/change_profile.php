@@ -26,16 +26,23 @@
                             </div>
                             
                             <div class="container-recent__body card__body-form">
-                                <form method="POST" class="">
+                                <form method="POST" class="" action="../Controller/AdminController/change_profile.php">
                                     <div class="form-row">
                                         <h6 class="heading-small text-muted margin-0">User Information</h6>
                                         
                                         <br class="">
 
+                                        <?php 
+                                            $admin_id = $_SESSION['id'];
+                                            $sql="SELECT* FROM users WHERE id = '$admin_id'";
+                                            $result=mysqli_query($conn,$sql);
+                                            $row=mysqli_fetch_array($result);
+                                        ?>
+
                                         <div class="form-small">
                                             <div class="form-col margin-0">
                                                 <label for="" class="form-col__label">Email Address</label>
-                                                <input type="text" name="customer_email" class="form-control" value="<?php echo $_SESSION['auth_user']['email']?>">
+                                                <input type="text" name="admin_email" class="form-control" value="<?php echo $row['email']?>">
                                             </div>
 
                                             <br class="">
@@ -43,12 +50,12 @@
                                             <div class="form-row__flex">
                                                 <div class="form-col margin-0">
                                                     <label for="" class="form-col__label">Full Name</label>
-                                                    <input type="text" name="fullname" class="form-control" value="<?php echo $_SESSION['auth_user']['fullname']?>">
+                                                    <input type="text" name="admin_fullname" class="form-control" value="<?php echo $row['fullname']?>">
                                                 </div>
 
                                                 <div class="form-col margin-0">
                                                     <label for="" class="form-col__label">Phone Number</label>
-                                                    <input type="text" name="phone" class="form-control" value="<?php echo $_SESSION['auth_user']['phone']?>">
+                                                    <input type="text" name="admin_phone" class="form-control" value="<?php echo $row['phone']?>">
                                                 </div>
                                             </div>
 
@@ -56,7 +63,7 @@
 
                                             <div class="form-col">
                                                 <div class="form-col-bottom">
-                                                    <input type="submit" id="" name="changeProfile" class="btn-control btn-control-add" value="Submit">
+                                                    <input type="submit" id="" name="changeAdminProfile" class="btn-control btn-control-add" value="Submit">
                                                 </div>
                                             </div>        
                                         </div>

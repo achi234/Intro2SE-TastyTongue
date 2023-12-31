@@ -93,7 +93,7 @@
 
         $query = "SELECT * FROM $tableName";
 
-        if ($status !== NULL) {
+        if ($status != NULL) {
             $query .= " WHERE status = '$status'";
         }
 
@@ -110,10 +110,12 @@
                 $response = [
                     'status' => 'Data Found',
                     'data' => $data,
+                    
                 ];
             } else {
                 $response = [
                     'status' => 'No Data Found',
+                    'query' => $query,
                 ];
             }
 
