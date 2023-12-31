@@ -63,90 +63,80 @@
             <!-- Page content -->
             <div class="container">
                 <div class="container-recent">
-                    <div class="container-recent-inner">
+                    <form action="" method="POST" class="container-recent-inner">
                         <div class="container-recent__heading">
-                            <p class="recent__heading-title">Recent Orders</p>
-                            <a href="order_records.php" class="btn-control btn-control-edit">See all</a>
+                            <p class="recent__heading-title">Recent Reservations</p>
+                            <a href="reservations.php" class="btn-control btn-control-edit">See all</a>
                         </div>
 
-                        <div class="table-responsive">
+                        <div class="table-responsive" style="overflow-x:auto;">
                             <table class="table">
-                                <thead class="thead-light">
+                                <thead class="thead-light"> 
                                     <tr>
-                                        <th class="text-column-emphasis" scope="col">CODE</th> 
-                                        <th class="text-column" scope="col">CUSTOMER</th> 
-                                        <th class="text-column-emphasis" scope="col">PRODUCT</th> 
-                                        <th class="text-column" scope="col">UNIT PRICE</th> 
-                                        <th class="text-column-emphasis" scope="col">QTY</th> 
-                                        <th class="text-column" scope="col">TOTAL</th> 
-                                        <th class="text-column" scope="col">STATUS</th> 
-                                        <th class="text-column-emphasis" scope="col">DATE</th> 
+                                        <th class="text-column-emphasis" scope="col">Reservation Id</th> 
+                                        <th class="text-column" scope="col">Customer Name</th> 
+                                        <th class="text-column" scope="col">Table Id</th> 
+                                        <th class="text-column" scope="col">Date Time</th> 
+                                        <th class="text-column" scope="col">Party size</th>
+                                        <th class="text-column" scope="col">Status</th> 
                                     </tr>
                                 </thead>
                                 <tbody class="table-body">
-                                    <tr>
-                                        <th class="text-column-emphasis" scope="row">JFMB-0731</th> 
-                                        <th class="text-column" scope="row">Christine Moore</th> 
-                                        <th class="text-column-emphasis" scope="row">Irish Coffee</th> 
-                                        <th class="text-column" scope="row">$11</th> 
-                                        <th class="text-column-emphasis" scope="row">1</th> 
-                                        <th class="text-column" scope="row">$11</th> 
-                                        <th class="text-column-emphasis" scope="row">
-                                            <span class="badge badge-success">Paid</span>
-                                        </th> 
-                                        <th class="text-column-emphasis" scope="row">04/Sep/2022 11:37</th> 
-                                    </tr>
-
-                                    <tr>
-                                        <th class="text-column-emphasis" scope="row">JFMB-0731</th> 
-                                        <th class="text-column" scope="row">Christine Moore</th> 
-                                        <th class="text-column-emphasis" scope="row">Irish Coffee</th> 
-                                        <th class="text-column" scope="row">$11</th> 
-                                        <th class="text-column-emphasis" scope="row">1</th> 
-                                        <th class="text-column" scope="row">$11</th> 
-                                        <th class="text-column-emphasis" scope="row">
-                                            <span class="badge badge-success">Paid</span>
-                                        </th> 
-                                        <th class="text-column-emphasis" scope="row">04/Sep/2022 11:37</th> 
-                                    </tr>
-
-                                    <tr>
-                                        <th class="text-column-emphasis" scope="row">JFMB-0731</th> 
-                                        <th class="text-column" scope="row">Christine Moore</th> 
-                                        <th class="text-column-emphasis" scope="row">Irish Coffee</th> 
-                                        <th class="text-column" scope="row">$11</th> 
-                                        <th class="text-column-emphasis" scope="row">1</th> 
-                                        <th class="text-column" scope="row">$11</th> 
-                                        <th class="text-column-emphasis" scope="row">
-                                            <span class="badge badge-unsuccess">Unpaid</span>
-                                        </th> 
-                                        <th class="text-column-emphasis" scope="row">04/Sep/2022 11:37</th> 
-                                    </tr>
-                                    <!-- UnPaid -->
-                                    <tr>
-                                        <th class="text-column-emphasis" scope="row">JFMB-0731</th> 
-                                        <th class="text-column" scope="row">Christine Moore</th> 
-                                        <th class="text-column-emphasis" scope="row">Irish Coffee</th> 
-                                        <th class="text-column" scope="row">$11</th> 
-                                        <th class="text-column-emphasis" scope="row">1</th> 
-                                        <th class="text-column" scope="row">$11</th> 
-                                        <th class="text-column-emphasis" scope="row">
-                                            <span class="badge badge-success">Paid</span>
-                                        </th> 
-                                        <th class="text-column-emphasis" scope="row">04/Sep/2022 11:37</th> 
-                                    </tr>
-
+                                    <?php
+                                        // $count = sizeof($reservations['data']);
+                                        // if($count > 0)
+                                        {
+                                        ?>
+                                            <?php  //foreach($reservations['data'] as $reservation) 
+                                            {  
+                                            ?>
+                                            <tr>
+                                                <th class="text-column-emphasis" scope="row"><?php //echo $reservation['reservation_id']?></th> 
+                                                <th class="text-column" scope="row"><?php //echo $user['data]['fullname']?></th>                 
+                                                <th class="text-column" scope="row"><?php //echo $reservation['table_id']?></th>
+                                                <?php 
+                                                    // $reservation_dt = $reservation['datetime']->format('H:i:s Y-m-d');
+                                                ?> 
+                                                <th class="text-column" scope="row"><?php  //echo $reservation_dt?></th> 
+                                                <th class="text-column" scope="row"><?php  //echo $reservation['party_size']?></th> 
+                                                <?php //if($reservation['status'] == 1)
+                                                    {?>
+                                                        <th class="text-column" scope="row">
+                                                            <span class="badge badge-arrived">Arrived<?php // echo $table['table_status']?></span>
+                                                            <!-- <span class="badge badge-unsuccess">Pending<?php // echo $table['table_status']?></span>  -->
+                                                            <!-- <span class="badge badge-success">Done<?php // echo $table['table_status']?></span>  -->
+                                                        </th> 
+                                                    <?php
+                                                    }
+                                                    //else
+                                                    {
+                                                    ?>
+                                                        <!-- <th class="text-column" scope="row">No</th>  -->
+                                                    <?php
+                                                    }
+                                                ?>
+                                            </tr>
+                                            <?php 
+                                            } ?>
+                                        <?php 
+                                        }
+                                        // else
+                                        { ?>
+                                            <!-- <h4> No Record Found </h4> -->
+                                        <?php
+                                        }
+                                    ?>   
                                 </tbody>
                             </table>
 
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <div class="container-recent">
                     <div class="container-recent-inner">
                         <div class="container-recent__heading">
-                            <p class="recent__heading-title">Recent Payment</p>
-                            <a href="payment_records.php" class="btn-control btn-control-edit">See all</a>
+                            <p class="recent__heading-title">Recent Invoices</p>
+                            <a href="invoices.php" class="btn-control btn-control-edit">See all</a>
                         </div>
 
                         <div class="table-responsive" style="overflow-x:auto;">
@@ -155,65 +145,29 @@
                                     <tr>
                                         <th class="text-column-emphasis" scope="col">CODE</th> 
                                         <th class="text-column" scope="col">CUSTOMER</th> 
-                                        <th class="text-column-emphasis" scope="col">PRODUCT</th> 
-                                        <th class="text-column" scope="col">UNIT PRICE</th> 
-                                        <th class="text-column-emphasis" scope="col">QTY</th> 
+                                        <th class="text-column" scope="col">TABLE ID</th> 
                                         <th class="text-column" scope="col">TOTAL</th> 
+                                        <th class="text-column" scope="col">PAYMENT</th> 
+                                        <th class="text-column" scope="col">DATE TIME</th> 
                                         <th class="text-column" scope="col">STATUS</th> 
-                                        <th class="text-column-emphasis" scope="col">DATE</th> 
                                     </tr>
                                 </thead>
                                 <tbody class="table-body">
                                     <tr>
                                         <th class="text-column-emphasis" scope="row">JFMB-0731</th> 
                                         <th class="text-column" scope="row">Christine Moore</th> 
-                                        <th class="text-column-emphasis" scope="row">Irish Coffee</th> 
+                                        <th class="text-column" scope="row">T1</th> 
                                         <th class="text-column" scope="row">$11</th> 
-                                        <th class="text-column-emphasis" scope="row">1</th> 
-                                        <th class="text-column" scope="row">$11</th> 
-                                        <th class="text-column-emphasis" scope="row">
-                                            <span class="badge badge-success">Paid</span>
+                                        <th class="text-column" scope="row">Cash</th> 
+                                        <?php 
+                                            // $invoice_dt = $invoice['datetime']->format('H:i:s Y-m-d')
+                                        ?>
+                                        <th class="text-column" scope="row">04/Sep/2022 11:37</th> 
+                                        <th class="text-column" scope="row">
+                                            <span class="badge badge-arrived">Arrived<?php // echo $table['table_status']?></span>
+                                            <!-- <span class="badge badge-unsuccess">Pending<?php // echo $table['table_status']?></span>  -->
+                                            <!-- <span class="badge badge-success">Done<?php // echo $table['table_status']?></span>  -->
                                         </th> 
-                                        <th class="text-column-emphasis" scope="row">04/Sep/2022 11:37</th> 
-                                    </tr>
-
-                                    <tr>
-                                        <th class="text-column-emphasis" scope="row">JFMB-0731</th> 
-                                        <th class="text-column" scope="row">Christine Moore</th> 
-                                        <th class="text-column-emphasis" scope="row">Irish Coffee</th> 
-                                        <th class="text-column" scope="row">$11</th> 
-                                        <th class="text-column-emphasis" scope="row">1</th> 
-                                        <th class="text-column" scope="row">$11</th> 
-                                        <th class="text-column-emphasis" scope="row">
-                                            <span class="badge badge-success">Paid</span>
-                                        </th> 
-                                        <th class="text-column-emphasis" scope="row">04/Sep/2022 11:37</th> 
-                                    </tr>
-
-                                    <tr>
-                                        <th class="text-column-emphasis" scope="row">JFMB-0731</th> 
-                                        <th class="text-column" scope="row">Christine Moore</th> 
-                                        <th class="text-column-emphasis" scope="row">Irish Coffee</th> 
-                                        <th class="text-column" scope="row">$11</th> 
-                                        <th class="text-column-emphasis" scope="row">1</th> 
-                                        <th class="text-column" scope="row">$11</th> 
-                                        <th class="text-column-emphasis" scope="row">
-                                            <span class="badge badge-unsuccess">Unpaid</span>
-                                        </th> 
-                                        <th class="text-column-emphasis" scope="row">04/Sep/2022 11:37</th> 
-                                    </tr>
-
-                                    <tr>
-                                        <th class="text-column-emphasis" scope="row">JFMB-0731</th> 
-                                        <th class="text-column" scope="row">Christine Moore</th> 
-                                        <th class="text-column-emphasis" scope="row">Irish Coffee</th> 
-                                        <th class="text-column" scope="row">$11</th> 
-                                        <th class="text-column-emphasis" scope="row">1</th> 
-                                        <th class="text-column" scope="row">$11</th> 
-                                        <th class="text-column-emphasis" scope="row">
-                                            <span class="badge badge-success">Paid</span>
-                                        </th> 
-                                        <th class="text-column-emphasis" scope="row">04/Sep/2022 11:37</th> 
                                     </tr>
 
                                 </tbody>
