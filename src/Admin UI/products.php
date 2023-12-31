@@ -23,7 +23,7 @@
                 <div class="container-recent">
                     <form action="" method="POST" class="container-recent-inner">
                         <div class="container-recent__heading heading__button">
-                            <a href="add_product.php" class="btn-control btn-control-add">
+                            <a href="add_products.php" class="btn-control btn-control-add">
                                 <i class="fa-solid fa-utensils btn-control-icon"></i>
                                 Add New Product
                             </a>
@@ -44,7 +44,9 @@
                                     <tr>
                                         <th class="text-column" scope="col">IMAGE</th> 
                                         <th class="text-column" scope="col">NAME</th> 
+                                        <!-- <th class="text-column" scope="col">CATEGORY</th>              -->
                                         <th class="text-column" scope="col">PRICE</th> 
+                                        <th class="text-column" scope="col">STATUS</th> 
                                         <th class="text-column" scope="col">ACTIONS</th> 
                                     </tr>
                                 </thead>
@@ -67,15 +69,23 @@
                                             ?>
                                         </th> 
                                         <th class="text-column" scope="row"><?php echo $product['prod_name']?></th> 
-                                        <th class="text-column" scope="row">$ <?php echo $product['prod_price']?></th> 
+                                        <!-- <th class="text-column" scope="row"><?php //echo $product['prod_desc']?></th>  -->
+                                        <th class="text-column" scope="row">$<?php echo $product['prod_price']?></th> 
+                                        <?php 
+                                            // $category = getbyId('categories', $rproduct['category_id']);
+                                        ?>
+                                        <!-- <th class="text-column" scope="row">$<?php //echo $category_name?></th>  -->
+                                        <th class="text-column" scope="row">
+                                            <span class="badge badge-success"><?php echo $product['status']?></span>
+                                        </th> 
                                         <th class="text-column" scope="row">
                                             <div class="text-column__action">
                                                 <a href="" class="btn-control btn-control-delete">
                                                     <i class="fa-solid fa-trash-can btn-control-icon"></i>
                                                     Delete
                                                 </a>
-                                                <a href="" class="btn-control btn-control-edit">
-                                                    <i class="fa-solid fa-user-pen btn-control-icon"></i>
+                                                <a href="update_products.php" class="btn-control btn-control-edit">
+                                                    <i class="fa-solid fa-pen-to-square btn-control-icon"></i>
                                                     Update
                                                 </a>
                                             </div>
