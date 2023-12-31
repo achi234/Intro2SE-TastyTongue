@@ -172,6 +172,11 @@ textarea.form-control {
     background-color: rgba(151, 90, 61, .5);
 }
 
+.badge-arrived {
+    color: #19349E;
+    background-color: rgba(90, 119, 233, .5);
+}
+
 .bg-danger {
     color: var(--red-color);
 }
@@ -255,7 +260,7 @@ textarea.form-control {
 }
 
 .btn-control {
-    min-width: 10px;
+    /* min-width: 10px; */
     min-height: 30px;
     width: auto;
     padding: 6px;
@@ -303,7 +308,7 @@ textarea.form-control {
     color: var(--y-text-color);
     border-color: var(--green-color);
     background-color: var(--green-color);
-    box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+    box-shadow: 0 4px 6px rgba(5, 66, 61, .3), 0 1px 3px rgba(0, 0, 0, .08);
     margin-right: 4px;
 }
 
