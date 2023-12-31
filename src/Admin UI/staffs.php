@@ -22,7 +22,7 @@
                 <div class="container-recent">
                     <form action="" method="POST" class="container-recent-inner">
                         <div class="container-recent__heading heading__button">
-                            <a href="add_staff.php" class="btn-control btn-control-add">
+                            <a href="add_staffs.php" class="btn-control btn-control-add">
                                 <i class="fa-solid fa-user-plus btn-control-icon"></i>
                                 Add new staff
                             </a>
