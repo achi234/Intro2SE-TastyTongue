@@ -1,9 +1,20 @@
 <?php
 session_start();
 include("../../config/config.php");
-if(!isset($_POST['$table_id'])){
+
+$check = false;
+if($_POST['datetime'] =="" || $_POST['size'] == ""){
+    
+    if($_POST['table_id'] == 0){
+    $_SESSION['status'] = "Reservation information must not be left blank.";
+    }
+    $check = true;
     header("Location: ../../Customer UI/reservation.php");
 }
+else{
+    $check = false;
+}
+
 if ($_POST['table_id'] != 0) {
     
     $table_id = $_POST['table_id'];
@@ -20,7 +31,9 @@ if ($_POST['table_id'] != 0) {
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
-} else {
+} 
+if($_POST['table_id'] == 0 && $check == false) {
+    
     $datetime = $_POST['datetime'];
     $size = $_POST['size'];
     echo $size;
