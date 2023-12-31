@@ -13,7 +13,7 @@ if ($_POST['table_id'] != 0) {
         VALUES ('$user_id', '$table_id', '$datetime', '$party_size')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Reservation submitted successfully!";
+        $_SESSION['announce'] = "Reservation submitted successfully!";
         header("Location: ../../Customer UI/reservationReport.php");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
@@ -35,6 +35,7 @@ if ($_POST['table_id'] != 0) {
         $_SESSION['size'] =$_POST['size'];
 
         // Chuyển hướng sang trang tableChoosing.php
+        
         header("Location: ../../Customer UI/tableChoosing.php");
     } else {
         echo "No available tables.";
