@@ -340,4 +340,119 @@
             return false;
         }
     }
+
+    function getbyKeyValue($tableName, $key, $value)
+    {
+        global $conn;
+
+        $table = validate($tableName);
+        $key = validate($key);
+        $value = validate($value);
+
+        $query = "SELECT * FROM $table WHERE $key = '$value'";
+        $result = mysqli_query($conn, $query);
+
+        if ($result) {
+            $row = mysqli_fetch_assoc($result);
+            //$cnt = mysqli_num_rows($result);
+            if (!$row) {
+                $response = [
+                    'status' => 'No Data Found',
+                    'query' => $query,
+                ];
+                return $response;
+            } else {
+                $response = [
+                    'status' => 'Data Found',
+                    'data' => $row,
+                    'query' => $query,
+                ];
+                return $response;
+            }
+        } else {
+            $response = [
+                'status' => 'Something went wrong! Please try again.',
+            ];
+            return $response;
+        }
+    }
+
+    function updatebyKeyValue($tableName, $keys, $values, $data)
+    {
+        global $conn;
+
+        $table = validate($tableName);
+        $keys = validate($keys);
+        $values = validate($values);
+
+        $dataString = "";
+        
+        // Tạo phần SET trong câu lệnh UPDATE
+        foreach ($data as $key => $value) {
+            $dataString .= "$key = '$value', ";
+        }
+
+        $setClause = rtrim($dataString, ', ');
+
+        $query = "UPDATE $table SET $setClause WHERE $keys ='$values'";
+
+        // Thực hiện câu lệnh UPDATE
+        $result = [
+            'status' => mysqli_query($conn, $query),
+            'query'  => $query,
+        ];
+
+        return $result;
+    }
+    function deletebyKeyValue($tableName, $key, $value)
+    {
+        global $conn;
+    
+        $table = validate($tableName);
+        $key = validate($key);
+        $value = validate($value);
+    
+        $query = "DELETE FROM $table WHERE $key = '$value' LIMIT 1";
+        
+        $result = mysqli_query($conn, $query);
+    
+        return $result;
+    }
+    function getAllByKeyValue($tableName, $key, $value)
+    {
+        global $conn;
+
+        $table = validate($tableName);
+
+        $query = "SELECT * FROM $table WHERE $key = '$value'";
+        $result = mysqli_query($conn, $query);
+
+        if ($result) {
+            $data = array();
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                $data[] = $row;
+            }
+
+            if (!empty($data)) {
+                $response = [
+                    'status' => 'Data Found',
+                    'data' => $data,
+                ];
+            } else {
+                $response = [
+                    'status' => 'No Data Found',
+                ];
+            }
+
+            return $response;
+        } else {
+            $response = [
+                'status' => 'Something went wrong! Please try again.',
+            ];
+            return $response;
+        }
+    }
+
+
 ?>
