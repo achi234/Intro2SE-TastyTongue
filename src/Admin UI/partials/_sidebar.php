@@ -36,6 +36,12 @@
                     </a>
                 </li>
                 <li class="navbar-nav__item">
+                    <a href="categories.php" class="nav-item__link text-primary">
+                        <i class="fa-solid fa-cubes nav-item__icon"></i>
+                        <p class="nav-item__text">Category</p>
+                    </a>
+                </li>
+                <li class="navbar-nav__item">
                     <a href="products.php" class="nav-item__link text-primary">
                         <i class="fa-solid fa-utensils nav-item__icon"></i>
                         <p class="nav-item__text">Products</p>

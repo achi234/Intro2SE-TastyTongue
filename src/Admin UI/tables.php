@@ -3,7 +3,7 @@
     require_once('partials/_head.php');
     //require_once('partials/_analytics.php');
 
-    // $tables = getAll('tables');
+    $tables = getAll('table_list');
 ?>
 <body>
     <!-- Sidebar -->
@@ -72,31 +72,42 @@
                                 <tbody class="table-body">
                                     <?php
                                     // $count = sizeof($tables['data']);
-                                    // if($count > 0)
+                                    if($tables['status'] == 'Data Found')
                                     {
                                     ?>
-                                        <?php  //foreach($tables['data'] as $table) 
+                                        <?php  foreach($tables['data'] as $table) 
                                         {  
                                         ?>
                                         <tr>
-                                            <th class="text-column-emphasis" scope="row"><?php //echo $table['table_id']?></th> 
-                                            <th class="text-column" scope="row"><?php //echo $table['table_name']?></th> 
-                                            <th class="text-column" scope="row"><?php // echo $table['table_desc']?></th> 
-                                            <th class="text-column" scope="row"><?php // echo $table['table_size']?></th> 
+                                            <th class="text-column-emphasis" scope="row"><?php echo $table['table_id']?></th> 
+                                            <th class="text-column" scope="row"><?php echo $table['table_name']?></th> 
+                                            <th class="text-column" scope="row"><?php echo $table['description']?></th> 
+                                            <th class="text-column" scope="row"><?php  echo $table['size']?></th> 
                                             <th class="text-column" scope="row">
-                                                <span class="badge badge-arrived">Arrived<?php // echo $table['table_status']?></span>
+                                                <?php if ($table['status'] == 1 )
+                                                { 
+                                                ?>
+                                                    <span class="badge badge-arrived">Avaiable</span>
+                                                <?php
+                                                }
+                                                else
+                                                {?>
+                                                    <span class="badge badge-unsuccess">Unavaiable</span>
+                                                <?php
+                                                }?>
+                                                <!-- <span class="badge badge-arrived">Arrived<?php // echo $table['table_status']?></span> -->
                                                 <!-- <span class="badge badge-success">Done<?php // echo $table['table_status']?></span>  -->
                                                 <!-- <span class="badge badge-unsuccess">Pending<?php // echo $table['table_status']?></span>  -->
                                             </th> 
                                             <th class="text-column" scope="row">
                                                 <div class="text-column__action">
                                                     <!-- Only change table_status, not really delete table -->
-                                                    <a href="../Controller/AdminController/delete_table.php?id=<?php  echo $staff['id']?>" 
+                                                    <a href="../Controller/AdminController/delete_table.php?id=<?php  echo $table['table_id']?>" 
                                                     class="btn-control btn-control-delete">
                                                         <i class="fa-solid fa-trash-can btn-control-icon"></i>
                                                         Delete
                                                     </a>
-                                                    <a href="update_tables.php?id=<?php  //echo $table['id']?>" class="btn-control btn-control-edit">
+                                                    <a href="update_tables.php?id=<?php  echo $table['table_id']?>" class="btn-control btn-control-edit">
                                                         <i class="fa-solid fa-file-pen btn-control-icon"></i>
                                                         View detail
                                                     </a>
@@ -107,9 +118,9 @@
                                         } ?>
                                     <?php 
                                     }
-                                    // else
+                                    else
                                     { ?>
-                                        <!-- <h4> No Record Found </h4> -->
+                                        <h4> No Data Found </h4>
                                     <?php
                                     }
                                     ?>   

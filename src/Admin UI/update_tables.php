@@ -3,8 +3,11 @@
     require_once('partials/_head.php');
     //require_once('partials/_analytics.php');
 
-    // $table_id = $_GET['table_id'];
-    // $table = getbyId('tables', $table_id);
+    $table_id = $_GET['id'];
+    $table = getbyKeyValue('table_list', 'table_id',$table_id);
+
+    $reservations = getAllByKeyValue('reservation_list', 'table_id' , $table_id);
+    
 ?>
 
 <body>
@@ -29,23 +32,35 @@
                         
                         <div class="container-recent__body card__body-form">
                             <form method="POST" action="../Controller/AdminController/update_table.php">
-                                <input type="hidden" name="table_id" value="<?php //echo $table['data']['table_id']; ?>">
+                                <input type="hidden" name="table_id" value="<?php echo $table['data']['table_id']; ?>">
                                 <div class="form-row">
                                     <div class="form-row__flex">
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Table Name</label>
-                                            <input type="text" name="table_name" class="form-control" value="<?php //echo $table['data']['table_name']; ?>">
+                                            <input type="text" name="table_name" class="form-control" value="<?php echo $table['data']['table_name']; ?>">
                                         </div>
 
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Table Size</label>
-                                            <input type="number" name="table_size" class="form-control" value="<?php //echo $table['data']['table_size'];?>">
+                                            <input type="number" name="table_size" class="form-control" value="<?php echo $table['data']['size'];?>">
                                         </div>
                                         
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Table Status</label>
                                             <select name="table_status" id="tablStatus" class="form-cotrol">
-                                                <option value="<?php //echo $table['data']['table_size'];?>" class=""><?php //echo $table['data']['table_size'];?></option>
+                                                <?php if ($table['status'] == 1 )
+                                                { 
+                                                ?>
+                                                     <option value="1" selected> Available </option>
+                                                     <option value="0" > Unavailable </option>
+                                                <?php
+                                                }
+                                                else
+                                                {?>
+                                                    <option value="1" > Available </option>
+                                                    <option value="0" selected> Unavailable </option>
+                                                <?php
+                                                }?>
                                             </select>
 
                                         </div>                                
@@ -58,7 +73,7 @@
                                     <div class="form-row__flex">
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Description</label>
-                                            <textarea name="table_desc" rows="5" class="form-control"></textarea>
+                                            <textarea name="table_desc" rows="2" class="form-control"> <?php echo $table['data']['description'];?> </textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -106,7 +121,8 @@
                                     <tr>
                                         <th class="text-column-emphasis" scope="col">Reservation Id</th> 
                                         <th class="text-column" scope="col">Customer Id</th> 
-                                        <th class="text-column" scope="col">Date Time</th> 
+                                        <th class="text-column" scope="col">Date Arrival</th> 
+                                        <th class="text-column" scope="col">Date Booking</th> 
                                         <th class="text-column" scope="col">Party size</th>
                                         <th class="text-column" scope="col">Status</th> 
                                         <th class="text-column" scope="col">Action</th> 
@@ -114,37 +130,50 @@
                                 </thead>
                                 <tbody class="table-body">
                                     <?php
+                                  
                                         // $count = sizeof($reservations['data']);
-                                        // if($count > 0)
+                                        if($reservations['status'] == 'Data Found')
                                         {
                                         ?>
-                                            <?php  //foreach($reservations['data'] as $reservation) 
+                                            <?php  foreach($reservations['data'] as $reservation) 
                                             {  
+
                                             ?>
                                             <tr>
-                                                <th class="text-column-emphasis" scope="row"><?php //echo $reservation['reservation_id']?></th> 
-                                                <th class="text-column" scope="row"><?php //echo $reservation['table_id']?></th> 
-                                                <th class="text-column" scope="row"><?php  //echo $reservation['datetime']?></th> 
-                                                <th class="text-column" scope="row"><?php  //echo $reservation['party_size']?></th> 
-                                                <?php //if($reservation['status'] == 1)
-                                                    {?>
+                                                <th class="text-column-emphasis" scope="row"><?php echo $reservation['reservation_id']?></th> 
+                                                <?php
+                                                    $customer = getbyKeyValue('users', 'id', $reservation['user_id']);
+                                                ?>
+                                                <th class="text-column" scope="row"><?php echo $customer['data']['fullname']?></th> 
+                                                <th class="text-column" scope="row"><?php echo $reservation['datetime']?></th> 
+                                                <th class="text-column" scope="row"><?php  echo $reservation['date_created']?></th> 
+                                                <th class="text-column" scope="row"><?php  echo $reservation['party_size']?></th>
                                                         <th class="text-column" scope="row">
-                                                            <span class="badge badge-arrived">Arrived<?php // echo $table['table_status']?></span>
-                                                            <!-- <span class="badge badge-unsuccess">Pending<?php // echo $table['table_status']?></span>  -->
-                                                            <!-- <span class="badge badge-success">Done<?php // echo $table['table_status']?></span>  -->
+                                                        <?php if ($reservation['status'] == 0 )
+                                                        { 
+                                                        ?>
+                                                            <span class="badge badge-arrived">Booked</span>
+                                                        <?php
+                                                        }
+                                                        elseif ($reservation['status'] == 1)
+                                                        {?>
+                                                            <span class="badge badge-success">Arrived</span>
+                                                        <?php
+                                                        }
+                                                        else
+                                                        {?>
+                                                            <span class="badge badge-unsuccess">Checked out</span> 
+                                                    
                                                         </th> 
-                                                    <?php
-                                                    }
-                                                    //else
-                                                    {
-                                                    ?>
-                                                        <!-- <th class="text-column" scope="row">No</th>  -->
-                                                    <?php
-                                                    }
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                <?php
+                                                }
                                                 ?>
                                                 <th class="text-column" scope="row">
                                                     <div class="text-column__action">
-                                                        <a href="make_orders.php?id=<?php  //echo $reservation['reservation_id']?>" class="btn-control btn-control-warning">
+                                                        <a href="make_orders.php?id=<?php echo $reservation['reservation_id']?>" class="btn-control btn-control-warning">
                                                             <i class="fa-solid fa-utensils btn-control-icon"></i>
                                                             Order Food
                                                         </a>
@@ -155,13 +184,11 @@
                                                     </div>
                                                 </th> 
                                             </tr>
-                                            <?php 
-                                            } ?>
                                         <?php 
-                                        }
-                                        // else
+                                        }  
+                                        else
                                         { ?>
-                                            <!-- <h4> No Record Found </h4> -->
+                                            <h4> No Record Found </h4>
                                         <?php
                                         }
                                     ?>   

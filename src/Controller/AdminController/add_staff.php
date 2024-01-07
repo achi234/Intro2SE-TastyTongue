@@ -13,7 +13,7 @@
 
         if(empty($staff_name) || empty($staff_email) || empty($staff_phone) || empty($staff_password))
         {
-            redirect('../../Admin UI/add_staff.php', 'All fields are required.', '');
+            redirect('../../Admin UI/add_staffs.php', 'All fields are required.', '');
             exit(0);
         }
         else
@@ -24,7 +24,7 @@
             {
                 if(mysqli_num_rows($compile_emailCheck) > 0)
                 {
-                    redirect('../../Admin UI/add_staff.php', 'Email has already register. Please choose another email', '');
+                    redirect('../../Admin UI/add_staffs.php', 'Email has already register. Please choose another email', '');
                     exit(0);
                 }
             }
@@ -48,7 +48,7 @@
             }
             else
             {
-                redirect('../../Admin UI/add_staff.php', '', "Something went wrong! Please enter again...");
+                redirect('../../Admin UI/add_staffs.php', '', "Something went wrong! Please enter again...");
             }
         }
 
