@@ -2,6 +2,8 @@
     $page_title = "Tasty Tongue - Add New Dish";
     require_once('partials/_head.php');
     //require_once('partials/_analytics.php');
+   
+    $categories = getAll('category');
 ?>
 <body>
     <!-- Sidebar -->
@@ -24,7 +26,7 @@
                         </div>
                         
                         <div class="container-recent__body card__body-form">
-                            <form method="POST" class="" enctype="multipart/form-data">
+                            <form method="POST" action="../Controller/AdminController/add_product.php" enctype="multipart/form-data">
                                 <div class="form-row">
                                     <div class="form-row__flex">
                                         <div class="form-col">
@@ -40,8 +42,16 @@
                                     <div class="form-row__flex">
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Category</label>
-                                            <select name="table_status" id="tablStatus" class="form-cotrol">
-                                                <option value="<?php //echo $category['data']['category_name'];?>" class=""><?php //echo $table['data']['table_size'];?></option>
+                                            <select name="product_category"  class="form-cotrol">
+
+                                                <?php //print_r($categories);
+                                                foreach($categories['data'] as $category)
+                                                { ?>
+                                                    <option value="<?php echo $category['category_id'];?>" ><?php echo $category['category_name'];?></option>
+                                                <?php
+                                                }
+                                                ?>
+                                                
                                             </select>
                                         </div>
 
@@ -77,7 +87,7 @@
                                 <div class="form-row">
                                     <div class="form-col margin-0">
                                         <div class="form-col-bottom">
-                                            <input type="submit" name="addProduct" value="Add Product" class="btn-control btn-control-add" value="">
+                                            <input type="submit" name="btn-addProduct" value="Add Product" class="btn-control btn-control-add" value="">
                                         </div>
                                     </div>
                                 </div>

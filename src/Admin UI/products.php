@@ -3,7 +3,7 @@
     require_once('partials/_head.php');
     //require_once('partials/_analytics.php');
 
-    $products = getAll('products', 1);
+    $products = getAll('products');
     //print_r( $products);
 ?>
 <body>
@@ -44,7 +44,7 @@
                                     <tr>
                                         <th class="text-column" scope="col">IMAGE</th> 
                                         <th class="text-column" scope="col">NAME</th> 
-                                        <!-- <th class="text-column" scope="col">CATEGORY</th>              -->
+                                        <th class="text-column" scope="col">CATEGORY</th>
                                         <th class="text-column" scope="col">PRICE</th> 
                                         <th class="text-column" scope="col">STATUS</th> 
                                         <th class="text-column" scope="col">ACTIONS</th> 
@@ -52,7 +52,8 @@
                                 </thead>
                                 <tbody class="table-body">
                                 <?php foreach($products['data'] as $product) 
-                                        { ?>  
+                                        {  
+                                            $category = getbyKeyValue('category', 'category_id', $product['prod_cat']); ?>  
                                     <tr>
 
                                         <th class="text-column" scope="row">
@@ -69,22 +70,34 @@
                                             ?>
                                         </th> 
                                         <th class="text-column" scope="row"><?php echo $product['prod_name']?></th> 
+                                        <th class="text-column" scope="row"><?php echo $category['data']['category_name']?></th> 
                                         <!-- <th class="text-column" scope="row"><?php //echo $product['prod_desc']?></th>  -->
                                         <th class="text-column" scope="row">$<?php echo $product['prod_price']?></th> 
-                                        <?php 
-                                            // $category = getbyId('categories', $rproduct['category_id']);
-                                        ?>
-                                        <!-- <th class="text-column" scope="row">$<?php //echo $category_name?></th>  -->
-                                        <th class="text-column" scope="row">
-                                            <span class="badge badge-success"><?php echo $product['status']?></span>
-                                        </th> 
+                                        
+                                        <?php
+                                        if($product['status'] == 1) 
+                                        {?>
+                                            <th class="text-column" scope="row">
+                                                <span class="badge badge-success">In Stock</span>
+                                            </th> 
+                                        <?php
+                                        }
+                                            else
+                                            {
+                                            ?>
+                                            <th class="text-column" scope="row">
+                                                <span class="badge badge-unsuccess">Out of Stock</span>
+                                            </th> 
+                                            <?php
+                                            }
+                                        ?>  
                                         <th class="text-column" scope="row">
                                             <div class="text-column__action">
-                                                <a href="" class="btn-control btn-control-delete">
+                                                <a href="../Controller/AdminController/delete_product.php?id=<?php echo $product['prod_id']?>" class="btn-control btn-control-delete">
                                                     <i class="fa-solid fa-trash-can btn-control-icon"></i>
                                                     Delete
                                                 </a>
-                                                <a href="update_products.php" class="btn-control btn-control-edit">
+                                                <a href="update_products.php?id=<?php echo $product['prod_id']?>" class="btn-control btn-control-edit">
                                                     <i class="fa-solid fa-pen-to-square btn-control-icon"></i>
                                                     Update
                                                 </a>

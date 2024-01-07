@@ -2,6 +2,9 @@
     $page_title = "Tasty Tongue - Change Product Infomation";
     require_once('partials/_head.php');
     //require_once('partials/_analytics.php');
+    $product_id = $_GET['id'];
+    $product = getbyKeyValue('products','prod_id',$product_id);
+    $categories = getAll('category');
 ?>
 
 <body>
@@ -25,58 +28,91 @@
                         </div>
                         
                         <div class="container-recent__body card__body-form">
-                            <form method="POST" class="" enctype="multipart/form-data">
+                            <form method="POST" action="../Controller/AdminController/update_product.php" enctype="multipart/form-data">
                                 <div class="form-row">
                                     <div class="form-row__flex">
-                                        <div class="form-col">
-                                            <label for="" class="form-col__label">Product Code</label>
-                                            <input type="text" name="product_code" class="form-control" readonly value>
-                                        </div>
+                                        <!-- <div class="form-col">
+                                            <label for="" class="form-col__label">Product ID</label> -->
+                                            <input type="hidden" name="product_id" class="form-control" readonly value="<?php echo $product['data']['prod_id']?>">
+                                        <!-- </div> -->
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Product Name</label>
-                                            <input type="text" name="product_name" class="form-control" value="LJCH-7436">
+                                            <input type="text" name="product_name" class="form-control" value="<?php echo $product['data']['prod_name']?>">
                                         </div>
-                                    </div>
-                                </div>
-
-                                <hr class="navbar__divider">
-
-                                <div class="form-row">
-                                    <div class="form-row__flex">
                                         <div class="form-col">
                                         <label for="" class="form-col__label">Category</label>
-                                            <select name="table_status" id="tablStatus" class="form-cotrol">
-                                                <option value="<?php //echo $category['data']['category_name'];?>" class=""><?php //echo $table['data']['table_size'];?></option>
-                                            </select>
-                                        </div>
+                                            <select name="product_category" class="form-cotrol">
 
-                                        <div class="form-col">
-                                            <label for="" class="form-col__label">Product Price</label>
-                                            <input type="text" name="product_price" class="form-control" value>
+                                                <?php //print_r($categories);
+                                                foreach($categories['data'] as $category)
+                                                {
+                                                    if( $product['data']['prod_cat'] == $category['category_id'])
+                                                    { ?>  
+                                                    <option value="<?php echo $category['category_id'];?>" selected><?php echo $category['category_name'];?></option>
+                                                    <?php
+                                                    } 
+                                                    else
+                                                    {
+                                                    ?>
+                                                    <option value="<?php echo $category['category_id'];?>" ><?php echo $category['category_name'];?></option>
+                                                    <?php
+                                                    }
+                                                }
+                                                ?>
+                                                
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
 
                                 <hr class="navbar__divider">
-
+                               
                                 <div class="form-row">
                                     <div class="form-row__flex">
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Product Image</label>
                                             <input type="file" name="product_image" class="btn-control btn-control-add btn-add-success form-control" value="">
                                         </div>
+
+                                        <div class="form-col">
+                                            <label for="" class="form-col__label">Product Price</label>
+                                            <input type="text" name="product_price" class="form-control" value="<?php echo $product['data']['prod_price']?>">
+                                        </div>
                                     </div>
                                 </div>
-
+                                
                                 <hr class="navbar__divider">
 
                                 <div class="form-row">
                                     <div class="form-row__flex">
                                         <div class="form-col">
+                                        <label for="" class="form-col__label">Status</label>
+                                            <select name="product_status" class="form-cotrol">
+
+                                                <?php 
+                                                    if( $product['data']['status'] == 1)
+                                                    { ?>  
+                                                    <option value="1" selected>In stock</option>
+                                                    <option value="0" >Qut of stock</option>
+                                                    <?php
+                                                    } 
+                                                    else
+                                                    {
+                                                    ?>
+                                                    <option value="1" >In stock</option>
+                                                    <option value="0" selected>Qut of stock</option>
+                                                    <?php
+                                                    }
+                                                ?>
+                                                
+                                            </select>
+                                        </div>
+                                        <div class="form-col">
                                             <label for="" class="form-col__label">Product Description</label>
-                                            <textarea name="product_description" rows="5" class="form-control"></textarea>
+                                            <textarea name="product_description" rows="5" class="form-control"><?php echo $product['data']['prod_desc']?></textarea>
                                         </div>
                                     </div>
+                                    
                                 </div>
 
                                 <br class="">
@@ -84,7 +120,7 @@
                                 <div class="form-row">
                                     <div class="form-col margin-0">
                                         <div class="form-col-bottom">
-                                            <input type="submit" name="updateProduct" value="Update Product" class="btn-control btn-control-add" value="">
+                                            <input type="submit" name="btn-updateProduct" value="Update Product" class="btn-control btn-control-add" value="">
                                         </div>
                                     </div>
                                 </div>
