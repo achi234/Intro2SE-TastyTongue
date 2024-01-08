@@ -1,7 +1,8 @@
 <?php
     $page_title = "Tasty Tongue - Menu";
     require_once('partials/_head.php');
-    //require_once('partials/_analytics.php');
+
+    $products = getAll('products');
 ?>
 <body>
     <!-- Sidebar -->
@@ -36,29 +37,46 @@
                                 <thead class="thead-light"> 
                                     <tr>
                                         <th class="text-column" scope="col">IMAGE</th> 
-                                        <th class="text-column" scope="col">PRODUCT CODE</th> 
                                         <th class="text-column" scope="col">NAME</th> 
+                                        <th class="text-column" scope="col">CATEGORY</th> 
                                         <th class="text-column" scope="col">PRICE</th> 
                                         <th class="text-column" scope="col">ACTIONS</th> 
                                     </tr>
                                 </thead>
                                 <tbody class="table-body">
+                                <?php foreach($products['data'] as $product) 
+                                        if($product['status'] == 1) 
+                                        {  
+                                            $category = getbyKeyValue('category', 'category_id', $product['prod_cat']); ?>  
                                     <tr>
+
                                         <th class="text-column" scope="row">
-                                            <img src="http://localhost/RestaurantPOS/Restro/admin/assets/img/products/cheesestk.jpg" height="60" width="60" class="img-thumbnail">
+                                            <?php
+                                                if ($product['prod_img']) {
+                                                ?> 
+                                                <img src="../assets/image/products/<?php echo $product['prod_img']?>" height='60' width="60" class="img-thumbnail">
+                                                <?php
+                                                } else {
+                                                ?>
+                                                <img src='../assets/image/products/default.jpg' height='60' width='60' class='img-thumbnail'>
+                                                <?php
+                                                }
+                                            ?>
                                         </th> 
-                                        <th class="text-column" scope="row">FCWU-5762</th> 
-                                        <th class="text-column" scope="row">Philly Cheesesteak</th> 
-                                        <th class="text-column" scope="row">$ 7</th> 
+                                        <th class="text-column" scope="row"><?php echo $product['prod_name']?></th> 
+                                        <th class="text-column" scope="row"><?php echo $category['data']['category_name']?></th> 
+                                        <!-- <th class="text-column" scope="row"><?php //echo $product['prod_desc']?></th>  -->
+                                        <th class="text-column" scope="row">$<?php echo $product['prod_price']?></th>                                   
                                         <th class="text-column" scope="row">
                                             <div class="text-column__action">
-                                                <a href="add_orders.php" class="btn-control btn-control-warning">
+                                                <a href="add_orders.php?id=<?php echo $product['prod_id']?>" class="btn-control btn-control-warning">
                                                     <i class="fa-solid fa-clipboard-check btn-control-icon"></i>
                                                     Place Order
                                                 </a>
                                             </div>
                                         </th> 
                                     </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
 
