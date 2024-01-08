@@ -28,6 +28,26 @@
                                 Add New Categpry
                             </a>
 
+                            <?php
+                                $strKeyword = null;
+
+                                if(isset($_POST["btn-search"]))
+                                {
+                                    $strKeyword = $_POST["search_text"];
+                                    $categories = searchByKeyword('category', $strKeyword);
+
+                                    if($categories['status'] == 'No Data Found')
+                                    {
+                                        $_SESSION['status'] = $categories['status'];
+                                        // $categories = getWithPagination('category', $pageSize, $pageNumber, 'category_id');
+                                    }
+                                }
+                                else
+                                {
+                                    // $categories = getWithPagination('category', $pageSize, $pageNumber, 'category_id');
+                                }
+                            ?>
+
                             <div class="container__heading-search">
                                 <input type="text" class="heading-search__area" placeholder="Search by code, name..." name="search_text" value="">
                                 <button class="btn-control btn-control-search" name="btn-search">
@@ -42,7 +62,7 @@
                             <table class="table">
                                 <thead class="thead-light"> 
                                     <tr>
-                                        <th class="text-column" scope="col">CATEGORY ID</th> 
+                                        <th class="text-column-emphasis" scope="col">CATEGORY ID</th> 
                                         <th class="text-column" scope="col">CATEGORY NAME</th>
                                         <th class="text-column" scope="col">ACTION</th>            
                                     </tr>
@@ -52,7 +72,7 @@
                                         { ?>  
                                     <tr>
 
-                                        <th class="text-column" scope="row"><?php echo $category['category_id']?></th> 
+                                        <th class="text-column-emphasis" scope="row"><?php echo $category['category_id']?></th> 
                                         <th class="text-column" scope="row"><?php echo $category['category_name']?></th> 
                         
                                         <th class="text-column" scope="row">
