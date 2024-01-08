@@ -1,7 +1,16 @@
 <?php
     $page_title = "Tasty Tongue - Admin Dashboard";
     require_once('partials/_head.php');
-    //require_once('partials/_analytics.php');
+
+    $count = 10;
+
+    $reservations = getTopN('reservation_list', 'datetime', $count);
+    $invoices = getTopN('invoices', 'datetime_invoice', $count);
+
+    $num_customer = countbyKeyValue('users', 'role', 'Customer');
+    $num_product = countbyKeyValue('products', null, null);
+    $num_order = countbyKeyValue('orders', null, null);
+    $sum_sale = sumSales('orders', null, null);
 ?>
 
 <body>
@@ -23,7 +32,7 @@
                         <div class="body__card">
                             <div class="body__card-inner">
                                 <div class="card-inner__title">CUSTOMERS</div>
-                                <div class="card-inner__number">14</div>
+                                <div class="card-inner__number"><?php echo $num_customer;?></div>
                             </div>
                             <i class="fa-solid fa-users card__icon bg-danger"></i>                        
                         </div>
@@ -33,7 +42,7 @@
                         <div class="body__card">
                             <div class="body__card-inner">
                                 <div class="card-inner__title">PRODUCTS</div>
-                                <div class="card-inner__number">26</div>
+                                <div class="card-inner__number"><?php echo $num_product;?></div>
                             </div>
                             <i class="fa-solid fa-utensils card__icon bg-update"></i>
                         </div>
@@ -43,7 +52,7 @@
                         <div class="body__card">
                             <div class="body__card-inner">
                                 <div class="card-inner__title">ODERS</div>
-                                <div class="card-inner__number">11</div>
+                                <div class="card-inner__number"><?php echo $num_order;?></div>
                             </div>
                             <i class="fa-solid fa-cart-shopping card__icon bg-warning"></i>
                         </div>
@@ -53,7 +62,7 @@
                         <div class="body__card">
                             <div class="body__card-inner">
                                 <div class="card-inner__title">SALES</div>
-                                <div class="card-inner__number">$139</div>
+                                <div class="card-inner__number">$<?php echo $sum_sale;?></div>
                             </div>
                             <i class="fa-solid fa-dollar-sign card__icon bg-green"></i>
                         </div>
@@ -82,50 +91,57 @@
                                     </tr>
                                 </thead>
                                 <tbody class="table-body">
-                                    <?php
-                                        // $count = sizeof($reservations['data']);
-                                        // if($count > 0)
+                                <?php 
+                                    if($reservations['status'] == 'Data Found')
+                                    {
+                                        foreach($reservations['data'] as $reservation)
                                         {
-                                        ?>
-                                            <?php  //foreach($reservations['data'] as $reservation) 
-                                            {  
-                                            ?>
-                                            <tr>
-                                                <th class="text-column-emphasis" scope="row"><?php //echo $reservation['reservation_id']?></th> 
-                                                <th class="text-column" scope="row"><?php //echo $user['data]['fullname']?></th>                 
-                                                <th class="text-column" scope="row"><?php //echo $reservation['table_id']?></th>
-                                                <?php 
-                                                    // $reservation_dt = $reservation['datetime']->format('H:i:s Y-m-d');
-                                                ?> 
-                                                <th class="text-column" scope="row"><?php  //echo $reservation_dt?></th> 
-                                                <th class="text-column" scope="row"><?php  //echo $reservation['party_size']?></th> 
-                                                <?php //if($reservation['status'] == 1)
-                                                    {?>
-                                                        <th class="text-column" scope="row">
-                                                            <span class="badge badge-arrived">Arrived<?php // echo $table['table_status']?></span>
-                                                            <!-- <span class="badge badge-unsuccess">Pending<?php // echo $table['table_status']?></span>  -->
-                                                            <!-- <span class="badge badge-success">Done<?php // echo $table['table_status']?></span>  -->
-                                                        </th> 
-                                                    <?php
-                                                    }
-                                                    //else
-                                                    {
-                                                    ?>
-                                                        <!-- <th class="text-column" scope="row">No</th>  -->
-                                                    <?php
-                                                    }
-                                                ?>
-                                            </tr>
-                                            <?php 
-                                            } ?>
+                                            $customer = getbyKeyValue('users', 'id', $reservation['user_id']);
+                                    ?>
+                                    <tr>
+                                        <th class="text-column-emphasis" scope="row"><?php echo $reservation['reservation_id']?></th> 
+                                        <th class="text-column" scope="row"><?php echo $customer['data']['fullname']?></th>                 
+                                        <th class="text-column" scope="row"><?php echo $reservation['table_id']?></th>
                                         <?php 
-                                        }
-                                        // else
-                                        { ?>
-                                            <!-- <h4> No Record Found </h4> -->
+                                            // $reservation_dt = $reservation['datetime']->format('H:i:s Y-m-d');
+                                        ?> 
+                                        <th class="text-column" scope="row"><?php  echo $reservation['datetime']?></th> 
+                                        <th class="text-column" scope="row"><?php  echo $reservation['party_size']?></th> 
+                                        <th class="text-column" scope="row">
+                                        <?php if ($reservation['status'] == 0 )
+                                        { 
+                                        ?>
+                                            <span class="badge badge-unsuccess">Booked</span>
+
                                         <?php
                                         }
-                                    ?>   
+                                        elseif ($reservation['status'] == 1)
+                                        {?>
+                                            <span class="badge badge-arrived">Arrived</span>
+                                        <?php
+                                        }
+                                        else
+                                        {?>
+                                            <span class="badge badge-success">Checked out</span> 
+                                    
+                                        </th> 
+                                        <?php
+                                        }
+                                        ?>
+                                        
+                                    </tr>
+                                    <?php
+                                        }
+                                    }
+                                    else
+                                    {
+                                    ?>
+                                     <tr>
+                                     <th class="text-column" scope="row">No data found</th>
+                                    <?php
+                                    }
+                                    ?>
+                                    </tr>
                                 </tbody>
                             </table>
 
@@ -153,23 +169,46 @@
                                     </tr>
                                 </thead>
                                 <tbody class="table-body">
+                                <?php foreach($invoices['data'] as $invoice) 
+                                { 
+                                    $reservations = getbyKeyValue('reservation_list', 'reservation_id', $invoice['reservation_id']);
+                                    $reservation_id = $reservations['data']['reservation_id'];
+
+                                    $customer = getbyKeyValue('users', 'id', $reservations['data']['user_id']);
+                                    $customer_name = $customer['data']['fullname'];
+                                    
+                                    $table = getbyKeyValue('table_list', 'table_id', $reservations['data']['table_id']);
+                                    $table_id = $table['data']['table_id'];
+
+                                    $payment = getbyKeyValue('payment_method', 'payment_id', $invoice['payment_id']);
+                                    $payment_method = $payment['data']['payment_name'];
+                                ?>
                                     <tr>
-                                        <th class="text-column-emphasis" scope="row">JFMB-0731</th> 
-                                        <th class="text-column" scope="row">Christine Moore</th> 
-                                        <th class="text-column" scope="row">T1</th> 
-                                        <th class="text-column" scope="row">$11</th> 
-                                        <th class="text-column" scope="row">Cash</th> 
+                                        <th class="text-column-emphasis" scope="row"><?php echo $invoice['invoice_id']?></th> 
+                                        <th class="text-column" scope="row"><?php echo $reservation_id?></th> 
+                                        <th class="text-column" scope="row"><?php echo $customer_name?></th> 
+                                        <th class="text-column" scope="row">$<?php echo $invoice['total']?></th> 
+                                        <th class="text-column" scope="row"><?php echo $payment_method?></th> 
                                         <?php 
-                                            // $invoice_dt = $invoice['datetime']->format('H:i:s Y-m-d')
                                         ?>
-                                        <th class="text-column" scope="row">04/Sep/2022 11:37</th> 
+                                        <th class="text-column" scope="row"><?php echo $invoice['datetime_invoice']?></th> 
                                         <th class="text-column" scope="row">
-                                            <span class="badge badge-arrived">Arrived<?php // echo $table['table_status']?></span>
-                                            <!-- <span class="badge badge-unsuccess">Pending<?php // echo $table['table_status']?></span>  -->
-                                            <!-- <span class="badge badge-success">Done<?php // echo $table['table_status']?></span>  -->
+                                            <?php
+                                                if ($invoice['status_invoice'] != 1)
+                                                { ?>
+                                                <span class="badge badge-unsuccess">Unpaid</span>                                     
+                                                <?php
+                                                }
+                                                else
+                                                { ?>
+                                                <span class="badge badge-success">Paid</span>
+                                                <?php 
+                                                }
+                                            ?>
                                         </th> 
                                     </tr>
-
+                                <?php
+                                } ?>
                                 </tbody>
                             </table>
 
