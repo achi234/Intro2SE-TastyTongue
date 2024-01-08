@@ -1,7 +1,24 @@
 <?php
     $page_title = "Tasty Tongue - Update Invoice";
     require_once('partials/_head.php');
-    //require_once('partials/_analytics.php');
+
+    $invoice_id = $_GET['id'];
+    $invoice = getbyKeyValue('invoices', 'invoice_id', $invoice_id);
+    
+    $reservation_id = $invoice['data']['reservation_id'];
+    $orders = getAllByKeyValue('orders', 'reservation_id', $reservation_id);
+
+    $reservations = getbyKeyValue('reservation_list', 'reservation_id', $reservation_id);
+
+    $customer = getbyKeyValue('users', 'id', $reservations['data']['user_id']);
+    $customer_name = $customer['data']['fullname'];
+    
+    $table = getbyKeyValue('table_list', 'table_id', $reservations['data']['table_id']);
+    $table_id = $table['data']['table_id'];
+
+    $payment = getbyKeyValue('payment_method', 'payment_id', $invoice['data']['payment_id']);
+    $payment_method = $payment['data']['payment_name'];
+
 ?>
 
 <body>
@@ -25,22 +42,22 @@
                         </div>
                         
                         <div class="container-recent__body card__body-form">
-                            <form method="POST" action="../Controller/AdminController/add_invoice.php">
+                            <form method="POST" action="../Controller/AdminController/update_invoice.php">
                                 <div class="form-row">
                                     <div class="form-row__flex">
-                                        <div class="form-col">
+                                        <!-- <div class="form-col">
                                             <label for="" class="form-col__label">Reservation</label>
-                                            <input type="text" name="reservation_id" class="form-control" value="<?php //echo $staff['data']['fullname']; ?>" readonly>
-                                        </div>
+                                        </div> -->
+                                        <input type="hidden" name="reservation_id" class="form-control" value="<?php echo $reservation_id; ?>">
 
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Customer</label>
-                                            <input type="text" name="customer_name" class="form-control" value="<?php //echo $customer['data']['fullname']; ?>" readonly>
+                                            <h3 name="customer_name" class="form-control margin-0"><?php echo $customer_name;?></h3>
                                         </div>
 
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Table Id</label>
-                                            <input type="text" name="table_id" class="form-control" value="<?php //echo $staff['data']['fullname']; ?>" readonly>
+                                            <h3 name="table_id" class="form-control margin-0"><?php echo $table_id;?></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -49,17 +66,58 @@
                                     <div class="form-row__flex">
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Total</label>
-                                            <input type="text" name="total" class="form-control" value="<?php //echo $staff['data']['fullname']; ?>" readonly>
+                                            <h3 name="total" class="form-control margin-0">$<?php echo $invoice['data']['total'];?></h3>
                                         </div>
 
                                         <div class="form-col">
+                                            <label for="" class="form-col__label">Date time</label>
+                                            <h3 name="datetime_invoice" class="form-control margin-0"><?php echo $invoice['data']['datetime_invoice'];?></h3>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-row__flex">
+                                        <div class="form-col">
                                             <label for="" class="form-col__label">Invoice Status</label>
-                                            <select name="invoice_status" class="form-cotrol">
-                                                <option value="<?php //echo $payment['data']['reservation_id'];?>" class=""><?php //echo $payment['data']['paymentmethod_name'];?></option>
+                                            <select name="status_invoice" class="form-cotrol">
+                                            <?php if ($invoice['data']['status_invoice'] == 1 )
+                                                { 
+                                                ?>
+                                                     <option value="1" selected> Paid </option>
+                                                     <option value="0" > Unpaid </option>
+                                                <?php
+                                                }
+                                                else
+                                                {?>
+                                                    <option value="0" selected> Unpaid </option>
+                                                    <option value="1" > Paid </option>
+                                                <?php
+                                                }?>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-col">
+                                            <label for="" class="form-col__label">Payment Method</label>
+                                            <select name="payment_id" class="form-cotrol">
+                                            <?php if ($invoice['data']['payment_id'] == 1 )
+                                                { 
+                                                ?>
+                                                     <option value="1" selected> Cash </option>
+                                                     <option value="2" > Paypal </option>
+                                                <?php
+                                                }
+                                                else
+                                                {?>
+                                                    <option value="2" selected> Paypal </option>
+                                                    <option value="1" > Cash </option>
+                                                <?php
+                                                }?>                                         
                                             </select>
                                         </div>
                                     </div>
                                 </div>
+
                                 <br class="">
 
                                 <div class="form-row">
@@ -89,23 +147,39 @@
                             <table class="table">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th class="text-column-emphasis" scope="col">CUSTOMER</th> 
-                                        <th class="text-column" scope="col">PRODUCT</th> 
+                                        <th class="text-column-emphasis" scope="col">Reservation Id</th> 
+                                        <th class="text-column-emphasis" scope="col">PRODUCT</th> 
                                         <th class="text-column" scope="col">UNIT PRICE</th> 
                                         <th class="text-column" scope="col">QTY</th> 
                                         <th class="text-column" scope="col">TOTAL</th> 
-                                        <!-- <th class="text-column" scope="col">ACTION</th>  -->
                                     </tr>
                                 </thead>
                                 <tbody class="table-body">
-                                    <tr>
-                                        <th class="text-column-emphasis" scope="row">Christine Moore</th> 
-                                        <th class="text-column" scope="row">Irish Coffee</th> 
-                                        <th class="text-column" scope="row">$11</th> 
-                                        <th class="text-column" scope="row">1</th> 
-                                        <th class="text-column" scope="row">$11</th> 
-                                    </tr>
+                                <?php 
+                                if($orders['status'] != 'No Data Found')
+                                {
+                                    foreach($orders['data'] as $order) 
+                                    { 
+                                        $product = getbyKeyValue('products', 'prod_id', $order['prod_id']);
+                                        $prod_name = $product['data']['prod_name'];
+                                ?>
 
+                                        <tr>
+                                            <th class="text-column-emphasis" scope="row"><?php echo $reservation_id;?></th> 
+                                            <th class="text-column-emphasis" scope="row"><?php echo $prod_name;?></th> 
+                                            <th class="text-column" scope="row">$<?php echo $order['unit_price'];?></th> 
+                                            <th class="text-column" scope="row"><?php echo $order['quantity'];?></th> 
+                                            <th class="text-column" scope="row">$<?php echo $order['total_price'];?></th> 
+                                        </tr>
+                                    <?php
+                                    } 
+                                }
+                                else
+                                { ?>
+                                    <tr><h4> No Record Found </h4></tr>
+                                <?php
+                                }
+                                ?>   
                                 </tbody>
                             </table>
 
