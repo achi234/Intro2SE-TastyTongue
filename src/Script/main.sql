@@ -64,7 +64,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `add_order` (IN `res_id` INT(11), IN
     WHERE reservation_id = res_id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `update_invoice` (IN `res_id` INT(11), IN `paymed_id` INT(10))   BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE update_invoice (IN res_id INT(11), IN paymed_id INT(10), IN status_inv tinyint(2))   BEGIN
     DECLARE total_inv int(15);
     
     -- Tính tổng tiền là tổng các đơn hàng của reservation_id
@@ -74,7 +74,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `update_invoice` (IN `res_id` INT(11
     
     -- Thêm hóa đơn mới vào bảng invoices
     update invoices 
-    set payment_id = paymed_id
+    set payment_id = paymed_id, total = total_inv, status_invoice = status_inv
     WHERE reservation_id = res_id;
     
 END$$
