@@ -48,16 +48,16 @@
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Table Status</label>
                                             <select name="table_status" id="tablStatus" class="form-cotrol">
-                                                <?php if ($table['status'] == 1 )
+                                                <?php if ($table['data']['status'] == 1 )
                                                 { 
                                                 ?>
-                                                     <option value="1" selected> Available </option>
+                                                     <option value="1" selected> In Use </option>
                                                      <option value="0" > Unavailable </option>
                                                 <?php
                                                 }
                                                 else
                                                 {?>
-                                                    <option value="1" > Available </option>
+                                                    <option value="1" > In Use </option>
                                                     <option value="0" selected> Unavailable </option>
                                                 <?php
                                                 }?>
@@ -153,6 +153,7 @@
                                                         { 
                                                         ?>
                                                             <span class="badge badge-arrived">Booked</span>
+
                                                         <?php
                                                         }
                                                         elseif ($reservation['status'] == 1)
@@ -168,21 +169,22 @@
                                                         <?php
                                                         }
                                                         ?>
-                                                <?php
-                                                }
-                                                ?>
                                                 <th class="text-column" scope="row">
                                                     <div class="text-column__action">
-                                                        <a href="make_orders.php?id=<?php echo $reservation['reservation_id']?>" class="btn-control btn-control-warning">
+                                                        <a href="make_orders.php?id=<?php echo $reservation['reservation_id']?>&status=<?php echo $reservation['status']?>" class="btn-control btn-control-warning">
                                                             <i class="fa-solid fa-utensils btn-control-icon"></i>
                                                             Order Food
                                                         </a>
-                                                        <a href="order_records.php?id=<?php  //echo $reservation['reservation_id']?>" class="btn-control btn-control-edit">
+                                                        <a href="order_records.php?id=<?php  echo $reservation['reservation_id']?>" class="btn-control btn-control-edit">
                                                             <i class="fa-solid fa-clipboard btn-control-icon"></i>
                                                             View detail
                                                         </a>
                                                     </div>
                                                 </th> 
+                                                <?php
+                                                }
+                                                ?>
+                                                
                                             </tr>
                                         <?php 
                                         }  

@@ -2,12 +2,15 @@
     $page_title = "Tasty Tongue - Order List";
     require_once('partials/_head.php');
     //require_once('partials/_analytics.php');
-    // $reservation_id = $_GET['reservation_id'];
+    $reservation_id = $_GET['id'];
+    $orders = getAllByKeyValue('orders', 'reservation_id',$reservation_id);
+    $reservation = getbyKeyValue('reservation_list', 'reservation_id', $reservation_id);
+    
 ?>
 <body>
     <!-- Sidebar -->
     <?php
-    require_once('partials/_sidebar.php');
+        require_once('partials/_sidebar.php');
     ?>
     <!-- Main content -->
     <div class="main-content">
@@ -38,26 +41,43 @@
                                     </tr>
                                 </thead>
                                 <tbody class="table-body">
+                                    <?php 
+                                    if($orders['status'] == 'Data Found')
+                                    {
+                                        foreach($orders['data'] as $order)
+                                        {
+                                            $customer = getbyKeyValue('users', 'id', $reservation['data']['user_id']);
+                                            $product = getbyKeyValue('products', 'prod_id', $order['prod_id']);
+                                    ?>
                                     <tr>
-                                        <th class="text-column-emphasis" scope="row">Christine Moore</th> 
-                                        <th class="text-column" scope="row">Irish Coffee</th> 
-                                        <th class="text-column" scope="row">$11</th> 
-                                        <th class="text-column" scope="row">1</th> 
-                                        <th class="text-column" scope="row">$11</th> 
+                                        <th class="text-column-emphasis" scope="row"><?php echo $customer['data']['fullname']; ?></th> 
+                                        <th class="text-column" scope="row"><?php echo $product['data']['prod_name']; ?></th> 
+                                        <th class="text-column" scope="row">$<?php echo $order['unit_price']; ?></th> 
+                                        <th class="text-column" scope="row"><?php echo $order['quantity']; ?></th> 
+                                        <th class="text-column" scope="row">$<?php echo $order['total_price']; ?></th> 
                                         <th class="text-column" scope="row">
                                             <div class="text-column__action">
-                                                <a href="" class="btn-control btn-control-delete">
+                                                <a href="../Controller/AdminController/delete_order.php?id=<?php echo $order['reservation_id'];?>&product_id=<?php echo $order['prod_id'];?>" class="btn-control btn-control-delete">
                                                     <i class="fa-solid fa-trash-can btn-control-icon"></i>
                                                     Delete
                                                 </a>
-                                                <a href="update_order_records.php?id=<?php  //echo $reservation['reservation_id']?>" class="btn-control btn-control-edit">
+                                                <a href="update_orders.php?id=<?php echo $order['reservation_id'];?>&product_id=<?php echo $order['prod_id'];?>" class="btn-control btn-control-edit">
                                                     <i class="fa-solid fa-pen-to-square btn-control-icon"></i>
                                                     Update
                                                 </a>
                                             </div>
                                         </th>
                                     </tr>
-
+                                    <?php
+                                        }
+                                    }
+                                    else
+                                    {
+                                    ?>
+                                        <h4> No Record Found </h4>
+                                    <?php
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
 

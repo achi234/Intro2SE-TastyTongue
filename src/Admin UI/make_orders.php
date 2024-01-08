@@ -1,12 +1,16 @@
 <?php
-    $page_title = "Tasty Tongue - Menu";
+    $page_title = "Tasty Tongue - Dish List";
     require_once('partials/_head.php');
     //require_once('partials/_analytics.php');
+
+    $products = getAll('products',1);
+    $reservation_id = $_GET['id'];
+   
 ?>
 <body>
     <!-- Sidebar -->
     <?php
-    require_once('partials/_sidebar.php');
+      require_once('partials/_sidebar.php');
     ?>
     <!-- Main content -->
     <div class="main-content">
@@ -17,8 +21,7 @@
             ?>
             <!-- Page content -->
             <div class="container">
-                <div class="container-recent">
-                    <form action="" method="POST" class="container-recent-inner">
+                <div class="container-recent container-recent-inner">
                         <div class="container-recent__heading">
                             <p class="recent__heading-title">Select On Any Product To Make An Order</p>
                             
@@ -31,43 +34,58 @@
                             </div>
                         </div>
 
+
                         <div class="table-responsive" style="overflow-x:auto;">
                             <table class="table">
                                 <thead class="thead-light"> 
                                     <tr>
                                         <th class="text-column" scope="col">IMAGE</th> 
-                                        <!-- <th class="text-column" scope="col">PRODUCT CODE</th>  -->
                                         <th class="text-column" scope="col">NAME</th> 
                                         <th class="text-column" scope="col">PRICE</th> 
                                         <th class="text-column" scope="col">QUANTITY</th> 
-                                        <th class="text-column" scope="col">ACTIONS</th> 
+                                        <th class="text-column" scope="col">ACTION</th> 
                                     </tr>
                                 </thead>
                                 <tbody class="table-body">
+                                <?php foreach($products['data'] as $product) 
+                                        {  ?>
+                                        <form action="../Controller/AdminController/make_order.php" method="POST">
+                                            <input type="hidden" name="product_id" value="<?php echo $product['prod_id']; ?>">
+                                            <input type="hidden" name="reservation_id" value="<?php echo $reservation_id; ?>">
                                     <tr>
+
                                         <th class="text-column" scope="row">
-                                            <img src="http://localhost/RestaurantPOS/Restro/admin/assets/img/products/cheesestk.jpg" height="60" width="60" class="img-thumbnail">
+                                            <?php
+                                                if ($product['prod_img']) {
+                                                ?> 
+                                                <img src="../assets/image/products/<?php echo $product['prod_img']?>" height='60' width="60" class="img-thumbnail">
+                                                <?php
+                                                } else {
+                                                ?>
+                                                <img src='../assets/image/products/default.jpg' height='60' width='60 class='img-thumbnail'>
+                                                <?php
+                                                }
+                                            ?>
                                         </th> 
-                                        <!-- <th class="text-column" scope="row">FCWU-5762</th>  -->
-                                        <th class="text-column" scope="row">Philly Cheesesteak</th> 
-                                        <th class="text-column" scope="row">$ 7</th> 
+                                        <th class="text-column" scope="row"><?php echo $product['prod_name']?></th> 
+                                        <th class="text-column" scope="row">$<?php echo $product['prod_price']?></th> 
                                         <th class="text-column" scope="row">
-                                            <input type="number" name="product_quantity" class="form-control" value>
+                                            <input type="text" name="quantity" class="form-control">
                                         </th> 
                                         <th class="text-column" scope="row">
-                                            <div class="text-column__action">
-                                                <a href="" class="btn-control btn-control-warning">
+                                            <div class="text-column__action btn-control btn-control-warning">
+                                                <input type="submit" name="btn-placeOrder" class="btn-control btn-control-warning" value=" Place Order">
                                                     <i class="fa-solid fa-clipboard-check btn-control-icon"></i>
-                                                    Place Order
-                                                </a>
                                             </div>
                                         </th> 
                                     </tr>
+                                    </form>         
+                                    <?php } ?>
+                                    
                                 </tbody>
                             </table>
 
                         </div>
-                    </form>
                 </div>
             </div>
             <!-- Footer -->
@@ -78,4 +96,3 @@
     </div>
 
 </body>
-</html>

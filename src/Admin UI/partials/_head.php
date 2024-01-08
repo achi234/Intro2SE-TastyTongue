@@ -55,5 +55,18 @@
 
           unset($_SESSION['noti']);
       }
+      if (!empty($_SESSION['warning'])) {  
+        echo '<script>';
+        echo 'setTimeout(function() {';
+        echo 'swal({';
+        echo '    title: "Warning",';
+        echo '    text: "' . $_SESSION['warning'] . '",';
+        echo '    icon: "warning",';
+        echo '});';
+        echo '}, 100);';
+        echo '</script>';
+
+        unset($_SESSION['warning']);
+    }
     ?>
 </head>
