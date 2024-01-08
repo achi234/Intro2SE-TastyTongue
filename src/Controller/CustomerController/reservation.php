@@ -38,13 +38,15 @@ if($_POST['table_id'] == 0 && $check == false) {
 
     // Chuyển đổi ngày nhập thành đối tượng DateTime
     $inputDatetime = new DateTime($datetime);
+    // Lấy giờ và phút từ thời gian nhập
+    $inputHourMinute = $inputDatetime->format('H:i');
     
     // Lấy ngày hiện tại
     $currentDate = new DateTime();
 
     // Thiết lập thời gian giới hạn
-    $startTime = new DateTime('10:00:00');
-    $endTime = new DateTime('22:00:00');
+    $startHourMinute = '10:00';
+    $endHourMinute = '22:00';
 
     // So sánh ngày nhập và ngày hiện tại
     if ($inputDatetime < $currentDate) {
@@ -57,7 +59,7 @@ if($_POST['table_id'] == 0 && $check == false) {
     }
 
     // Kiểm tra xem thời gian nhập có nằm trong khoảng từ 10am đến 10pm không
-    if ($inputDatetime >= $startTime && $inputDatetime <= $endTime) {
+    if ($inputHourMinute >= $startHourMinute && $inputHourMinute <= $endHourMinute) {
         echo "Thời gian nhập nằm trong khoảng từ 10am đến 10pm.";
     } else {
         echo "Thời gian nhập không nằm trong khoảng từ 10am đến 10pm.";
