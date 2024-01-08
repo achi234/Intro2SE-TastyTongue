@@ -43,7 +43,7 @@
                                         </div>
 
                                         <div class="form-col">
-                                            <label for="" class="form-col__label">Table ID</label>
+                                            <label for="" class="form-col__label">Table</label>
                                             <select name="table_id"  class="form-cotrol">
 
                                                 <?php 
