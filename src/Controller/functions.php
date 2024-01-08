@@ -632,5 +632,43 @@
        
         return preg_match('/^0\d{9}$/', $phone);
     }
-        
+    
+    function getInvoicesByUserId($user_id)
+    {
+        global $conn;
+    
+        $query = "SELECT invoices.* 
+                  FROM invoices
+                  INNER JOIN reservation_list ON invoices.reservation_id = reservation_list.reservation_id
+                  WHERE reservation_list.user_id = $user_id";
+    
+        $result = mysqli_query($conn, $query);
+    
+        if ($result) {
+            $data = array();
+    
+            while ($row = mysqli_fetch_assoc($result)) {
+                $data[] = $row;
+            }
+    
+            if (!empty($data)) {
+                $response = [
+                    'status' => 'Data Found',
+                    'data' => $data,
+                ];
+            } else {
+                $response = [
+                    'status' => 'No Data Found',
+                ];
+            }
+    
+            return $response;
+        } else {
+            $response = [
+                'status' => 'Something went wrong! Please try again.',
+            ];
+            return $response;
+        }
+    }
+    
 ?>
