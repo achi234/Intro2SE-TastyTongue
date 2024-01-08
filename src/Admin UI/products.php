@@ -42,11 +42,11 @@
                             <table class="table">
                                 <thead class="thead-light"> 
                                     <tr>
-                                        <th class="text-column" scope="col">IMAGE</th> 
+                                        <th class="text-column-emphasis" scope="col">IMAGE</th> 
                                         <th class="text-column" scope="col">NAME</th> 
                                         <th class="text-column" scope="col">CATEGORY</th>
                                         <th class="text-column" scope="col">PRICE</th> 
-                                        <th class="text-column" scope="col">STATUS</th> 
+                                        <th class="text-column-emphasis" scope="col">STATUS</th> 
                                         <th class="text-column" scope="col">ACTIONS</th> 
                                     </tr>
                                 </thead>
