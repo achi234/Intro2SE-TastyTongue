@@ -61,6 +61,7 @@
                             <table class="table">
                                 <thead class="thead-light">
                                     <tr>
+                                        <th class="text-column-emphasis" scope="col">CODE</th> 
                                         <th class="text-column" scope="col">STAFF NAME</th> 
                                         <th class="text-column" scope="col">PHONE</th> 
                                         <th class="text-column" scope="col">EMAIL</th> 
@@ -77,6 +78,7 @@
                                         {  
                                         ?>
                                         <tr>
+                                            <th class="text-column-emphasis" scope="row"><?php echo $staff['id']?></th> 
                                             <th class="text-column" scope="row"><?php echo $staff['fullname']?></th> 
                                             <th class="text-column" scope="row"><?php echo $staff['phone']?></th> 
                                             <th class="text-column" scope="row"><?php  echo $staff['email']?></th> 

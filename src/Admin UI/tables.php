@@ -33,17 +33,17 @@
                                 if(isset($_POST["btn-search"]))
                                 {
                                     $strKeyword = $_POST["search_text"];
-                                    $tables = searchByKeyword('tables', $strKeyword);
+                                    $tables = searchByKeyword('table_list', $strKeyword);
 
                                     if($tables['status'] == 'No Data Found')
                                     {
                                         $_SESSION['status'] = $tables['status'];
-                                        // $tables = getByUserTypeWithPagination('tables', 'Staff', $pageSize, $pageNumber, 'id');
+                                        // $tables = getWithPagination('tables', $pageSize, $pageNumber, 'table_id');
                                     }
                                 }
                                 else
                                 {
-                                    // $tables = getByUserTypeWithPagination('tables', 'Staff', $pageSize, $pageNumber, 'id');
+                                    // $tables = getWithPagination('tables', $pageSize, $pageNumber, 'table_id');
                                 }
                             ?>
 
@@ -102,11 +102,11 @@
                                             <th class="text-column" scope="row">
                                                 <div class="text-column__action">
                                                     <!-- Only change table_status, not really delete table -->
-                                                    <a href="../Controller/AdminController/delete_table.php?id=<?php  echo $table['table_id']?>" 
+                                                    <!-- <a href="../Controller/AdminController/delete_table.php?id=<?php  echo $table['table_id']?>" 
                                                     class="btn-control btn-control-delete">
                                                         <i class="fa-solid fa-trash-can btn-control-icon"></i>
                                                         Delete
-                                                    </a>
+                                                    </a> -->
                                                     <a href="update_tables.php?id=<?php  echo $table['table_id']?>" class="btn-control btn-control-edit">
                                                         <i class="fa-solid fa-file-pen btn-control-icon"></i>
                                                         View detail
