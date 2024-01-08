@@ -87,7 +87,7 @@
                                                 <?php if ($table['status'] == 1 )
                                                 { 
                                                 ?>
-                                                    <span class="badge badge-arrived">Avaiable</span>
+                                                    <span class="badge badge-success">Avaiable</span>
                                                 <?php
                                                 }
                                                 else

@@ -1,6 +1,7 @@
 <?php
     session_start();
     include("../config/config.php");
+    include("./functions.php");
 
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
@@ -62,34 +63,43 @@
 
             if(mysqli_num_rows($compile_check_email_query) > 0)
             {
-                $_SESSION['status'] = "Email is already registered";
-                header("location: ../register.php");
+                //$_SESSION['status'] = "Email is already registered";
+                redirect('../register.php', 'Email is already registered', '');
             }
             else
             {
-                //Inser User 
+                if(!isValidEmail($email))
+                {
+                    redirect('../register.php', 'Invalid format of email. Please try again', '');
+                }
+
+                if(!isValidPhoneNumber($phone))
+                {
+                    redirect('../register.php', 'Invalid format of phone number. Please try again', '');
+                }
+
+                //Insert User 
                 $query = "INSERT INTO users(fullname,email, password, phone, role, verify_token) 
                                     VALUES('$name','$email','$password','$phone','$role','$verify_token')";
                 $complie_query = mysqli_query($conn, $query);
+
+
 
                 if($complie_query)
                 {
                     email_verify("$name","$email", "$verify_token");
                     $_SESSION['noti'] = "You've registered. Please verify your email!";
-                    header("location: ../register.php");
+                    redirect('../register.php', '', "You've registered. Please verify your email!");
                 }
                 else
                 {
-                    $_SESSION['status'] = "Registration Failed!";
-                    header("location: ../register.php");
+                    redirect('../register.php', 'Registration Failed!', "");
                 }
             }
         }
         else
         {
-            $_SESSION['status'] = "You must fill in all fields";
+            $_SESSION['status'] = "Please fill in all fields";
             header("location: ../register.php");
         }
     }
-
-?>

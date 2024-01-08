@@ -1,15 +1,12 @@
-<?php
-session_start();
-//echo "Role is {$_SESSION['role']} ";
-?>
 
 <?php
 $page_title = "Tasty Tongue - Invoices";
 include('../config/config.php');
-//include('../Controller/authenticate.php');
+include('../Controller/authenticate.php');
 require_once('partials/_head.php');
 //require_once('partials/_analytics.php');
-$invoices = getAll('invoices');
+
+$invoices = getInvoicesByUserId($_SESSION['id']);
 ?>
 
 <body>
@@ -44,7 +41,11 @@ $invoices = getAll('invoices');
                                 </tr>
                             </thead>
                             <tbody class="table-body">
-                                <?php foreach ($invoices['data'] as $invoice) {
+                                <?php 
+                                if($invoices['status'] == 'Data Found')
+                                
+                                {
+                                    foreach ($invoices['data'] as $invoice) {
                                     $reservations = getbyKeyValue('reservation_list', 'reservation_id', $invoice['reservation_id']);
                                     $reservation_id = $reservations['data']['reservation_id'];
 
@@ -80,7 +81,18 @@ $invoices = getAll('invoices');
                                         </th>
                                     </tr>
                                     <?php
-                                } ?>
+                                   } 
+                                }   
+                                else
+                                { ?>
+                                    <tr> 
+                                        <th class="text-column" scope="row">
+                                           No Data Found
+                                        </th>   
+                                    </tr>
+                                <?php
+                                }
+                                ?>
                             </tbody>
                         </table>
 
