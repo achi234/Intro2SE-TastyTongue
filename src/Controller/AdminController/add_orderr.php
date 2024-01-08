@@ -8,6 +8,9 @@
         $reservation_id = $_POST['reservation_id'];
         $quantity = $_POST['prod_quantity'];
 
+        $product = getbyKeyValue('products', 'prod_id', $prod_id);
+        $prod_name = $product['data']['prod_name'];
+
         echo $prod_id;
         echo $reservation_id;
         echo $quantity;
@@ -36,7 +39,7 @@
 
                 if ($updateResult) {
                     echo "UPDATE thành công!";
-                    redirect('../../Admin UI/orders.php', '', "You've update order product {$prod_id} for reservation {$reservation_id} successfully!");
+                    redirect('../../Admin UI/orders.php', '', "You've update order {$prod_name} for reservation {$reservation_id} successfully!");
                 } else {
                     echo "Lỗi khi thực hiện UPDATE: " . $updateStmt->error;
                     redirect('../../Admin UI/add_orders.php?id='.$prod_id, '', "Something went wrong! Please enter again...");
@@ -51,7 +54,7 @@
 
                 if ($insertResult) {
                     echo "INSERT thành công!";
-                    redirect('../../Admin UI/orders.php', '', "You've made order product {$prod_id} for reservation {$reservation_id} successfully!");
+                    redirect('../../Admin UI/orders.php', '', "You've made order {$prod_name} for reservation {$reservation_id} successfully!");
                 } else {
                     echo "Lỗi khi thực hiện INSERT: " . $insertStmt->error;
                     redirect('../../Admin UI/add_orders.php?id='.$prod_id, '', "Something went wrong! Please enter again...");

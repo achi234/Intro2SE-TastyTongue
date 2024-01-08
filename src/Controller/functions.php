@@ -540,4 +540,87 @@
             return $response;
         }
     }
+
+    function countbyKeyValue($tableName, $key, $value)
+    {
+        global $conn;
+    
+        $table = validate($tableName);
+        $key = validate($key);
+        $value = validate($value);
+    
+        $query = "SELECT COUNT(*) AS total_rows FROM $table";
+    
+        if ($key != null && $value != null) {
+            $query .= " WHERE $key = '$value'";
+        }
+    
+        $row_num = mysqli_query($conn, $query);
+        // Lấy kết quả đếm
+        $row = mysqli_fetch_assoc($row_num);
+        $total_rows = $row['total_rows'];
+    
+        $result = strval($total_rows);
+        return $result;
+    }
+
+    function sumSales($tableName, $key, $value)
+    {
+        global $conn;
+
+        $table = validate($tableName);
+        $key = validate($key);
+        $value = validate($value);
+
+        $query = "SELECT SUM(total_price) AS total_sales FROM $table";
+
+        if ($key != null && $value != null) {
+            $query .= " WHERE $key = '$value'";
+        }
+
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($result);
+        $total_sales = $row['total_sales'];
+
+        return $total_sales;
+    }
+
+    function getTopN($tableName, $key, $count) {
+        global $conn;
+    
+        $table = validate($tableName);
+        $key = validate($key);
+        $count = validate($count);
+    
+        $query = "SELECT * FROM $tableName ORDER BY $key DESC LIMIT $count";
+    
+        $result = mysqli_query($conn, $query);
+    
+        if ($result) {
+            $data = [];
+    
+            while ($row = mysqli_fetch_assoc($result)) {
+                $data[] = $row;
+            }
+    
+            if (!empty($data)) {
+                $response = [
+                    'status' => 'Data Found',
+                    'data' => $data,
+                ];
+            } else {
+                $response = [
+                    'status' => 'No Data Found',
+                    'query' => $query,
+                ];
+            }
+    
+            return $response;
+        } else {
+            $response = [
+                'status' => 'Something went wrong! Please try again.',
+            ];
+            return $response;
+        }
+    }
 ?>

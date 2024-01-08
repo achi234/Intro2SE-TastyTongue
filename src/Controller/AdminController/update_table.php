@@ -6,7 +6,7 @@
     if(isset($_POST['btn-updateTable']))
     {
         $table_id = $_POST['table_id'];
-        if(empty($_POST['table_name']) || empty($_POST['table_size']) || empty($_POST['table_status'])|| empty($_POST['table_desc']) )
+        if(empty($_POST['table_name']) || empty($_POST['table_size']) || !isset($_POST['table_status'])|| empty($_POST['table_desc']) )
         {
             redirect('../../Admin UI/update_tables.php?id='.$table_id, 'All fields are required.', '');
             exit(0);
