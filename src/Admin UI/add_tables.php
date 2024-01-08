@@ -43,8 +43,9 @@
                                         
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Table Status</label>
-                                            <select name="table_status" id="tablStatus" class="form-cotrol">
-                                                <option value="<?php //echo $table['data']['table_size'];?>" class=""><?php //echo $table['data']['table_size'];?></option>
+                                            <select name="status" id="tablStatus" class="form-cotrol">
+                                                <option value="0" class="">Available</option>
+                                                <option value="1" class="">Available</option>
                                             </select>
 
                                         </div>                                
@@ -67,7 +68,7 @@
                                 <div class="form-row">
                                     <div class="form-col margin-0">
                                         <div class="form-col-bottom">
-                                            <input type="submit" name="btn-add-table" value="Add Table" class="btn-control btn-control-add">
+                                            <input type="submit" name="btn-addTable" value="Add Table" class="btn-control btn-control-add">
                                         </div>
                                     </div>
                                 </div>

@@ -623,4 +623,14 @@
             return $response;
         }
     }
+    function isValidEmail($email)
+    {
+        return filter_var($email, FILTER_VALIDATE_EMAIL);
+    }
+    function isValidPhoneNumber($phone) 
+    {
+       
+        return preg_match('/^0\d{9}$/', $phone);
+    }
+        
 ?>
