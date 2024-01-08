@@ -315,7 +315,7 @@ textarea.form-control {
 .btn-control-search {
     width: fit-content;
     background-color: var(--green-color);
-    color: var(--bg-color);
+    color: var(--y-text-color);
 }
 
 .btn-add-success {
