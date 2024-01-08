@@ -21,7 +21,7 @@
                 <hr class="">
                 
                 <li class="navbar-nav__item">
-                    <a href="login.php" class="nav-item__link text-primary">
+                    <a href="../Controller/logout.php" class="nav-item__link text-primary">
                         <i class="fa-solid fa-person-running nav-item__icon"></i>
                         <p class="nav-item__text">Logout</p>
                     </a>
