@@ -56,7 +56,7 @@
                             <table class="table">
                                 <thead class="thead-light"> 
                                     <tr>
-                                        <th class="text-column" scope="col">IMAGE</th> 
+                                        <th class="text-column-emphasis" scope="col">IMAGE</th> 
                                         <th class="text-column" scope="col">NAME</th> 
                                         <th class="text-column" scope="col">CATEGORY</th> 
                                         <th class="text-column" scope="col">PRICE</th> 
