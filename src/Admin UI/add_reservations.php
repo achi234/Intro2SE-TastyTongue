@@ -2,12 +2,15 @@
     $page_title = "Tasty Tongue - Add New Reservation";
     require_once('partials/_head.php');
     //require_once('partials/_analytics.php');
+    $customers = getAllByKeyValue('users','role','Customer');
+    $tables = getAll('table_list',1);
+
 ?>
 
 <body>
     <!-- Sidebar -->
     <?php
-    require_once('partials/_sidebar.php');
+     require_once('partials/_sidebar.php');
     ?>
     <!-- Main content -->
     <div class="main-content">
@@ -31,14 +34,26 @@
                                         <div class="form-col">
                                             <label for="" class="form-col__label">User Name</label>
                                             <select name="user_id" class="form-cotrol">
-                                                <option value="<?php //echo $?>" class=""><?php //echo $?></option>
+                                            <?php 
+                                                foreach($customers['data'] as $customer)
+                                                { ?>
+                                                    <option value="<?php echo $customer['id'];?>" ><?php echo $customer['fullname'];?></option>
+                                                <?php
+                                                }
+                                                ?>
                                             </select>
                                         </div>
 
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Table Id</label>
                                             <select name="table_id" class="form-cotrol">
-                                                <option value="<?php //echo $table['table_id'];?>" class=""><?php //echo $table['table_id'];?></option>
+                                                <?php 
+                                                foreach($tables['data'] as $table)
+                                                { ?>
+                                                    <option value="<?php echo $table['table_id'];?>" ><?php echo $table['table_name'];?></option>
+                                                <?php
+                                                }
+                                                ?>
                                             </select>
                                         </div>
                                     </div>
@@ -60,8 +75,9 @@
 
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Status</label>
-                                            <select name="table_status" id="tablStatus" class="form-cotrol">
-                                                <option value="<?php //echo $?>" class=""><?php //echo $?></option>
+                                            <select name="status" class="form-cotrol">
+                                                <option value="0" >Booked</option>
+                                                <option value="1" >Arrived</option>
                                             </select>
                                         </div>
                                     </div>
@@ -72,7 +88,7 @@
                                 <div class="form-row">
                                     <div class="form-col margin-0">
                                         <div class="form-col-bottom">
-                                            <input type="submit" name="btn-add-reservation" value="Add Reservation" class="btn-control btn-control-add">
+                                            <input type="submit" name="btn-addReservation" value="Add Reservation" class="btn-control btn-control-add">
                                         </div>
                                     </div>
                                 </div>

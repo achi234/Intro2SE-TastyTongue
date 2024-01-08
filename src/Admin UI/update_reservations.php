@@ -2,7 +2,11 @@
     $page_title = "Tasty Tongue - Update Reservation";
     require_once('partials/_head.php');
     //require_once('partials/_analytics.php');
-    // $reservation_id = $_GET['reservation_id'];
+    $reservation_id = $_GET['id'];
+    $reservation = getbyKeyValue('reservation_list', 'reservation_id', $reservation_id);
+    $customer = getbyKeyValue('users', 'id', $reservation['data']['user_id']);
+    $tables = getAll('table_list');
+
 ?>
 
 <body>
@@ -26,24 +30,38 @@
                         </div>
                         
                         <div class="container-recent__body card__body-form">
-                            <form method="POST" action="../Controller/AdminController/add_reservation.php">
+                            <form method="POST" action="../Controller/AdminController/update_reservation.php">
                                 <div class="form-row">
                                     <div class="form-row__flex">
                                         <div class="form-col">
-                                            <label for="" class="form-col__label">Reservation Id</label>
-                                            <input type="number" name="party_size" class="form-control" readonly>
+                                            <label for="" class="form-col__label">Reservation ID</label>
+                                            <input type="text" name="reservation_id" class="form-control" value="<?php echo $reservation['data']['reservation_id']?>" readonly>
                                         </div>
                                         <div class="form-col">
-                                            <label for="" class="form-col__label">User Name</label>
-                                            <select name="user_id" class="form-cotrol">
-                                                <option value="<?php //echo $?>" class=""><?php //echo $?></option>
-                                            </select>
+                                            <label for="" class="form-col__label">Username</label>
+                                            <input type="text" name="user_id" class="form-control" value="<?php  echo $customer['data']['fullname'];?>" readonly>
                                         </div>
 
                                         <div class="form-col">
-                                            <label for="" class="form-col__label">Table Id</label>
-                                            <select name="table_id" class="form-cotrol">
-                                                <option value="<?php //echo $table['table_id'];?>" class=""><?php //echo $table['table_id'];?></option>
+                                            <label for="" class="form-col__label">Table ID</label>
+                                            <select name="table_id"  class="form-cotrol">
+
+                                                <?php 
+                                                foreach($tables['data'] as $table)
+                                                {
+                                                    if( $reservation['data']['table_id'] == $table['table_id'])
+                                                    { ?>  
+                                                    <option value="<?php echo $table['table_id'];?>" selected><?php echo $table['table_id'];?></option>
+                                                    <?php
+                                                    } 
+                                                    else
+                                                    {
+                                                    ?>
+                                                    <option value="<?php echo $table['table_id'];?>" ><?php echo $table['table_id'];?></option>
+                                                    <?php
+                                                    }
+                                                }
+                                                ?>
                                             </select>
                                         </div>
                                     </div>
@@ -55,18 +73,42 @@
                                     <div class="form-row__flex">
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Party Size</label>
-                                            <input type="number" name="party_size" class="form-control">
+                                            <input type="number" name="party_size" class="form-control" value="<?php echo $reservation['data']['party_size']?>">
                                         </div>
 
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Date Time</label>
-                                            <input type="datetime-local" name="date_time" class="form-control">
+                                            <input type="datetime-local" name="date_time" class="form-control" value="<?php echo $reservation['data']['datetime']?>">
                                         </div>
 
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Status</label>
-                                            <select name="table_status" class="form-cotrol">
-                                                <option value="<?php //echo $?>" class=""><?php //echo $?></option>
+                                            <select name="status" class="form-cotrol">
+                                             <?php 
+                                                 if( $reservation['data']['status'] == 0)
+                                                 { ?>  
+                                                    <option value="0" selected>Booked</option>
+                                                    <option value="1" >Arrived</option>
+                                                    <option value="2" >Checked out</option>
+                                                 <?php
+                                                 } 
+                                                 elseif ( $reservation['data']['status'] == 1)
+                                                 {
+                                                 ?>
+                                                    <option value="0" >Booked</option>
+                                                    <option value="1" selected>Arrived</option>
+                                                    <option value="2" >Checked out</option>
+                                                 <?php
+                                                 }
+                                                 else
+                                                 {
+                                                ?>
+                                                    <option value="0" >Booked</option>
+                                                    <option value="1" >Arrived</option>
+                                                    <option value="2" selected>Checked out</option>
+                                                <?php
+                                                 }
+                                            ?>
                                             </select>
                                         </div>
                                     </div>
@@ -85,43 +127,6 @@
                             </form>
                         </div>
 
-                    </div>
-                </div>
-            </div>
-
-            <!-- Order Records -->
-            <div class="container">
-                <div class="container-recent">
-                    <div class="container-recent-inner">
-                        <div class="container-recent__heading">
-                            <p class="recent__heading-title">Orders Records</p>
-                        </div>
-
-                        <div class="table-responsive" style="overflow-x:auto;">
-                            <table class="table">
-                                <thead class="thead-light">
-                                    <tr>
-                                        <th class="text-column-emphasis" scope="col">CUSTOMER</th> 
-                                        <th class="text-column" scope="col">PRODUCT</th> 
-                                        <th class="text-column" scope="col">UNIT PRICE</th> 
-                                        <th class="text-column" scope="col">QTY</th> 
-                                        <th class="text-column" scope="col">TOTAL</th> 
-                                        <!-- <th class="text-column" scope="col">ACTION</th>  -->
-                                    </tr>
-                                </thead>
-                                <tbody class="table-body">
-                                    <tr>
-                                        <th class="text-column-emphasis" scope="row">Christine Moore</th> 
-                                        <th class="text-column" scope="row">Irish Coffee</th> 
-                                        <th class="text-column" scope="row">$11</th> 
-                                        <th class="text-column" scope="row">1</th> 
-                                        <th class="text-column" scope="row">$11</th> 
-                                    </tr>
-
-                                </tbody>
-                            </table>
-
-                        </div>
                     </div>
                 </div>
             </div>

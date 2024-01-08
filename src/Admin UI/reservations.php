@@ -1,9 +1,9 @@
 <?php
-    $page_title = "Tasty Tongue - Staff List";
+    $page_title = "Tasty Tongue - Reservation List";
     require_once('partials/_head.php');
     //require_once('partials/_analytics.php');
 
-    $staffs = getbyRole('users', 'Staff');
+    $reservations = getAll('reservation_list');
 ?>
 <body>
     <!-- Sidebar -->
@@ -51,63 +51,65 @@
                                     </tr>
                                 </thead>
                                 <tbody class="table-body">
-                                    <?php
-                                        // $count = sizeof($reservations['data']);
-                                        // if($count > 0)
+                                <?php 
+                                    if($reservations['status'] == 'Data Found')
+                                    {
+                                        foreach($reservations['data'] as $reservation)
                                         {
-                                        ?>
-                                            <?php  //foreach($reservations['data'] as $reservation) 
-                                            {  
-                                            ?>
+                                            $customer = getbyKeyValue('users', 'id', $reservation['user_id']);
+                                    ?>
                                             <tr>
-                                                <th class="text-column-emphasis" scope="row"><?php //echo $reservation['reservation_id']?></th> 
-                                                <th class="text-column" scope="row"><?php //echo $user['data]['fullname']?></th>                 
-                                                <th class="text-column" scope="row"><?php //echo $reservation['table_id']?></th>
+                                                <th class="text-column-emphasis" scope="row"><?php echo $reservation['reservation_id']?></th> 
+                                                <th class="text-column" scope="row"><?php echo $customer['data']['fullname']?></th>                 
+                                                <th class="text-column" scope="row"><?php echo $reservation['table_id']?></th>
                                                 <?php 
                                                     // $reservation_dt = $reservation['datetime']->format('H:i:s Y-m-d');
                                                 ?> 
-                                                <th class="text-column" scope="row"><?php  //echo $reservation_dt?></th> 
-                                                <th class="text-column" scope="row"><?php  //echo $reservation['party_size']?></th> 
-                                                <?php //if($reservation['status'] == 1)
-                                                    {?>
-                                                        <th class="text-column" scope="row">
-                                                            <span class="badge badge-arrived">Arrived<?php // echo $table['table_status']?></span>
-                                                            <!-- <span class="badge badge-unsuccess">Pending<?php // echo $table['table_status']?></span>  -->
-                                                            <!-- <span class="badge badge-success">Done<?php // echo $table['table_status']?></span>  -->
+                                                <th class="text-column" scope="row"><?php  echo $reservation['datetime']?></th> 
+                                                <th class="text-column" scope="row"><?php  echo $reservation['party_size']?></th> 
+                                                <th class="text-column" scope="row">
+                                                        <?php if ($reservation['status'] == 0 )
+                                                        { 
+                                                        ?>
+                                                            <span class="badge badge-unsuccess">Booked</span>
+
+                                                        <?php
+                                                        }
+                                                        elseif ($reservation['status'] == 1)
+                                                        {?>
+                                                            <span class="badge badge-arrived">Arrived</span>
+                                                        <?php
+                                                        }
+                                                        else
+                                                        {?>
+                                                            <span class="badge badge-success">Checked out</span> 
+                                                    
                                                         </th> 
-                                                    <?php
-                                                    }
-                                                    //else
-                                                    {
-                                                    ?>
-                                                        <!-- <th class="text-column" scope="row">No</th>  -->
-                                                    <?php
-                                                    }
-                                                ?>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                
                                                 <th class="text-column" scope="row">
                                                     <div class="text-column__action">
-                                                        <a href="../Controller/AdminController/delete_reservation.php?id=<?php // echo $reservation['reservation_id']?>" 
-                                                        class="btn-control btn-control-delete">
-                                                            <i class="fa-solid fa-trash-can btn-control-icon"></i>
-                                                            Delete
-                                                        </a>
-                                                        <a href="update_reservations.php?id=<?php  //echo $reservation['reservation_id']?>" class="btn-control btn-control-edit">
+                                                        <a href="update_reservations.php?id=<?php echo $reservation['reservation_id']?>" class="btn-control btn-control-edit">
                                                             <i class="fa-solid fa-pen-to-square btn-control-icon"></i>
                                                             Update
                                                         </a>
                                                     </div>
                                                 </th> 
                                             </tr>
-                                            <?php 
-                                            } ?>
-                                        <?php 
+                                            <?php
                                         }
-                                        // else
-                                        { ?>
-                                            <!-- <h4> No Record Found </h4> -->
-                                        <?php
-                                        }
-                                    ?>   
+                                    }
+                                    else
+                                    {
+                                    ?>
+                                     <tr>
+                                     <th class="text-column" scope="row">No data found</th>
+                                    <?php
+                                    }
+                                    ?>
+                                    </tr>
                                 </tbody>
                             </table>
 
@@ -124,3 +126,4 @@
 
 </body>
 </html>
+
