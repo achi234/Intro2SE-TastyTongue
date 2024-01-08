@@ -27,6 +27,27 @@
                                 Add new customer
                             </a>
 
+                            <?php
+                                $strKeyword = null;
+
+                                if(isset($_POST["btn-search"]))
+                                {
+                                    $strKeyword = $_POST["search_text"];
+                                    $customers = searchUserByKeyword('users', $strKeyword, 'Customer');
+
+                                    if($customers['status'] == 'No Data Found')
+                                    {
+                                        $_SESSION['status'] = $customers['status'];
+                                        // $customers = getByUserTypeWithPagination('users', 'Customer', $pageSize, $pageNumber, 'id');
+                                    }
+                                }
+                                else
+                                {
+                                    // $customers = getByUserTypeWithPagination('users', 'Customer', $pageSize, $pageNumber, 'id');
+                                }
+                            ?>
+
+
                             <div class="container__heading-search">
                                 <input type="text" class="heading-search__area" placeholder="Search by code, name..." name="search_text" value="">
                                 <button class="btn-control btn-control-search" name="btn-search">
@@ -41,6 +62,7 @@
                             <table class="table">
                                 <thead class="thead-light"> 
                                     <tr>
+                                        <th class="text-column-emphasis" scope="col">CODE</th> 
                                         <th class="text-column" scope="col">FULL NAME</th> 
                                         <th class="text-column" scope="col">CONTACT NUMBER</th> 
                                         <th class="text-column" scope="col">EMAIL</th> 
@@ -58,6 +80,7 @@
                                             {  
                                             ?>
                                             <tr>
+                                                <th class="text-column-emphasis" scope="row"><?php echo $customer['id']?></th> 
                                                 <th class="text-column" scope="row"><?php echo $customer['fullname']?></th> 
                                                 <th class="text-column" scope="row"><?php echo $customer['phone']?></th> 
                                                 <th class="text-column" scope="row"><?php  echo $customer['email']?></th> 
@@ -87,12 +110,15 @@
                                         <?php 
                                         }
                                         else
-                                        { ?>
-                                            <h4> No Record Found </h4>
+                                        {
+                                        ?>
+                                         <tr>
+                                         <th class="text-column" scope="row">No data found</th>
                                         <?php
                                         }
-                                    ?>   
-                                </tbody>
+                                        ?>
+                                        </tr>
+                                    </tbody>
                             </table>
 
                         </div>
