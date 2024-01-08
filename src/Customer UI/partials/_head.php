@@ -36,6 +36,11 @@
   <!-- responsive style -->
   <link href="../assets/css/responsive.css" rel="stylesheet" />
 
+  <?php 
+    include('../Controller/functions.php');    
+  ?>
+
+
   <!-- jQery -->
   <script src="../assets/js/jquery-3.4.1.min.js"></script>
   <!-- popper js -->
@@ -52,18 +57,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
   <!-- custom js -->
   <script src="../assets/js/custom.js"></script>
-  <!-- Google Map -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+  
   </script>
-  <script src="../../assets/js/swal.js"></script>
-  <!-- End Google Map -->
-  <link rel="stylesheet" href="../../assets/css/base.css">
-  <link rel="stylesheet" href="../../assets/css/main.css">
+
+  <script src="../assets/js/swal.js"></script>
+  <!-- 
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/main.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@700;800&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" sizes="16x16" href="../../assets/image/logo.png">
-  <script src="../../assets/js/swal.js"></script>
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/image/logo.png">
+  <script src="../assets/js/swal.js"></script>
+  End Google Map -->
 
 
 <?php

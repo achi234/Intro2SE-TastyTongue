@@ -596,6 +596,17 @@ a:focus {
   color: #EBB42C;
 }
 
+.food_section .filters_menu li {
+  padding: 7px 25px;
+  cursor: pointer;
+  border-radius: 25px;
+}
+
+.food_section .filters_menu li.active {
+  background-color: #05433E;
+  color: #EBB42C;
+}
+
 .food_section .box {
   position: relative;
   margin-top: 25px;
@@ -1198,5 +1209,62 @@ input[type="radio"] {
 .book_section .report-box .reservation-detail {
   color: #fff;
 }
+
+.invoice_section .table td, .table th {
+  vertical-align: middle;
+  border-top: 1px solid #05433E;
+  white-space: nowrap;
+}
+
+.invoice_section .table-responsive {
+  border: solid 5px #05433E;
+  border-radius: 25px;
+}
+
+/*.invoice_section .table {
+  border: solid 5px #05433E;
+  border-radius: 50px 50px 0px 0px;
+}*/
+
+.invoice_section .table .custom-thead-light {
+  background-color: #05433E;
+  color: white;
+  border-bottom: 4px solid #05433E;
+}
+
+.invoice_section .table .thead-light th {
+  /*font-size: 1.1rem;*/
+  /* font-weight: 600; */
+  padding: 12px 24px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-top: 1px solid #05433E;
+  background-color: #05433E;
+  text-align: left;
+}
+
+.invoice_section .table tbody th {
+  /*font-size: 1.3rem;*/
+  /* font-weight: 600; */
+  color: #05433E;
+  padding: 16px 24px;
+  letter-spacing: 1px;
+  border-top: 1px solid #d9d9d9;
+  text-align: left;
+  min-height: 58px;
+  align-self: center;
+  font-weight: 500;
+  border-bottom: 1px solid #05433E;
+}
+
+.invoice_section .table tbody tr {
+  min-height: 100px;
+}
+
+.invoice_section .table .thead-light {
+  background-color: #05433E;
+  color: #fff;
+}
+
 
 /*# sourceMappingURL=style.css.map */
