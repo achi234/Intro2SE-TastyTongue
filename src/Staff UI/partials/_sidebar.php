@@ -78,7 +78,7 @@
             <!-- Logout -->
             <ul class="navbar-nav mb-md-3">
                 <li class="navbar-nav__item">
-                    <a href="login.php" class="nav-item__link text-danger">
+                    <a href="../Controller/logout.php" class="nav-item__link text-danger">
                         <i class="fa-solid fa-right-from-bracket nav-item__icon"></i>
                         <p class="nav-item__text">Log Out</p>
                     </a>
