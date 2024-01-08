@@ -329,6 +329,57 @@
             return $response;
         }
     }
+    
+    function searchByKeyword($tableName, $value)
+    {
+        global $conn;
+
+        $table = validate($tableName);
+        $value = validate($value);
+
+        // Lấy danh sách các cột trong bảng
+        $columns = getTableColumns($tableName, $conn);
+
+        // Xây dựng điều kiện tìm kiếm
+        $conditions = [];
+        foreach ($columns as $column) {
+            $conditions[] = "$column LIKE '%$value%'";
+        }
+
+        $query = "SELECT * FROM $tableName WHERE (";
+        $query .= implode(" OR ", $conditions);
+        $query .= ")";
+
+        // Thực hiện truy vấn chính
+        $result = mysqli_query($conn, $query);
+
+        if ($result) {
+            $data = array();
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                $data[] = $row;
+            }
+
+            if (!empty($data)) {
+                $response = [
+                    'status' => 'Data Found',
+                    'data' => $data,
+                ];
+            } else {
+                $response = [
+                    'status' => 'No Data Found',
+                ];
+            }
+
+            return $response;
+        } else {
+            $response = [
+                'status' => 'Something went wrong! Please try again.',
+            ];
+            return $response;
+        }
+    }
+
     function checkParam($type)
     {
         if(!empty($_GET[$type]))
