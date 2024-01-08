@@ -43,7 +43,7 @@
                                 <span class="align-items-center">Current reservation</span>
                             </a>
                             <div class="custom_dropdown-divider"></div>
-                            <a href="" class="custom_dropdown-item">
+                            <a href="customerInvoice.php" class="custom_dropdown-item">
                                 <span>Receipts</span>
                             </a>
                         </div>
