@@ -1,7 +1,9 @@
 <?php
     $page_title = "Tasty Tongue - Add New Invoice";
     require_once('partials/_head.php');
-    //require_once('partials/_analytics.php');
+
+    $reservations = getResNotInInv();
+    $payments = getAll('payment_method');
 ?>
 
 <body>
@@ -29,23 +31,37 @@
                                 <div class="form-row">
                                     <div class="form-row__flex">
                                         <div class="form-col">
-                                            <label for="" class="form-col__label">Reservation</label>
+                                            <label for="" class="form-col__label">Reservation Id</label>
                                             <select name="reservation_id" class="form-cotrol">
-                                                <option value="<?php //echo $reservation['data']['reservation_id'];?>" class=""><?php //echo $table['data']['table_size'];?></option>
+                                                <option value="" class="">Select Reservation Id</option>
+                                                <?php
+                                                foreach($reservations['data'] as $reservation)
+                                                { ?>
+                                                    <option value="<?php echo $reservation['reservation_id'];?>" ><?php echo $reservation['reservation_id'];?></option>
+                                                <?php
+                                                }
+                                                ?>                                                
                                             </select>
                                         </div>
 
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Payment Method</label>
                                             <select name="payment_id" class="form-cotrol">
-                                                <option value="<?php //echo $payment['data']['reservation_id'];?>" class=""><?php //echo $payment['data']['paymentmethod_name'];?></option>
+                                            <?php
+                                                foreach($payments['data'] as $payment)
+                                                { ?>
+                                                    <option value="<?php echo $payment['payment_id'];?>" ><?php echo $payment['payment_name'];?></option>
+                                                <?php
+                                                }
+                                                ?>                                                
                                             </select>
                                         </div>
 
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Invoice Status</label>
                                             <select name="invoice_status" class="form-cotrol">
-                                                <option value="<?php //echo $payment['data']['reservation_id'];?>" class=""><?php //echo $payment['data']['paymentmethod_name'];?></option>
+                                                <option value="0" class="">Unpaid</option>
+                                                <option value="1" class="">Paid</option>
                                             </select>
                                         </div>
                                     </div>
