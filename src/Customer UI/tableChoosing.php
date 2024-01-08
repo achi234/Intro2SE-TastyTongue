@@ -44,8 +44,12 @@ require_once('partials/_head.php');
                                         $datetime = $_SESSION['datetime'];
                                         $size = $_SESSION['size'];
 
-                                        $sql = "SELECT table_name, table_id FROM table_list WHERE table_name NOT IN (
-                                            SELECT table_name FROM reservation_list WHERE datetime = '$datetime'
+                                        // $sql = "SELECT table_name, table_id FROM table_list WHERE table_name NOT IN (
+                                        //     SELECT table_name FROM reservation_list WHERE datetime = '$datetime'
+                                        // ) AND size >= $size";
+                                        $sql = "SELECT table_name, table_id FROM table_list WHERE table_id NOT IN (
+                                            SELECT table_id FROM reservation_list WHERE datetime >= '$datetime' - INTERVAL 1 HOUR  
+                                            AND (status  = 0 OR status = 1)
                                         ) AND size >= $size";
                                         $result = $conn->query($sql);
                                         while ($row = $result->fetch_assoc()) {
