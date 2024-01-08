@@ -22,7 +22,27 @@
                     <form action="" method="POST" class="container-recent-inner">
                         <div class="container-recent__heading">
                             <p class="recent__heading-title">Select On Any Product To Make An Order</p>
-                            
+
+                            <?php
+                                $strKeyword = null;
+
+                                if(isset($_POST["btn-search"]))
+                                {
+                                    $strKeyword = $_POST["search_text"];
+                                    $products = searchByKeyword('products', $strKeyword);
+
+                                    if($products['status'] == 'No Data Found')
+                                    {
+                                        $_SESSION['status'] = $products['status'];
+                                        // $products = getWithPagination('products', $pageSize, $pageNumber, 'prod_id');
+                                    }
+                                }
+                                else
+                                {
+                                    // $products = getWithPagination('products', $pageSize, $pageNumber, 'prod_id');
+                                }
+                            ?>
+
                             <div class="container__heading-search">
                                 <input type="text" class="heading-search__area" placeholder="Search by code, name..." name="search_text" value="">
                                 <button class="btn-control btn-control-search" name="btn-search">
