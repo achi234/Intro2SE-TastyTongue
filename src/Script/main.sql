@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th1 07, 2024 lúc 08:58 PM
+-- Thời gian đã tạo: Th1 07, 2024 lúc 06:01 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -64,7 +64,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `add_order` (IN `res_id` INT(11), IN
     WHERE reservation_id = res_id;
 END$$
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE update_invoice (IN res_id INT(11), IN paymed_id INT(10), IN status_inv tinyint(2))   BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_invoice` (IN `res_id` INT(11), IN `paymed_id` INT(10), IN `status_inv` tinyint(2))   BEGIN
     DECLARE total_inv int(15);
     
     -- Tính tổng tiền là tổng các đơn hàng của reservation_id
@@ -482,7 +482,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `category_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `invoices`
@@ -497,10 +497,28 @@ ALTER TABLE `payment_method`
   MODIFY `payment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT cho bảng `products`
+--
+ALTER TABLE `products`
+  MODIFY `prod_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
 -- AUTO_INCREMENT cho bảng `reservation_list`
 --
 ALTER TABLE `reservation_list`
   MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT cho bảng `table_list`
+--
+ALTER TABLE `table_list`
+  MODIFY `table_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT cho bảng `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
