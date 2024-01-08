@@ -23,9 +23,29 @@
                     <form action="" method="POST" class="container-recent-inner">
                         <div class="container-recent__heading heading__button">
                             <a href="add_reservations.php" class="btn-control btn-control-add">
-                                <i class="fa-solid fa-chair btn-control-icon"></i>
+                                <i class="fa-solid fa-table btn-control-icon"></i>
                                 Add new reservation
                             </a>
+
+                            <?php
+                                $strKeyword = null;
+
+                                if(isset($_POST["btn-search"]))
+                                {
+                                    $strKeyword = $_POST["search_text"];
+                                    $reservations = searchByKeyword('reservation_list', $strKeyword);
+
+                                    if($reservations['status'] == 'No Data Found')
+                                    {
+                                        $_SESSION['status'] = $reservations['status'];
+                                        // $reservations = getWithPagination('reservation_list', $pageSize, $pageNumber, 'reservation_id');
+                                    }
+                                }
+                                else
+                                {
+                                    // $reservations = getWithPagination('reservation_list', $pageSize, $pageNumber, 'reservation_id');
+                                }
+                            ?>
 
                             <div class="container__heading-search">
                                 <input type="text" class="heading-search__area" placeholder="Search by code, name..." name="search_text" value="">
