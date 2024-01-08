@@ -36,7 +36,6 @@
     }
 
     $product = getbyKeyValue('products', 'prod_id',$product_id);
-    //print_r($product);
 ?>
 
 <body>

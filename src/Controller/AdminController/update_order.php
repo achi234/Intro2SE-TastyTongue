@@ -1,41 +1,34 @@
 <?php
-
     include('../functions.php');
     include("../../config/config.php");
     session_start();
-    if(isset($_POST['btn-updateOrder']))
+    global $conn;
+
+    $res_id = $_POST['reservation_id'];
+    $product_id =  $_POST['product_id'];
+    $qty =  $_POST['quantity'];
+
+    if(empty($qty)) 
     {
-        $reservation_id = $_POST['reservation_id'];
-        $product_id = $_POST['product_id'];
-        $quantity = $_POST['quantity'];
-
-        if(empty($_POST['quantity']))
-        {
-            redirect('../../Admin UI/update_orders.php?id='.$reservation_id.'&product_id='.$product_id, 'Please enter quantity', '');
-            exit(0);
-        }
-        else
-        {
-            
-            $data = [
-                'reservation_id' => $reservation_id,
-                'prod_id' => $product_id,
-                'quantity' => $quantity,
-            ];
-
-            global $conn;
-
-            $query = "UPDATE orders SET quantity = {$quantity}  WHERE reservation_id = {$reservation_id} and prod_id = {$product_id}";
-            $result = mysqli_query($conn, $query);
-    
-            if($result)
-            {
-                redirect('../../Admin UI/order_records.php?id='.$reservation_id, '', "You've modified order successfully!");
-            }
-            else
-            {
-                redirect('../../Admin UI/update_orders.php?id='.$reservation_id.'&product_id='.$product_id, 'Something went wrong! Please enter again...', "");
-            }
-        }
+        redirect('../../Admin UI/make_orders.php?id='.$res_id.'&status=1', 'Please enter quantity', '');
+        exit(0);
     }
+
+    $product = getbyKeyValue('products','prod_id',$product_id);
+
+    $updateStmt = $conn->prepare("CALL update_order(?, ?, ?)");
+    $updateStmt->bind_param("iii", $res_id, $product_id, $qty);
+    $updateResult = $updateStmt->execute();
+
+    if ($updateResult) 
+    {
+        redirect('../../Admin UI/order_records.php?id='.$res_id, '', "You've updated the order successfully!");
+    } 
+    else 
+    {
+       
+        redirect('../../Admin UI/order_records.php?id='.$res_id, 'Something went wrong! Please try again...', "");
+    }
+
+    $updateStmt->close();
 ?>
