@@ -12,7 +12,7 @@
         echo $payment_id;
         echo $status;
 
-        if(empty($reservation_id) || empty($payment_id) || empty($status))
+        if(empty($reservation_id) || empty($payment_id) || !isset($status))
         {
             redirect('../../Admin UI/add_invoices.php', 'All fields are required.', '');
             exit(0);

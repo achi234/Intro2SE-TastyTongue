@@ -69,8 +69,8 @@
                                 </thead>
                                 <tbody class="table-body">
                                     <?php
-                                    $count = sizeof($staffs['data']);
-                                    if($count > 0)
+        
+                                    if($staffs['status'] == 'Data Found')
                                     {
                                     ?>
                                         <?php  foreach($staffs['data'] as $staff) 
@@ -82,11 +82,6 @@
                                             <th class="text-column" scope="row"><?php  echo $staff['email']?></th> 
                                             <th class="text-column" scope="row">
                                                 <div class="text-column__action">
-                                                    <a href="../Controller/AdminController/delete_staff.php?id=<?php  echo $staff['id']?>" 
-                                                    class="btn-control btn-control-delete">
-                                                        <i class="fa-solid fa-trash-can btn-control-icon"></i>
-                                                        Delete
-                                                    </a>
                                                     <a href="update_staff.php?id=<?php  echo $staff['id']?>" class="btn-control btn-control-edit">
                                                         <i class="fa-solid fa-user-pen btn-control-icon"></i>
                                                         Update
@@ -94,16 +89,18 @@
                                                 </div>
                                             </th> 
                                         </tr>
-                                        <?php 
-                                        } ?>
-                                    <?php 
+                                        <?php
+                                        }
                                     }
                                     else
-                                    { ?>
-                                        <h4> No Record Found </h4>
+                                    {
+                                    ?>
+                                     <tr>
+                                     <th class="text-column" scope="row">No data found</th>
                                     <?php
                                     }
-                                    ?>   
+                                    ?>
+                                    </tr>
                                 </tbody>
                             </table>
 

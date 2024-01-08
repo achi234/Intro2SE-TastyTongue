@@ -74,10 +74,12 @@
                                     else
                                     {
                                     ?>
-                                        <h4> No Record Found </h4>
+                                     <tr>
+                                     <th class="text-column" scope="row">No data found</th>
                                     <?php
                                     }
                                     ?>
+                                    </tr>
                                 </tbody>
                             </table>
 

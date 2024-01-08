@@ -163,7 +163,6 @@
                                         $product = getbyKeyValue('products', 'prod_id', $order['prod_id']);
                                         $prod_name = $product['data']['prod_name'];
                                 ?>
-
                                         <tr>
                                             <th class="text-column-emphasis" scope="row"><?php echo $reservation_id;?></th> 
                                             <th class="text-column-emphasis" scope="row"><?php echo $prod_name;?></th> 
@@ -175,14 +174,17 @@
                                     } 
                                 }
                                 else
-                                { ?>
-                                    <tr><h4> No Record Found </h4></tr>
+                                {
+                                ?>
+                                <tr>
+                                <th class="text-column" scope="row">No data found</th>
                                 <?php
                                 }
-                                ?>   
+                                ?>
+                                </tr>
                                 </tbody>
                             </table>
-
+                            </div>
                         </div>
                     </div>
                 </div>

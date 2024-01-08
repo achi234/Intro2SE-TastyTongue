@@ -114,16 +114,18 @@
                                                 </div>
                                             </th> 
                                         </tr>
-                                        <?php 
-                                        } ?>
-                                    <?php 
+                                        <?php
+                                        }
                                     }
                                     else
-                                    { ?>
-                                        <h4> No Data Found </h4>
+                                    {
+                                    ?>
+                                     <tr>
+                                     <th class="text-column" scope="row">No data found</th>
                                     <?php
                                     }
-                                    ?>   
+                                    ?>
+                                    </tr>
                                 </tbody>
                             </table>
 

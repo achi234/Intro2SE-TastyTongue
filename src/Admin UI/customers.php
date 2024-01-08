@@ -75,11 +75,6 @@
                                                 ?>
                                                 <th class="text-column" scope="row">
                                                     <div class="text-column__action">
-                                                        <a href="../Controller/AdminController/delete_customer.php?id=<?php  echo $customer['id']?>" 
-                                                        class="btn-control btn-control-delete">
-                                                            <i class="fa-solid fa-trash-can btn-control-icon"></i>
-                                                            Delete
-                                                        </a>
                                                         <a href="update_customers.php?id=<?php  echo $customer['id']?>" class="btn-control btn-control-edit">
                                                             <i class="fa-solid fa-user-pen btn-control-icon"></i>
                                                             View detail
