@@ -454,5 +454,39 @@
         }
     }
 
+    function getResNotInInv()
+    {
+        global $conn;
 
+        // $table = validate($tableName);
+
+        $query = "SELECT * FROM reservation_list WHERE reservation_id NOT IN (SELECT reservation_id FROM invoices)";
+        $result = mysqli_query($conn, $query);
+
+        if ($result) {
+            $data = array();
+
+            while ($row = mysqli_fetch_assoc($result)) {
+                $data[] = $row;
+            }
+
+            if (!empty($data)) {
+                $response = [
+                    'status' => 'Data Found',
+                    'data' => $data,
+                ];
+            } else {
+                $response = [
+                    'status' => 'No Data Found',
+                ];
+            }
+
+            return $response;
+        } else {
+            $response = [
+                'status' => 'Something went wrong! Please try again.',
+            ];
+            return $response;
+        }
+    }
 ?>
