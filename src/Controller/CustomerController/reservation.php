@@ -75,10 +75,11 @@ if($_POST['table_id'] == 0 && $check == false) {
     //         SELECT table_name FROM reservation_list WHERE datetime = '$datetime'
     //     ) AND size >= $size";
 
-$sql = "SELECT table_name, table_id FROM table_list WHERE table_id NOT IN (
-    SELECT table_id FROM reservation_list WHERE datetime >= '$datetime' - INTERVAL 1 HOUR  
-    AND (status  = 0 OR status = 1)
-) AND size >= $size";
+    $sql = "SELECT table_name, table_id FROM table_list WHERE table_id NOT IN (
+        SELECT table_id FROM reservation_list WHERE datetime >= '$datetime' - INTERVAL 1 HOUR  
+        AND (status  = 0 OR status = 1)
+    ) AND size >= $size";
+    
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
     
