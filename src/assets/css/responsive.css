@@ -2,6 +2,10 @@
 
 @media (max-width: 1120px) {}
 
+.main-content{
+  background-color: #F3F2ED;
+}
+
 @media (max-width: 992px) {
   .hero_area {
     min-height: auto;
