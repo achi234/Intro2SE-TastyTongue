@@ -13,7 +13,7 @@
 
         if(empty($customer_name) || empty($customer_email) || empty($customer_phone) || empty($customer_password))
         {
-            redirect('../../Staff UI/add_customer.php', 'All fields are required.', '');
+            redirect('../../Staff UI/add_customers.php', 'All fields are required.', '');
             exit(0);
         }
         else
@@ -24,7 +24,7 @@
             {
                 if(mysqli_num_rows($compile_emailCheck) > 0)
                 {
-                    redirect('../../Admin UI/add_customer.php', 'Email has already register. Please choose another email', '');
+                    redirect('../../Staff UI/add_customers.php', 'Email has already register. Please choose another email', '');
                     exit(0);
                 }
             }
@@ -48,7 +48,7 @@
             }
             else
             {
-                redirect('../../Staff UI/add_customer.php', '', "Something went wrong! Please enter again...");
+                redirect('../../Staff UI/add_customers.php', '', "Something went wrong! Please enter again...");
             }
         }
 

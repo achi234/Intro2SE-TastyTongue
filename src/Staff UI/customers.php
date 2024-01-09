@@ -4,6 +4,10 @@
     //require_once('partials/_analytics.php');
 
     $customers = getbyRole('users', 'Customer');
+    $pageSize = 10;
+    $pageNumber = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    
+    $customers = getByUserTypeWithPagination('users', 'Customer', $pageSize, $pageNumber, 'id');
 ?>
 <body>
     <!-- Sidebar -->
@@ -27,6 +31,74 @@
                                 Add new customer
                             </a>
 
+                            <div class="pagination">
+                                <?php
+                                    $totalPages = ceil($customers['total'] / $pageSize);
+                                    $maxPagesToShow = 4;
+                                    $halfMax = floor($maxPagesToShow / 2);
+
+                                    // Hiển thị nút Previous
+                                    if ($pageNumber > 1) {
+                                        echo '<a href="?page=' . ($pageNumber - 1) . '">&laquo;</a>';
+                                    } else {
+                                        echo '<a class="disabled" href="#">&laquo;</a>';
+                                    }
+
+                                    // Hiển thị các nút trang
+                                    for ($i = max(1, $pageNumber - $halfMax); $i <= min($totalPages, $pageNumber + $halfMax); $i++) {
+                                        echo '<a class="' . ($i == $pageNumber ? 'active' : '') . '" href="?page=' . $i . '">' . $i . '</a>';
+                                    }
+
+                                    // Hiển thị nút Next
+                                    if ($pageNumber < $totalPages) {
+                                        echo '<a href="?page=' . ($pageNumber + 1) . '">&raquo;</a>';
+                                    } else {
+                                        echo '<a class="disabled" href="#">&raquo;</a>';
+                                    }
+                                ?>
+                            </div>
+
+                            <?php
+                                $strKeyword = null;
+
+                                if(isset($_POST["btn-search"]))
+                                {
+                                    $strKeyword = $_POST["search_text"];
+                                    $customers = searchUserByKeyword('users', $strKeyword, 'Customer');
+
+                                    if($customers['status'] == 'No Data Found')
+                                    {
+                                        $_SESSION['status'] = $customers['status'];
+                                         $customers = getByUserTypeWithPagination('users', 'Customer', $pageSize, $pageNumber, 'id');
+                                    }
+                                }
+                                else
+                                {
+                                    $customers = getByUserTypeWithPagination('users', 'Customer', $pageSize, $pageNumber, 'id');
+                                }
+                            ?>
+
+                            <?php
+                                $strKeyword = null;
+
+                                if(isset($_POST["btn-search"]))
+                                {
+                                    $strKeyword = $_POST["search_text"];
+                                    $customers = searchUserByKeyword('users', $strKeyword, 'Customer');
+
+                                    if($customers['status'] == 'No Data Found')
+                                    {
+                                        $_SESSION['status'] = $customers['status'];
+                                        // $customers = getByUserTypeWithPagination('users', 'Customer', $pageSize, $pageNumber, 'id');
+                                    }
+                                }
+                                else
+                                {
+                                    // $customers = getByUserTypeWithPagination('users', 'Customer', $pageSize, $pageNumber, 'id');
+                                }
+                            ?>
+
+
                             <div class="container__heading-search">
                                 <input type="text" class="heading-search__area" placeholder="Search by code, name..." name="search_text" value="">
                                 <button class="btn-control btn-control-search" name="btn-search">
@@ -41,6 +113,7 @@
                             <table class="table">
                                 <thead class="thead-light"> 
                                     <tr>
+                                        <th class="text-column-emphasis" scope="col">CODE</th> 
                                         <th class="text-column" scope="col">FULL NAME</th> 
                                         <th class="text-column" scope="col">CONTACT NUMBER</th> 
                                         <th class="text-column" scope="col">EMAIL</th> 
@@ -58,6 +131,7 @@
                                             {  
                                             ?>
                                             <tr>
+                                                <th class="text-column-emphasis" scope="row"><?php echo $customer['id']?></th> 
                                                 <th class="text-column" scope="row"><?php echo $customer['fullname']?></th> 
                                                 <th class="text-column" scope="row"><?php echo $customer['phone']?></th> 
                                                 <th class="text-column" scope="row"><?php  echo $customer['email']?></th> 
@@ -75,10 +149,9 @@
                                                 ?>
                                                 <th class="text-column" scope="row">
                                                     <div class="text-column__action">
-
                                                         <a href="update_customers.php?id=<?php  echo $customer['id']?>" class="btn-control btn-control-edit">
                                                             <i class="fa-solid fa-user-pen btn-control-icon"></i>
-                                                            Update
+                                                            View detail
                                                         </a>
                                                     </div>
                                                 </th> 
@@ -88,12 +161,15 @@
                                         <?php 
                                         }
                                         else
-                                        { ?>
-                                            <h4> No Record Found </h4>
+                                        {
+                                        ?>
+                                         <tr>
+                                         <th class="text-column" scope="row">No data found</th>
                                         <?php
                                         }
-                                    ?>   
-                                </tbody>
+                                        ?>
+                                        </tr>
+                                    </tbody>
                             </table>
 
                         </div>

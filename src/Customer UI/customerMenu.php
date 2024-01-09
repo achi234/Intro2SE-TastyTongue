@@ -70,7 +70,7 @@ $products = getAll('products');
 
 
       <!-- Footer -->
-      <?php require_once('partial/_footer.php'); ?>
+      <?php require_once('partials/_footer.php'); ?>
     </div>
   </div>
 
