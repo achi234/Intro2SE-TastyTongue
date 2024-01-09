@@ -23,7 +23,7 @@ if (isset($_POST['date_time']) && isset($_POST['party_size'])) {
     $rows = $result->fetch_all(MYSQLI_ASSOC);
 
     // Hiển thị kết quả
-   
+    echo '<label for="" class="form-col__label">Table Id</label>';
     echo '<select name="table_id" class="form-cotrol">';
     foreach ($rows as $row) {
         $table_id = $row['table_id'];

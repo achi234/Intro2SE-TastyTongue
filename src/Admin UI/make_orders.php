@@ -5,7 +5,19 @@
 
     $products = getAll('products',1);
     $reservation_id = $_GET['id'];
-   
+    $status = $_GET['status'];
+
+    $reservation = getbyKeyValue('reservation_list', 'reservation_id', $reservation_id);
+    $table_id = $reservation['data']['table_id'];
+
+    switch($status)
+    {
+        case 0:
+            redirect('./update_reservations.php?id='.$reservation_id, 'You should update customer arrival to order', '');
+        case 2:
+            redirect('./update_tables.php?id='.$table_id, 'Customer has checked out, cannot order', '');
+    }
+        
 ?>
 <body>
     <!-- Sidebar -->

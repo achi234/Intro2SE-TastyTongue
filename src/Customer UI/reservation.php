@@ -32,7 +32,7 @@ require_once('partials/_head.php');
                                 <form action="../Controller/CustomerController/reservation.php" method="post">
                                     <div>
                                         <span> Party size </span>
-                                        <input type="text" class="form-control" placeholder="Number only" name="size" />
+                                        <input type="number" class="form-control" placeholder="Number only" name="size" />
                                     </div>
                                     <div>
                                         <span> Reservation Date&Time </span>
