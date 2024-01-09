@@ -1,10 +1,9 @@
-
 <?php
 $page_title = "Tasty Tongue - Homepage";
 include('./config/config.php');
 //include('../Controller/authenticate.php');
 require_once('partial/_head.php');
-$products= getAll('products');
+$products = getAllByKeyValue('products', 'prod_cat', '1');
 ?>
 
 <body>
@@ -30,7 +29,7 @@ $products= getAll('products');
                                         <div class="col-md-7 col-lg-6 ">
                                             <div class="detail-box">
                                                 <h1>
-                                                    Tasty Tongue 
+                                                    Tasty Tongue
                                                 </h1>
                                                 <p>
                                                     Doloremque, itaque aperiam facilis rerum, commodi, temporibus
@@ -111,59 +110,60 @@ $products= getAll('products');
             </div>
 
             <!-- food section -->
-      <section class="food_section layout_padding">
-        <div class="container">
-          <div class="heading_container heading_center">
-            <h2 class="text-green">
-              Our Menu
-            </h2>
-          </div>
-          <div class="input-group rounded search-bar">
-            <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-              aria-describedby="search-addon" />
-            <button type="submit" class="btn btn-primary yellow-btn" data-mdb-ripple-init>
-              <i class="fa fa-search"></i>
-            </button>
-          </div>
-
-          <div id="filters_menu">
-            <!-- <li class="active" data-filter="*">All</li>
-            <li data-filter=".burger">Burger</li>
-            <li data-filter=".pizza">Pizza</li>
-            <li data-filter=".pasta">Pasta</li>
-            <li data-filter=".fries">Fries</li> -->
-            <div class="container">
-              <div class="row grid">
-                <?php foreach ($products['data'] as $product) { ?>
-                  <div class="col-sm-6 col-lg-4">
-                    <div class="box">
-                      <div>
-                        <div class="img-box">
-                          <img src="./assets/image/products/<?php echo $product['prod_img'] ?>" alt="">
-                        </div>
-                        <div class="detail-box" style="overflow-y:auto;">
-                          <h5>
-                            <?php echo $product['prod_name'] ?>
-                          </h5>
-                          <p>
-                            <?php echo $product['prod_desc'] ?>
-                          </p>
-                          <div class="options">
-                            <h6>
-                              $
-                              <?php echo $product['prod_price'] ?>
-                            </h6>
-                          </div>
-                        </div>
-                      </div>
+            <section class="food_section layout_padding">
+                <div class="container">
+                    <div class="heading_container heading_center">
+                        <h2 class="text-green">
+                            Our Menu
+                        </h2>
                     </div>
-                  </div>
-                <?php } ?>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+                    <div class="input-group rounded search-bar">
+                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                            aria-describedby="search-addon" />
+                        <button type="submit" class="btn btn-primary yellow-btn" data-mdb-ripple-init>
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <div id="filters_menu">
+                        <div class="container">
+                            <div class="row grid">
+                                <?php foreach ($products['data'] as $product) { ?>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <div class="box">
+                                            <div>
+                                                <div class="img-box">
+                                                    <img src="./assets/image/products/<?php echo $product['prod_img'] ?>"
+                                                        alt="">
+                                                </div>
+                                                <div class="detail-box" style="overflow-y:auto;">
+                                                    <h5>
+                                                        <?php echo $product['prod_name'] ?>
+                                                    </h5>
+                                                    <p>
+                                                        <?php echo $product['prod_desc'] ?>
+                                                    </p>
+                                                    <div class="options">
+                                                        <h6>
+                                                            $
+                                                            <?php echo $product['prod_price'] ?>
+                                                        </h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-box">
+                        <a href="menu.php">
+                            View More
+                        </a>
+                    </div>
+                </div>
+            </section>
             <!-- about section -->
 
             <section class="about_section layout_padding">
@@ -183,10 +183,11 @@ $products= getAll('products');
                                     </h2>
                                 </div>
                                 <p>
-                                    Tasty Tongue was first founded by Lucid J in 1990. In this long journey, we have 
-                                        never stopped enhancing our food quality as well as our services.
-                                    Our first priority is customer's satisfaction and we want to make sure you would always 
-                                        enjoy your time at this comfortable place.
+                                    Tasty Tongue was first founded by Lucid J in 1990. In this long journey, we have
+                                    never stopped enhancing our food quality as well as our services.
+                                    Our first priority is customer's satisfaction and we want to make sure you would
+                                    always
+                                    enjoy your time at this comfortable place.
                                 </p>
                             </div>
                         </div>
@@ -195,9 +196,11 @@ $products= getAll('products');
             </section>
 
             <!-- end about section -->
-            <div class="layout-padding"> 
+            <section class="client_section layout_padding-bottom layout_padding">
+                <div class="container">
+                </div>
+            </section>
 
-            </div>
             <!-- Footer -->
             <?php require_once('partial/_footer.php'); ?>
         </div>

@@ -1,10 +1,9 @@
-
 <?php
 $page_title = "Tasty Tongue - Customer Homepage";
 include('../config/config.php');
 include('../Controller/authenticate.php');
 require_once('partials/_head.php');
-//require_once('partials/_analytics.php');
+$products = getAllByKeyValue('products', 'prod_cat', '1');
 ?>
 
 <body>
@@ -30,7 +29,7 @@ require_once('partials/_head.php');
                                         <div class="col-md-7 col-lg-6 ">
                                             <div class="detail-box">
                                                 <h1>
-                                                    Tasty Tongue Restaurant
+                                                    Tasty Tongue
                                                 </h1>
                                                 <p>
                                                     Doloremque, itaque aperiam facilis rerum, commodi, temporibus
@@ -39,8 +38,8 @@ require_once('partials/_head.php');
                                                     ducimus libero ipsam.
                                                 </p>
                                                 <div class="btn-box">
-                                                    <a href="" class="btn1">
-                                                        Make reservation!
+                                                    <a href="menu.php" class="btn1">
+                                                        Browse Menu
                                                     </a>
                                                 </div>
                                             </div>
@@ -54,7 +53,7 @@ require_once('partials/_head.php');
                                         <div class="col-md-7 col-lg-6 ">
                                             <div class="detail-box">
                                                 <h1>
-                                                    Fast Food Restaurant
+                                                    Tasty Tongue
                                                 </h1>
                                                 <p>
                                                     Doloremque, itaque aperiam facilis rerum, commodi, temporibus
@@ -63,7 +62,7 @@ require_once('partials/_head.php');
                                                     ducimus libero ipsam.
                                                 </p>
                                                 <div class="btn-box">
-                                                    <a href="" class="btn1">
+                                                    <a href="login.php" class="btn1">
                                                         Order Now
                                                     </a>
                                                 </div>
@@ -87,8 +86,8 @@ require_once('partials/_head.php');
                                                     ducimus libero ipsam.
                                                 </p>
                                                 <div class="btn-box">
-                                                    <a href="" class="btn1">
-                                                        Book tables Now!
+                                                    <a href="login.php" class="btn1">
+                                                        Book Now!
                                                     </a>
                                                 </div>
                                             </div>
@@ -110,946 +109,61 @@ require_once('partials/_head.php');
                 <!-- end slider section -->
             </div>
 
-            <!-- best sellers section -->
-
-            <section class="offer_section layout_padding-bottom">
-                <div class="offer_container">
-                    <div class="container ">
-                        <div class="heading_container heading_center">
-                            <h2 class="text-green">
-                                Best Sellers
-                            </h2>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6  ">
-                                <div class="box ">
-                                    <div class="img-box">
-                                        <img src="../assets/image/o1.jpg" alt="">
-                                    </div>
-                                    <div class="detail-box">
-                                        <h5>
-                                            Tasty Burger
-                                        </h5>
-                                        <a href="">
-                                            Order Now <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                viewBox="0 0 456.029 456.029"
-                                                style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                                                <g>
-                                                    <g>
-                                                        <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                            c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                                                    </g>
-                                                </g>
-                                                <g>
-                                                    <g>
-                                                        <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                            C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                            c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                            C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                                                    </g>
-                                                </g>
-                                                <g>
-                                                    <g>
-                                                        <path
-                                                            d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                            c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                                                    </g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6  ">
-                                <div class="box ">
-                                    <div class="img-box">
-                                        <img src="../assets/image/o2.jpg" alt="">
-                                    </div>
-                                    <div class="detail-box">
-                                        <h5>
-                                            Pizza Days
-                                        </h5>
-                                        <h6>
-                                            <span>15%</span> Off
-                                        </h6>
-                                        <a href="">
-                                            Order Now <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                viewBox="0 0 456.029 456.029"
-                                                style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                                                <g>
-                                                    <g>
-                                                        <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                            c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                                                    </g>
-                                                </g>
-                                                <g>
-                                                    <g>
-                                                        <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                            C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                            c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                            C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                                                    </g>
-                                                </g>
-                                                <g>
-                                                    <g>
-                                                        <path
-                                                            d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                            c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                                                    </g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                                <g>
-                                                </g>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- end offer section -->
-
             <!-- food section -->
-
-            <section class="food_section layout_padding-bottom">
+            <section class="food_section layout_padding">
                 <div class="container">
                     <div class="heading_container heading_center">
                         <h2 class="text-green">
                             Our Menu
                         </h2>
                     </div>
+                    <div class="input-group rounded search-bar">
+                        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                            aria-describedby="search-addon" />
+                        <button type="submit" class="btn btn-primary yellow-btn" data-mdb-ripple-init>
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
 
-                    <ul class="filters_menu">
-                        <li class="active" data-filter="*">All</li>
-                        <li data-filter=".burger">Burger</li>
-                        <li data-filter=".pizza">Pizza</li>
-                        <li data-filter=".pasta">Pasta</li>
-                        <li data-filter=".fries">Fries</li>
-                    </ul>
-
-                    <div class="filters-content">
-                        <div class="row grid">
-                            <div class="col-sm-6 col-lg-4 all pizza">
-                                <div class="box">
-                                    <div>
-                                        <div class="img-box">
-                                            <img src="../assets/image/f1.png" alt="">
-                                        </div>
-                                        <div class="detail-box">
-                                            <h5>
-                                                Delicious Pizza
-                                            </h5>
-                                            <p>
-                                                Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit,
-                                                magnam voluptatem repellendus sed eaque
-                                            </p>
-                                            <div class="options">
-                                                <h6>
-                                                    $20
-                                                </h6>
-                                                <a href="">
-                                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                        viewBox="0 0 456.029 456.029"
-                                                        style="enable-background:new 0 0 456.029 456.029;"
-                                                        xml:space="preserve">
-                                                        <g>
-                                                            <g>
-                                                                <path
-                                                                    d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                                c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                            <g>
-                                                                <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                                C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                                c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                                C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                            <g>
-                                                                <path
-                                                                    d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                                c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                    </svg>
-                                                </a>
+                    <div id="filters_menu">
+                        <div class="container">
+                            <div class="row grid">
+                                <?php foreach ($products['data'] as $product) { ?>
+                                    <div class="col-sm-6 col-lg-4">
+                                        <div class="box">
+                                            <div>
+                                                <div class="img-box">
+                                                    <img src="../assets/image/products/<?php echo $product['prod_img'] ?>"
+                                                        alt="">
+                                                </div>
+                                                <div class="detail-box" style="overflow-y:auto;">
+                                                    <h5>
+                                                        <?php echo $product['prod_name'] ?>
+                                                    </h5>
+                                                    <p>
+                                                        <?php echo $product['prod_desc'] ?>
+                                                    </p>
+                                                    <div class="options">
+                                                        <h6>
+                                                            $
+                                                            <?php echo $product['prod_price'] ?>
+                                                        </h6>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-4 all burger">
-                                <div class="box">
-                                    <div>
-                                        <div class="img-box">
-                                            <img src="../assets/image/f2.png" alt="">
-                                        </div>
-                                        <div class="detail-box">
-                                            <h5>
-                                                Delicious Burger
-                                            </h5>
-                                            <p>
-                                                Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit,
-                                                magnam voluptatem repellendus sed eaque
-                                            </p>
-                                            <div class="options">
-                                                <h6>
-                                                    $15
-                                                </h6>
-                                                <a href="">
-                                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                        viewBox="0 0 456.029 456.029"
-                                                        style="enable-background:new 0 0 456.029 456.029;"
-                                                        xml:space="preserve">
-                                                        <g>
-                                                            <g>
-                                                                <path
-                                                                    d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                                c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                            <g>
-                                                                <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                                C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                                c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                                C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                            <g>
-                                                                <path
-                                                                    d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                                c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-4 all pizza">
-                                <div class="box">
-                                    <div>
-                                        <div class="img-box">
-                                            <img src="../assets/image/f3.png" alt="">
-                                        </div>
-                                        <div class="detail-box">
-                                            <h5>
-                                                Delicious Pizza
-                                            </h5>
-                                            <p>
-                                                Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit,
-                                                magnam voluptatem repellendus sed eaque
-                                            </p>
-                                            <div class="options">
-                                                <h6>
-                                                    $17
-                                                </h6>
-                                                <a href="">
-                                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                        viewBox="0 0 456.029 456.029"
-                                                        style="enable-background:new 0 0 456.029 456.029;"
-                                                        xml:space="preserve">
-                                                        <g>
-                                                            <g>
-                                                                <path
-                                                                    d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                                c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                            <g>
-                                                                <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                                C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                                c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                                C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                            <g>
-                                                                <path
-                                                                    d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                                c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-4 all pasta">
-                                <div class="box">
-                                    <div>
-                                        <div class="img-box">
-                                            <img src="../assets/image/f4.png" alt="">
-                                        </div>
-                                        <div class="detail-box">
-                                            <h5>
-                                                Delicious Pasta
-                                            </h5>
-                                            <p>
-                                                Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit,
-                                                magnam voluptatem repellendus sed eaque
-                                            </p>
-                                            <div class="options">
-                                                <h6>
-                                                    $18
-                                                </h6>
-                                                <a href="">
-                                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                        viewBox="0 0 456.029 456.029"
-                                                        style="enable-background:new 0 0 456.029 456.029;"
-                                                        xml:space="preserve">
-                                                        <g>
-                                                            <g>
-                                                                <path
-                                                                    d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                                c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                            <g>
-                                                                <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                                C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                                c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                                C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                            <g>
-                                                                <path
-                                                                    d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                                c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-4 all fries">
-                                <div class="box">
-                                    <div>
-                                        <div class="img-box">
-                                            <img src="../assets/image/f5.png" alt="">
-                                        </div>
-                                        <div class="detail-box">
-                                            <h5>
-                                                French Fries
-                                            </h5>
-                                            <p>
-                                                Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit,
-                                                magnam voluptatem repellendus sed eaque
-                                            </p>
-                                            <div class="options">
-                                                <h6>
-                                                    $10
-                                                </h6>
-                                                <a href="">
-                                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                        viewBox="0 0 456.029 456.029"
-                                                        style="enable-background:new 0 0 456.029 456.029;"
-                                                        xml:space="preserve">
-                                                        <g>
-                                                            <g>
-                                                                <path
-                                                                    d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                                c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                            <g>
-                                                                <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                                C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                                c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                                C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                            <g>
-                                                                <path
-                                                                    d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                                c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-4 all pizza">
-                                <div class="box">
-                                    <div>
-                                        <div class="img-box">
-                                            <img src="../assets/image/f6.png" alt="">
-                                        </div>
-                                        <div class="detail-box">
-                                            <h5>
-                                                Delicious Pizza
-                                            </h5>
-                                            <p>
-                                                Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit,
-                                                magnam voluptatem repellendus sed eaque
-                                            </p>
-                                            <div class="options">
-                                                <h6>
-                                                    $15
-                                                </h6>
-                                                <a href="">
-                                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                        viewBox="0 0 456.029 456.029"
-                                                        style="enable-background:new 0 0 456.029 456.029;"
-                                                        xml:space="preserve">
-                                                        <g>
-                                                            <g>
-                                                                <path
-                                                                    d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                                c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                            <g>
-                                                                <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                                C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                                c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                                C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                            <g>
-                                                                <path
-                                                                    d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                                c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-4 all burger">
-                                <div class="box">
-                                    <div>
-                                        <div class="img-box">
-                                            <img src="../assets/image/f7.png" alt="">
-                                        </div>
-                                        <div class="detail-box">
-                                            <h5>
-                                                Tasty Burger
-                                            </h5>
-                                            <p>
-                                                Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit,
-                                                magnam voluptatem repellendus sed eaque
-                                            </p>
-                                            <div class="options">
-                                                <h6>
-                                                    $12
-                                                </h6>
-                                                <a href="">
-                                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                        viewBox="0 0 456.029 456.029"
-                                                        style="enable-background:new 0 0 456.029 456.029;"
-                                                        xml:space="preserve">
-                                                        <g>
-                                                            <g>
-                                                                <path
-                                                                    d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                                c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                            <g>
-                                                                <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                                C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                                c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                                C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                            <g>
-                                                                <path
-                                                                    d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                                c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-4 all burger">
-                                <div class="box">
-                                    <div>
-                                        <div class="img-box">
-                                            <img src="../assets/image/f8.png" alt="">
-                                        </div>
-                                        <div class="detail-box">
-                                            <h5>
-                                                Tasty Burger
-                                            </h5>
-                                            <p>
-                                                Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit,
-                                                magnam voluptatem repellendus sed eaque
-                                            </p>
-                                            <div class="options">
-                                                <h6>
-                                                    $14
-                                                </h6>
-                                                <a href="">
-                                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                        viewBox="0 0 456.029 456.029"
-                                                        style="enable-background:new 0 0 456.029 456.029;"
-                                                        xml:space="preserve">
-                                                        <g>
-                                                            <g>
-                                                                <path
-                                                                    d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                                c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                            <g>
-                                                                <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                                C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                                c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                                C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                            <g>
-                                                                <path
-                                                                    d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                                c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-lg-4 all pasta">
-                                <div class="box">
-                                    <div>
-                                        <div class="img-box">
-                                            <img src="../assets/image/f9.png" alt="">
-                                        </div>
-                                        <div class="detail-box">
-                                            <h5>
-                                                Delicious Pasta
-                                            </h5>
-                                            <p>
-                                                Veniam debitis quaerat officiis quasi cupiditate quo, quisquam velit,
-                                                magnam voluptatem repellendus sed eaque
-                                            </p>
-                                            <div class="options">
-                                                <h6>
-                                                    $10
-                                                </h6>
-                                                <a href="">
-                                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                        viewBox="0 0 456.029 456.029"
-                                                        style="enable-background:new 0 0 456.029 456.029;"
-                                                        xml:space="preserve">
-                                                        <g>
-                                                            <g>
-                                                                <path
-                                                                    d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                                c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                            <g>
-                                                                <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                                C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                                c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                                C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                            <g>
-                                                                <path
-                                                                    d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                                c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                                                            </g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                        <g>
-                                                        </g>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
                     <div class="btn-box">
-                        <a href="">
+                        <a href="menu.php">
                             View More
                         </a>
                     </div>
                 </div>
             </section>
-
-            <!-- end food section -->
-
             <!-- about section -->
 
             <section class="about_section layout_padding">
@@ -1069,17 +183,12 @@ require_once('partials/_head.php');
                                     </h2>
                                 </div>
                                 <p>
-                                    There are many variations of passages of Lorem Ipsum available, but the majority
-                                    have suffered alteration
-                                    in some form, by injected humour, or randomised words which don't look even slightly
-                                    believable. If you
-                                    are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything
-                                    embarrassing hidden in
-                                    the middle of text. All
+                                    Tasty Tongue was first founded by Lucid J in 1990. In this long journey, we have
+                                    never stopped enhancing our food quality as well as our services.
+                                    Our first priority is customer's satisfaction and we want to make sure you would
+                                    always
+                                    enjoy your time at this comfortable place.
                                 </p>
-                                <a href="">
-                                    Read More
-                                </a>
                             </div>
                         </div>
                     </div>
@@ -1087,63 +196,11 @@ require_once('partials/_head.php');
             </section>
 
             <!-- end about section -->
-
-
-            <!-- client section -->
-
             <section class="client_section layout_padding-bottom layout_padding">
                 <div class="container">
-                    <div class="heading_container heading_center psudo_white_primary mb_45">
-                        <h2 class="text-green">
-                            What Says Our Customers
-                        </h2>
-                    </div>
-                    <div class="carousel-wrap row ">
-                        <div class="owl-carousel client_owl-carousel">
-                            <div class="item">
-                                <div class="box">
-                                    <div class="detail-box">
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                        </p>
-                                        <h6>
-                                            Moana Michell
-                                        </h6>
-                                        <p>
-                                            magna aliqua
-                                        </p>
-                                    </div>
-                                    <div class="img-box">
-                                        <img src="../assets/image/client1.jpg" alt="" class="box-img">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="box">
-                                    <div class="detail-box">
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                        </p>
-                                        <h6>
-                                            Mike Hamell
-                                        </h6>
-                                        <p>
-                                            magna aliqua
-                                        </p>
-                                    </div>
-                                    <div class="img-box">
-                                        <img src="../assets/image/client2.jpg" alt="" class="box-img">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </section>
 
-            <!-- end client section -->
             <!-- Footer -->
             <?php require_once('partials/_footer.php'); ?>
         </div>
