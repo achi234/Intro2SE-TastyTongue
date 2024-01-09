@@ -73,7 +73,7 @@
 
 
 <?php
-if (isset($_SESSION['status'])) {
+if (!empty($_SESSION['status'])) {
   echo '<script>';
   echo 'setTimeout(function() {';
   echo 'swal({';
@@ -83,28 +83,12 @@ if (isset($_SESSION['status'])) {
   echo '});';
   echo '}, 100);';
   echo '</script>';
-  echo '<script> alert("'. $_SESSION['status']. '"); </script>';
 
 
   unset($_SESSION['status']);
 }
 
-if (isset($_SESSION['announce'])) {
-  echo '<script>';
-  echo 'setTimeout(function() {';
-  echo 'swal({';
-  echo '    title: "Success",';
-  echo '    text: "' . $_SESSION['announce'] . '",';
-  echo '    icon: "success",';
-  echo '});';
-  echo '}, 100);';
-  echo '</script>';
-
-  echo '<script> alert("'. $_SESSION['announce']. '"); </script>';
-
-  unset($_SESSION['announce']);
-}
-if (isset($_SESSION['noti'])) {
+if (!empty($_SESSION['noti'])) {
   echo '<script>';
   echo 'setTimeout(function() {';
   echo 'swal({';
