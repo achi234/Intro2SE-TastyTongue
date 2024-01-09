@@ -33,7 +33,7 @@
           <div class="footer_detail">
             <a href="customerHomepage.php" class="footer-logo">
               <span>
-                  <img src="../assets/image/logo-with-text.png" height=60%vh width="70%vw" >
+                  <img src="./assets/image/logo-with-text.png" height=60%vh width="70%vw" >
               </span>
             </a>
             <p>

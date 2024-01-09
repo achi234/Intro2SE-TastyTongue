@@ -591,16 +591,25 @@ a:focus {
   margin: 45px 0 20px 0;
 }
 
-.food_section .filters_menu .btn {
+.food_section #filters_menu .btn {
   padding: 7px 25px;
   cursor: pointer;
   border-radius: 25px;
   display: inline-block;
 }
 
-.food_section .filters_menu .btn.active {
+.food_section #filters_menu .btn.active {
   background-color: #05433E;
   color: #EBB42C;
+}
+
+.food_section #filters_menu .filterDiv {
+  float: left;
+  display: none;
+}
+
+.food_section #filters_menu .filterDiv.show {
+  display: block;
 }
 
 .food_section .box {
