@@ -17,12 +17,30 @@
                         <p class="nav-item__text">Dashboard</p>
                     </a>
                 </li>
+                <!-- <li class="navbar-nav__item">
+                    <a href="staffs.php" class="nav-item__link text-primary">
+                        <i class="fa-solid fa-user-tie nav-item__icon"></i>
+                        <p class="nav-item__text">Staffs</p>
+                    </a>
+                </li> -->
                 <li class="navbar-nav__item">
                     <a href="customers.php" class="nav-item__link text-primary">
                         <i class="fa-solid fa-users nav-item__icon"></i>
                         <p class="nav-item__text">Customers</p>
                     </a>
                 </li>
+                <li class="navbar-nav__item">
+                    <a href="tables.php" class="nav-item__link text-primary">
+                        <i class="fa-solid fa-chair nav-item__icon"></i>
+                        <p class="nav-item__text">Tables</p>
+                    </a>
+                </li>
+                <!-- <li class="navbar-nav__item">
+                    <a href="categories.php" class="nav-item__link text-primary">
+                        <i class="fa-solid fa-cubes nav-item__icon"></i>
+                        <p class="nav-item__text">Category</p>
+                    </a>
+                </li> -->
                 <li class="navbar-nav__item">
                     <a href="products.php" class="nav-item__link text-primary">
                         <i class="fa-solid fa-utensils nav-item__icon"></i>
@@ -35,24 +53,6 @@
                         <p class="nav-item__text">Orders</p>
                     </a>
                 </li>
-                <li class="navbar-nav__item">
-                    <a href="payments.php" class="nav-item__link text-primary">
-                        <i class="fa-solid fa-credit-card nav-item__icon"></i>
-                        <p class="nav-item__text">Payments</p>
-                    </a>
-                </li>
-                <li class="navbar-nav__item">
-                    <a href="receipts.php" class="nav-item__link text-primary">
-                        <i class="fa-solid fa-file-invoice nav-item__icon"></i>
-                        <p class="nav-item__text">Receipts</p>
-                    </a>
-                </li>
-                <li class="navbar-nav__item">
-                    <a href="reservationManage.php" class="nav-item__link text-primary">
-                        <i class="fa-solid fa fa-calendar nav-item__icon"></i>
-                        <p class="nav-item__text">Reservation</p>
-                    </a>
-                </li>
             </ul>
             <!-- Divider -->
             <hr class="navbar__divider">
@@ -61,17 +61,24 @@
             <!-- Navigation -->
             <ul class="navbar-nav mb-md-3">
                 <li class="navbar-nav__item">
-                    <a href="order_records.php" class="nav-item__link text-primary">
-                        <i class="fa-solid fa-basket-shopping nav-item__icon"></i>
-                        <p class="nav-item__text">Orders</p>
+                    <a href="reservations.php" class="nav-item__link text-primary">
+                        <i class="fa-solid fa-table nav-item__icon"></i>
+                        <p class="nav-item__text">Reservations</p>
                     </a>
                 </li>
                 <li class="navbar-nav__item">
+                    <a href="invoices.php" class="nav-item__link text-primary">
+                        <i class="fa-solid fa-file-invoice nav-item__icon"></i>
+                        <p class="nav-item__text">Invoices</p>
+                    </a>
+                </li> 
+
+                <!-- <li class="navbar-nav__item">
                     <a href="payment_records.php" class="nav-item__link text-primary">
                         <i class="fa-solid fa-filter-circle-dollar nav-item__icon"></i>
                         <p class="nav-item__text">Payments</p>
                     </a>
-                </li>
+                </li> -->
             </ul>
             <!-- Divider -->
             <hr class="navbar__divider">

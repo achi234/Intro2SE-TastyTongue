@@ -46,7 +46,7 @@
                                     <div class="form-row__flex">
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Customer Email</label>
-                                            <input type="text" name="customer_email" class="form-control">
+                                            <input type="text" name="customer_email" class="form-control" value="admin@mail.com">
                                         </div>
 
                                         <div class="form-col">

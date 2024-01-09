@@ -13,6 +13,7 @@
     </title>
     <link rel="stylesheet" href="./assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/paging.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,5 +56,18 @@
 
           unset($_SESSION['noti']);
       }
+      if (!empty($_SESSION['warning'])) {  
+        echo '<script>';
+        echo 'setTimeout(function() {';
+        echo 'swal({';
+        echo '    title: "Warning",';
+        echo '    text: "' . $_SESSION['warning'] . '",';
+        echo '    icon: "warning",';
+        echo '});';
+        echo '}, 100);';
+        echo '</script>';
+
+        unset($_SESSION['warning']);
+    }
     ?>
 </head>
