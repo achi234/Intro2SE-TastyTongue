@@ -1284,5 +1284,34 @@ input[type="radio"] {
   color: #fff;
 }
 
+.card-profile-image img {
+  position: absolute;
+  left: 50%;
+  max-width: 180px;
+  transition: all .15s ease;
+  transform: translate(-50%, -30%);
+  border-radius: 0.6rem;
+}
+
+
+.container-recent {
+  padding: 48px 0 0 0;
+  /* max-width: 1240px; */
+}
+
+.container-recent-inner {
+  background-color: var(--bg-color);
+  height: 100%;
+  border-radius: 7px;
+  /* max-height: 90vh;
+  overflow-y: auto; */
+}
+
+.container-recent__heading {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 24px;
+  align-items: center;
+}
 
 /*# sourceMappingURL=style.css.map */

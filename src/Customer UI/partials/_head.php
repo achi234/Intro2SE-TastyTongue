@@ -33,6 +33,8 @@
 
   <!-- Custom styles for this template -->
   <link href="../assets/css/style.css" rel="stylesheet" />
+  <link href="./../Admin UI/assets/css/main.css" rel="stylesheet" />
+  <link href="./../Admin UI/assets/css/base.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="../assets/css/responsive.css" rel="stylesheet" />
 
@@ -61,15 +63,9 @@
   </script>
 
   <script src="../assets/js/swal.js"></script>
-  <!-- 
-  <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/main.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@700;800&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" sizes="16x16" href="../assets/image/logo.png">
-  <script src="../assets/js/swal.js"></script>
-  End Google Map -->
+
+
+
 
 
 <?php
