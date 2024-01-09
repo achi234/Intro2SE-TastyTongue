@@ -670,5 +670,111 @@
             return $response;
         }
     }
+    function getAllWithPagination($tableName, $pageSize, $pageNumber, $pageOrder)
+    {
+        global $conn;
     
+        $table = validate($tableName);
+        $startRow = ($pageNumber - 1) * $pageSize;
+    
+        $query = "SELECT COUNT(*) as total FROM $table"; // Đếm tổng số dòng
+        $result = mysqli_query($conn, $query);
+        $totalRows = mysqli_fetch_assoc($result)['total'];
+    
+        $query = "SELECT * FROM $table ORDER BY $pageOrder LIMIT $startRow, $pageSize";
+        $result = mysqli_query($conn, $query);
+    
+        if ($result) {
+            $data = array();
+    
+            while ($row = mysqli_fetch_assoc($result)) {
+                $data[] = $row;
+            }
+    
+            $response = [
+                'status' => 'Data Found',
+                'data' => $data,
+                'total' => $totalRows,
+            ];
+        } else {
+            $response = [
+                'status' => 'Something went wrong! Please try again.',
+            ];
+        }
+    
+        return $response;
+    }
+    
+    function getbyKeyValueWithPagination($tableName, $pageSize, $pageNumber, $pageOrder, $key, $value)
+    {
+        global $conn;
+    
+        $table = validate($tableName);
+        $startRow = ($pageNumber - 1) * $pageSize;
+        $key = validate($key);
+        $value = validate($value);
+    
+        $query = "SELECT COUNT(*) as total FROM $table WHERE $key = '$value'"; // Đếm tổng số dòng
+        $result = mysqli_query($conn, $query);
+        $totalRows = mysqli_fetch_assoc($result)['total'];
+    
+        $query = "SELECT * FROM $table WHERE $key = '$value' ORDER BY $pageOrder LIMIT $startRow, $pageSize";
+        $result = mysqli_query($conn, $query);
+    
+        if ($result) {
+            $data = array();
+    
+            while ($row = mysqli_fetch_assoc($result)) {
+                $data[] = $row;
+            }
+    
+            $response = [
+                'status' => 'Data Found',
+                'data' => $data,
+                'total' => $totalRows,
+            ];
+        } else {
+            $response = [
+                'status' => 'Something went wrong! Please try again.',
+            ];
+        }
+    
+        return $response;
+    }
+    
+    function getByUserTypeWithPagination($tableName, $userType, $pageSize, $pageNumber, $pageOrder)
+    {
+        global $conn;
+    
+        $table = validate($tableName);
+        $startRow = ($pageNumber - 1) * $pageSize;
+        $userType = validate($userType);
+    
+        $query = "SELECT COUNT(*) as total FROM $table WHERE role = '$userType'"; // Đếm tổng số dòng
+        $result = mysqli_query($conn, $query);
+        $totalRows = mysqli_fetch_assoc($result)['total'];
+    
+        $query = "SELECT * FROM $table WHERE role = '$userType' ORDER BY $pageOrder LIMIT $startRow, $pageSize";
+        $result = mysqli_query($conn, $query);
+    
+        if ($result) {
+            $data = array();
+    
+            while ($row = mysqli_fetch_assoc($result)) {
+                $data[] = $row;
+            }
+    
+            $response = [
+                'status' => 'Data Found',
+                'data' => $data,
+                'total' => $totalRows,
+            ];
+        } else {
+            $response = [
+                'status' => 'Something went wrong! Please try again.',
+            ];
+        }
+    
+        return $response;
+    }    
 ?>
