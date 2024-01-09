@@ -8,7 +8,7 @@
         $customer_id = $_POST['customer_id'];
         if(empty($_POST['customer_name']) || empty($_POST['customer_email']) || empty($_POST['customer_phone']))
         {
-            redirect('../../Staff UI/update_staff.php?id='.$customer_id, 'All fields are required.', '');
+            redirect('../../Staff UI/update_customers.php?id='.$customer_id, 'All fields are required.', '');
             exit(0);
         }
         else
@@ -43,7 +43,7 @@
             }
             else
             {
-                redirect('../../Staff UI/update_customer.php?id='.$customer_id, 'Something went wrong! Please enter again...', "");
+                redirect('../../Staff UI/update_customers.php?id='.$customer_id, 'Something went wrong! Please enter again...', "");
             }
         }
     }
