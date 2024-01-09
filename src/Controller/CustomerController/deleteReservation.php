@@ -7,7 +7,7 @@ if(isset($_GET['reservation_id'])){
     $reservation_id = $_GET['reservation_id'];
     $sql = "DELETE FROM RESERVATION_LIST WHERE RESERVATION_ID = $reservation_id";
     if ($conn->query($sql) === TRUE) {
-       $_SESSION['announce'] = "Deleted reservation successfully";
+       $_SESSION['noti'] = "Deleted reservation successfully";
         header('location: ../../Customer UI/reservationReport.php');
         // redirect('../../Customer UI/reservationReport.php', '', "Deleted reservation successfully");
 
