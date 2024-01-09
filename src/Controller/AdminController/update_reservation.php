@@ -36,8 +36,8 @@
 
             if ($selectedDateTime < $today) 
             {
-                redirect('../../Admin UI/update_reservations.php?id='.$reservation_id, 'Cannot book a reservation for a date in the past! Please try again', "");
-                exit(0);
+                // redirect('../../Admin UI/update_reservations.php?id='.$reservation_id, 'Cannot book a reservation for a date in the past! Please try again', "");
+                // exit(0);
             } 
             // Lấy giờ và phút từ thời gian nhập
             $selectedHour = $selectedDateTime->format('H:i');
