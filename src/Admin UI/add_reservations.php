@@ -44,7 +44,7 @@ $tables = getAll('table_list', 1);
                                         </div>
 
                                         <div class="form-col">
-                                            <label for="" class="form-col__label">Table Id</label>
+                                            
                                             <div id="table-result"></div>
                                             
                                         </div>
