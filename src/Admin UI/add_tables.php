@@ -44,7 +44,7 @@
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Table Status</label>
                                             <select name="status" id="tablStatus" class="form-cotrol">
-                                                <option value="0" class="">Available</option>
+                                                <option value="0" class="">Unavailable</option>
                                                 <option value="1" class="">Available</option>
                                             </select>
 
