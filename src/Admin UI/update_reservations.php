@@ -51,13 +51,13 @@
                                                 {
                                                     if( $reservation['data']['table_id'] == $table['table_id'])
                                                     { ?>  
-                                                    <option value="<?php echo $table['table_id'];?>" selected><?php echo $table['table_id'];?></option>
+                                                    <option value="<?php echo $table['table_id'];?>" selected><?php echo $table['table_name'];?></option>
                                                     <?php
                                                     } 
                                                     else
                                                     {
                                                     ?>
-                                                    <option value="<?php echo $table['table_id'];?>" ><?php echo $table['table_id'];?></option>
+                                                    <option value="<?php echo $table['table_id'];?>" ><?php echo $table['table_name'];?></option>
                                                     <?php
                                                     }
                                                 }

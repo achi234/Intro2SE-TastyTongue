@@ -22,7 +22,7 @@
 }
 
 .pagination .active {
-    background-color: #583FBC;
+    background-color: #05423d;
     color: white;
 }
   .pagination a:hover:not(.active) {

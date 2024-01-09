@@ -2,6 +2,7 @@
     include('../functions.php');
     include("../../config/config.php");
     session_start();
+    
     if(isset($_POST['btn-addReservation']))
     {
         $user_id = $_POST['user_id'];
@@ -34,6 +35,23 @@
                 redirect('../../Admin UI/add_reservations.php', 'Cannot book a reservation for a date in the past! Please try again', '');
                 exit(0);
             } 
+            // Lấy giờ và phút từ thời gian nhập
+            $selectedHour = $selectedDateTime->format('H:i');
+
+            // Thiết lập thời gian giới hạn
+            $startHour = '10:00';
+            $endHour = '22:00';
+
+            // Kiểm tra xem thời gian nhập có nằm trong khoảng từ 10am đến 10pm không
+            if ($selectedHour >= $startHour && $selectedHour <= $endHour) {
+                echo "Thời gian nhập nằm trong khoảng từ 10am đến 10pm.";
+            } else {
+                echo "Thời gian nhập không nằm trong khoảng từ 10am đến 10pm.";
+                redirect('../../Admin UI/add_reservations.php', "The time is not within the restaurant's operating hours (10am - 10pm). Please re-enter.", '');
+                exit(0);
+            }
+
+           
 
             $data = [
                 'user_id' => $user_id,

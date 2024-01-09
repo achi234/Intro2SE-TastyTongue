@@ -4,7 +4,10 @@
     //require_once('partials/_analytics.php');
 
     $categories = getAll('category');
+    $pageSize = 10;
+    $pageNumber = isset($_GET['page']) ? (int)$_GET['page'] : 1;
     
+    $categories = getAllWithPagination('category', $pageSize, $pageNumber, 'category_id');
 ?>
 <body>
     <!-- Sidebar -->
@@ -28,6 +31,33 @@
                                 Add New Categpry
                             </a>
 
+                            <div class="pagination">
+                                <?php
+                                    $totalPages = ceil($categories['total'] / $pageSize);
+                                    $maxPagesToShow = 4;
+                                    $halfMax = floor($maxPagesToShow / 2);
+
+                                    // Hiển thị nút Previous
+                                    if ($pageNumber > 1) {
+                                        echo '<a href="?page=' . ($pageNumber - 1) . '">&laquo;</a>';
+                                    } else {
+                                        echo '<a class="disabled" href="#">&laquo;</a>';
+                                    }
+
+                                    // Hiển thị các nút trang
+                                    for ($i = max(1, $pageNumber - $halfMax); $i <= min($totalPages, $pageNumber + $halfMax); $i++) {
+                                        echo '<a class="' . ($i == $pageNumber ? 'active' : '') . '" href="?page=' . $i . '">' . $i . '</a>';
+                                    }
+
+                                    // Hiển thị nút Next
+                                    if ($pageNumber < $totalPages) {
+                                        echo '<a href="?page=' . ($pageNumber + 1) . '">&raquo;</a>';
+                                    } else {
+                                        echo '<a class="disabled" href="#">&raquo;</a>';
+                                    }
+                                ?>
+                            </div>
+
                             <?php
                                 $strKeyword = null;
 
@@ -39,12 +69,12 @@
                                     if($categories['status'] == 'No Data Found')
                                     {
                                         $_SESSION['status'] = $categories['status'];
-                                        // $categories = getWithPagination('category', $pageSize, $pageNumber, 'category_id');
+                                        $categories = getAllWithPagination('category', $pageSize, $pageNumber, 'category_id');
                                     }
                                 }
                                 else
                                 {
-                                    // $categories = getWithPagination('category', $pageSize, $pageNumber, 'category_id');
+                                    $categories = getAllWithPagination('category', $pageSize, $pageNumber, 'category_id');
                                 }
                             ?>
 
