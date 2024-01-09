@@ -2,7 +2,11 @@
     $page_title = "Tasty Tongue - Menu";
     require_once('partials/_head.php');
 
-    $products = getAll('products');
+    $products = getAllByKeyValue('products', 'status', 1);
+    $pageSize = 10;
+    $pageNumber = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    
+    $products = getbyKeyValueWithPagination('products', $pageSize, $pageNumber, 'prod_id', 'status', 1);
 ?>
 <body>
     <!-- Sidebar -->
@@ -22,6 +26,33 @@
                     <form action="" method="POST" class="container-recent-inner">
                         <div class="container-recent__heading">
                             <p class="recent__heading-title">Select On Any Product To Make An Order</p>
+                            
+                            <div class="pagination">
+                                <?php
+                                    $totalPages = ceil($products['total'] / $pageSize);
+                                    $maxPagesToShow = 4;
+                                    $halfMax = floor($maxPagesToShow / 2);
+
+                                    // Hiển thị nút Previous
+                                    if ($pageNumber > 1) {
+                                        echo '<a href="?page=' . ($pageNumber - 1) . '">&laquo;</a>';
+                                    } else {
+                                        echo '<a class="disabled" href="#">&laquo;</a>';
+                                    }
+
+                                    // Hiển thị các nút trang
+                                    for ($i = max(1, $pageNumber - $halfMax); $i <= min($totalPages, $pageNumber + $halfMax); $i++) {
+                                        echo '<a class="' . ($i == $pageNumber ? 'active' : '') . '" href="?page=' . $i . '">' . $i . '</a>';
+                                    }
+
+                                    // Hiển thị nút Next
+                                    if ($pageNumber < $totalPages) {
+                                        echo '<a href="?page=' . ($pageNumber + 1) . '">&raquo;</a>';
+                                    } else {
+                                        echo '<a class="disabled" href="#">&raquo;</a>';
+                                    }
+                                ?>
+                            </div>
 
                             <?php
                                 $strKeyword = null;
@@ -34,12 +65,12 @@
                                     if($products['status'] == 'No Data Found')
                                     {
                                         $_SESSION['status'] = $products['status'];
-                                        // $products = getWithPagination('products', $pageSize, $pageNumber, 'prod_id');
+                                        $products = getbyKeyValueWithPagination('products', $pageSize, $pageNumber, 'prod_id', 'status', 1);
                                     }
                                 }
                                 else
                                 {
-                                    // $products = getWithPagination('products', $pageSize, $pageNumber, 'prod_id');
+                                    $products = getbyKeyValueWithPagination('products', $pageSize, $pageNumber, 'prod_id', 'status', 1);
                                 }
                             ?>
 

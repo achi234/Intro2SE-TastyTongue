@@ -4,6 +4,10 @@
     //require_once('partials/_analytics.php');
 
     $tables = getAll('table_list');
+    $pageSize = 10;
+    $pageNumber = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+    
+    $tables = getAllWithPagination('table_list', $pageSize, $pageNumber, 'table_id');
 ?>
 <body>
     <!-- Sidebar -->
@@ -27,6 +31,33 @@
                                 Add new table
                             </a>
 
+                            <div class="pagination">
+                                <?php
+                                    $totalPages = ceil($tables['total'] / $pageSize);
+                                    $maxPagesToShow = 4;
+                                    $halfMax = floor($maxPagesToShow / 2);
+
+                                    // Hiển thị nút Previous
+                                    if ($pageNumber > 1) {
+                                        echo '<a href="?page=' . ($pageNumber - 1) . '">&laquo;</a>';
+                                    } else {
+                                        echo '<a class="disabled" href="#">&laquo;</a>';
+                                    }
+
+                                    // Hiển thị các nút trang
+                                    for ($i = max(1, $pageNumber - $halfMax); $i <= min($totalPages, $pageNumber + $halfMax); $i++) {
+                                        echo '<a class="' . ($i == $pageNumber ? 'active' : '') . '" href="?page=' . $i . '">' . $i . '</a>';
+                                    }
+
+                                    // Hiển thị nút Next
+                                    if ($pageNumber < $totalPages) {
+                                        echo '<a href="?page=' . ($pageNumber + 1) . '">&raquo;</a>';
+                                    } else {
+                                        echo '<a class="disabled" href="#">&raquo;</a>';
+                                    }
+                                ?>
+                            </div>
+
                             <?php
                                 $strKeyword = null;
 
@@ -38,12 +69,12 @@
                                     if($tables['status'] == 'No Data Found')
                                     {
                                         $_SESSION['status'] = $tables['status'];
-                                        // $tables = getWithPagination('tables', $pageSize, $pageNumber, 'table_id');
+                                        $tables = getAllWithPagination('table_list', $pageSize, $pageNumber, 'table_id');
                                     }
                                 }
                                 else
                                 {
-                                    // $tables = getWithPagination('tables', $pageSize, $pageNumber, 'table_id');
+                                    $tables = getAllWithPagination('table_list', $pageSize, $pageNumber, 'table_id');
                                 }
                             ?>
 
