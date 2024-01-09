@@ -1,14 +1,8 @@
-<?php
-session_start();
-
-//echo "Role is {$_SESSION['role']} ";
-?>
 
 <?php
 $page_title = "Tasty Tongue - Table Choosing";
-require_once('../config/config.php');
-// include('../config/config.php');
-//include('../Controller/authenticate.php');
+include('../config/config.php');
+include('../Controller/authenticate.php');
 require_once('partials/_head.php');
 //require_once('partials/_analytics.php');
 ?>

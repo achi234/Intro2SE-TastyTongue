@@ -1,10 +1,14 @@
+<?php
+session_start();
+//echo "Role is {$_SESSION['role']} ";
+?>
 
 <?php
-$page_title = "Tasty Tongue - Customer Menu";
-include('../config/config.php');
-include('../Controller/authenticate.php');
-require_once('partials/_head.php');
-//require_once('partials/_analytics.php');
+$page_title = "Tasty Tongue - Menu";
+//include('../config/config.php');
+//include('../Controller/authenticate.php');
+require_once('partial/_head.php');
+$categories = getAll('category');
 ?>
 
 <body>
@@ -13,7 +17,7 @@ require_once('partials/_head.php');
     <div class="content">
       <!-- Top navbar -->
       <?php
-            require_once('partials/topnav.php');
+            require_once('partial/topnav.php');
             ?>
 
       <!-- Page content -->
@@ -41,7 +45,6 @@ require_once('partials/_head.php');
             <li data-filter=".pasta">Pasta</li>
             <li data-filter=".fries">Fries</li>
           </ul>
-
           <div class="filters-content">
             <div class="row grid">
               <div class="col-sm-6 col-lg-4 all pizza">
@@ -778,7 +781,7 @@ require_once('partials/_head.php');
 
 
       <!-- Footer -->
-      <?php require_once('partials/_footer.php'); ?>
+      <?php require_once('.partial/_footer.php'); ?>
     </div>
   </div>
 

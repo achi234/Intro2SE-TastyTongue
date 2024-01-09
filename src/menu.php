@@ -1,10 +1,14 @@
+<?php
+session_start();
+//echo "Role is {$_SESSION['role']} ";
+?>
 
 <?php
-$page_title = "Tasty Tongue - Customer Menu";
-include('../config/config.php');
-include('../Controller/authenticate.php');
-require_once('partials/_head.php');
-//require_once('partials/_analytics.php');
+$page_title = "Tasty Tongue - Menu";
+include('./config/config.php');
+//include('../Controller/authenticate.php');
+require_once('partial/_head.php');
+$categories = getAll('category');
 ?>
 
 <body>
@@ -13,8 +17,8 @@ require_once('partials/_head.php');
     <div class="content">
       <!-- Top navbar -->
       <?php
-            require_once('partials/topnav.php');
-            ?>
+      require_once('partial/topnav.php');
+      ?>
 
       <!-- Page content -->
 
@@ -34,14 +38,50 @@ require_once('partials/_head.php');
             </button>
           </div>
 
-          <ul class="filters_menu">
-            <li class="active" data-filter="*">All</li>
+          <div class="filters_menu">
+            <!-- <li class="active" data-filter="*">All</li>
             <li data-filter=".burger">Burger</li>
             <li data-filter=".pizza">Pizza</li>
             <li data-filter=".pasta">Pasta</li>
-            <li data-filter=".fries">Fries</li>
-          </ul>
+            <li data-filter=".fries">Fries</li> -->
+            <button class="btn active" onclick="filterSelection('all')"> All</button>
+            <?php foreach ($categories['data'] as $category) { ?>
+              <button class="btn" onclick="filterSelection('<?php $category['category_id'] ?>')">
+                <?php echo $category['category_name'] ?>
+              </button>
+              <!-- Product -->
+              <?php $products = getAllByKeyValue('products', 'prod_cat', $category['category_id']) ?>
+              <div class="container">
+                <div class="row grid">
+                <?php foreach ($products['data'] as $product) { ?>
+                      <div class="col-sm-6 col-lg-4 filterDiv <?php $category['category_id'] ?>">
+                        <div class="box">
+                          <div>
+                            <div class="img-box">
+                              <img src="./assets/image/products/<?php echo $product['prod_img'] ?>" alt="">
+                            </div>
+                            <div class="detail-box" style="overflow-y:auto;">
+                              <h5>
+                                <?php echo $product['prod_name'] ?>
+                              </h5>
+                              <p>
+                                <?php echo $product['prod_desc'] ?>
+                              </p>
+                              <div class="options">
+                                <h6>
+                                  $<?php echo $product['prod_price'] ?>
+                                </h6>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div><?php } ?>
+                </div>
+              </div>
+            <?php } ?>
+          </div>
 
+          <!--Mark here-->
           <div class="filters-content">
             <div class="row grid">
               <div class="col-sm-6 col-lg-4 all pizza">
@@ -124,6 +164,8 @@ require_once('partials/_head.php');
                   </div>
                 </div>
               </div>
+              <!--end here-->
+
               <div class="col-sm-6 col-lg-4 all burger">
                 <div class="box">
                   <div>
@@ -778,7 +820,7 @@ require_once('partials/_head.php');
 
 
       <!-- Footer -->
-      <?php require_once('partials/_footer.php'); ?>
+      <?php require_once('.partial/_footer.php'); ?>
     </div>
   </div>
 
