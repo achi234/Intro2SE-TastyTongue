@@ -73,7 +73,7 @@
                                     <div class="form-row__flex">
                                         <div class="form-col">
                                             <label for="" class="form-col__label">Description</label>
-                                            <textarea name="table_desc" rows="2" class="form-control"> <?php echo $table['data']['description'];?> </textarea>
+                                            <textarea name="table_desc" rows="2" class="form-control"><?php echo $table['data']['description'];?></textarea>
                                         </div>
                                     </div>
                                 </div>

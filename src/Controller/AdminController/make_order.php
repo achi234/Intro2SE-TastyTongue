@@ -25,8 +25,8 @@
 
     if ($count > 0) 
     {
-        $updateStmt = $conn->prepare("UPDATE orders SET quantity = quantity + ? WHERE reservation_id = ? AND prod_id = ?");
-        $updateStmt->bind_param("iii", $qty, $res_id, $product_id);
+        $updateStmt = $conn->prepare("CALL update_order(?, ?, ?)");
+        $updateStmt->bind_param("iii", $res_id, $product_id, $qty);
         $updateResult = $updateStmt->execute();
 
         if ($updateResult) {
