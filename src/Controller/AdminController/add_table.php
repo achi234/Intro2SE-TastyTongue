@@ -5,37 +5,30 @@
     if(isset($_POST['btn-addTable']))
     {
         $table_name = $_POST['table_name'];
-        $description = $_POST['table_desc'];
-        $size = $_POST['table_size'];
+        $table_size = $_POST['table_size'];
+        $table_desc = $_POST['table_desc'];
         $status = $_POST['status'];
-        echo $table_name ;
-        echo $description ;
-        echo $size ;
-        echo $status ;
 
-        if(empty($table_name) || empty($table_size) || !isset($status))
+
+
+        if(empty($table_name) || empty($table_size) || empty($table_desc) || !isset($status))
         {
-            //redirect('../../Admin UI/add_tables.php', 'All fields are required.', '');
+            redirect('../../Admin UI/add_tables.php', 'All fields are required.', '');
             exit(0);
         }
         else
         {
-            $cateCheck = "SELECT * FROM table_list WHERE table_name ='$table_name'";
-            $compile_cateCheck = mysqli_query($conn, $cateCheck);
-            if($compile_cateCheck)
+            if($table_size <= 0)
             {
-                if(mysqli_num_rows($compile_cateCheck) > 0)
-                {
-                    redirect('../../Admin UI/add_categories.php', 'Category has already existed. Please choose another name', '');
-                    exit(0);
-                }
+                redirect('../../Admin UI/add_tables.php', 'Table size should be above 0.', '');
+                exit(0);
             }
 
             $data = [
                 'table_name' => $table_name,
-                'size' => $size,
-                'description' => $description,
-                'status' => $status
+                'size'    => $table_size,
+                'description'    => $table_desc,
+                'status'     => $status,
             ];
 
             $result = insert('table_list', $data);

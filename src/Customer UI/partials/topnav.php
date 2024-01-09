@@ -78,7 +78,7 @@
                   <div class=" dropdown-header noti-title">
                     <h6 class="text-yellow m-0" style="font-weight:bold;">Welcome!</h6>
                   </div>
-                  <a href="./../Controller/change_profile.php" class="custom_dropdown-item">
+                  <a href="./change_profile.php" class="custom_dropdown-item">
                     <i class="fa fa-address-book-o"></i>
                     <span>My profile</span>
                   </a>
