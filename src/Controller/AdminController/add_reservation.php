@@ -51,34 +51,7 @@
                 exit(0);
             }
 
-            $sql = "SELECT table_name, table_id FROM table_list WHERE table_id NOT IN (
-                SELECT table_id FROM reservation_list WHERE datetime >= :datetime - INTERVAL 1 HOUR  
-                AND (status  = 0 OR status = 1)
-            ) AND size >= :size";
-        
-            
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param('si', $date_time, $party_size);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            
-            // Lấy kết quả truy vấn
-            $rows = $result->fetch_all(MYSQLI_ASSOC);
-            
-            // Kiểm tra nếu $table_id có trong kết quả
-            $check = false;
-            foreach ($rows  as $row) {
-                if ($row['table_id'] == $table_id) {
-                    echo "Có trong kết quả";
-                    // Thực hiện các hành động khi $table_id có trong kết quả
-                    $check = true;
-                    break;
-                }
-            }
-            if($check = false){
-                redirect('../../Admin UI/add_reservations.php', ". Please re-enter.", '');
-                exit(0);
-            }
+           
 
             $data = [
                 'user_id' => $user_id,
