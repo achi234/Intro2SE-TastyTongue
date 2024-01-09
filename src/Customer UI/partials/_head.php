@@ -90,7 +90,7 @@ if (!empty($_SESSION['noti'])) {
   echo '    text: "' . $_SESSION['noti'] . '",';
   echo '    icon: "success",';
   echo '});';
-  echo '}, 10000);';
+  echo '}, 100);';
   echo '</script>';
   unset($_SESSION['noti']);
 }
