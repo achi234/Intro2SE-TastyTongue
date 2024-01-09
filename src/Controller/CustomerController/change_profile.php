@@ -6,7 +6,7 @@ echo $_POST['customer_fullname'];
 echo $_POST['customer_phone'];
 echo $_POST['customer_email'];
 echo $_SESSION['id'];
-if (isset($_POST['changeAdminProfile'])) {
+if (isset($_POST['changeCustomerProfile'])) {
     //Prevent Posting Blank Values
     if (empty($_POST["customer_phone"]) || empty($_POST["customer_fullname"]) || empty($_POST['customer_email'])) {
         $err = "Blank Values Not Accepted";
