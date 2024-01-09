@@ -33,8 +33,6 @@
 
   <!-- Custom styles for this template -->
   <link href="../assets/css/style.css" rel="stylesheet" />
-  <link href="./../Admin UI/assets/css/main.css" rel="stylesheet" />
-  <link href="./../Admin UI/assets/css/base.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="../assets/css/responsive.css" rel="stylesheet" />
 

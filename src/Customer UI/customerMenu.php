@@ -1,8 +1,8 @@
 <?php
 $page_title = "Tasty Tongue - Customer Menu";
-include('./config/config.php');
+include('../config/config.php');
 include('../Controller/authenticate.php');
-require_once('partial/_head.php');
+require_once('partials/_head.php');
 $products = getAll('products');
 ?>
 
@@ -12,7 +12,7 @@ $products = getAll('products');
     <div class="content">
       <!-- Top navbar -->
       <?php
-      require_once('partial/topnav.php');
+      require_once('partials/topnav.php');
       ?>
 
       <!-- Page content -->
@@ -41,7 +41,7 @@ $products = getAll('products');
                     <div class="box">
                       <div>
                         <div class="img-box">
-                          <img src="./assets/image/products/<?php echo $product['prod_img'] ?>" alt="">
+                          <img src="../assets/image/products/<?php echo $product['prod_img'] ?>" alt="">
                         </div>
                         <div class="detail-box" style="overflow-y:auto;">
                           <h5>
